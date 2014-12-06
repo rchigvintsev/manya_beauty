@@ -38,6 +38,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'pg', '0.17.1'
 
+gem 'bootstrap-sass', '3.2.0.1'
+gem 'sprockets', '2.12.3'
+
 gem 'rails_12factor', '0.0.2', group: :production
 
 group :development, :test do
