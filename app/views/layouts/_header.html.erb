@@ -1,0 +1,19 @@
+<div class="header">
+  <div class="logo pull-left">
+    <a href="<%= root_path %>">
+      <img src="<%= image_path('logo.png') %>"/>
+    </a>
+  </div>
+
+  <nav>
+    <ul class="main-menu nav nav-pills pull-right">
+      <li role="presentation" class="active">
+        <%= link_to t('home'), root_path %>
+      </li>
+
+      <li role="presentation">
+        <%= link_to t('about'), about_path %>
+      </li>
+    </ul>
+  </nav>
+</div>

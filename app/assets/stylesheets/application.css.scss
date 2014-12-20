@@ -15,3 +15,30 @@
  */
 
 @import 'bootstrap';
+
+body {
+  background: image_url('symphony.png');
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.container {
+  max-width: 970px;
+}
+
+/* Main menu */
+
+.main-menu  > li > a {
+  color: inherit;
+  font: bold 14px/18px Open Sans;
+  text-transform: uppercase;
+}
+
+.main-menu  > li > a:hover, .main-menu  > li > a:focus {
+  background-color: inherit;
+}
+
+.main-menu > li.active > a, .main-menu > li.active > a:hover, .main-menu > li.active > a:focus {
+  color: #ee514a;
+  background-color: inherit;
+}
