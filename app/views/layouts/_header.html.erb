@@ -7,11 +7,11 @@
 
   <nav>
     <ul class="main-menu nav nav-pills pull-right">
-      <li role="presentation" class="active">
+      <li role="presentation" <%= home_page? ? 'class=active' : '' %>>
         <%= link_to t('home'), root_path %>
       </li>
 
-      <li role="presentation">
+      <li role="presentation" <%= about_page? ? 'class=active' : '' %>>
         <%= link_to t('about'), about_path %>
       </li>
     </ul>
