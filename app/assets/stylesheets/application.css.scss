@@ -18,15 +18,23 @@
 
 body {
   background: image_url('symphony.png');
-  padding-top: 20px;
-  padding-bottom: 20px;
 }
 
 .container {
   max-width: 970px;
 }
 
+/* Header */
+
+.header {
+  padding: 20px 0 10px 0;
+}
+
 /* Main menu */
+
+.main-menu {
+  padding: 5px 0 5px 0;
+}
 
 .main-menu  > li > a {
   color: inherit;
@@ -43,4 +51,10 @@ body {
 .main-menu > li.active > a, .main-menu > li.active > a:hover, .main-menu > li.active > a:focus {
   color: #ee514a;
   background-color: inherit;
+}
+
+/* Page container */
+
+.page-container {
+  background-color: #fff;
 }

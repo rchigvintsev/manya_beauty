@@ -1,19 +1,25 @@
 <div class="header">
-  <div class="logo pull-left">
-    <a href="<%= root_path %>">
-      <img src="<%= image_path('logo.png') %>"/>
-    </a>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="logo pull-left">
+        <a href="<%= root_path %>">
+          <img src="<%= image_path('logo.png') %>"/>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <nav>
+        <ul class="main-menu nav nav-pills pull-right">
+          <li role="presentation" <%= home_page? ? 'class=active' : '' %>>
+            <%= link_to t('home'), root_path %>
+          </li>
+
+          <li role="presentation" <%= about_page? ? 'class=active' : '' %>>
+            <%= link_to t('about'), about_path %>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
-
-  <nav>
-    <ul class="main-menu nav nav-pills pull-right">
-      <li role="presentation" <%= home_page? ? 'class=active' : '' %>>
-        <%= link_to t('home'), root_path %>
-      </li>
-
-      <li role="presentation" <%= about_page? ? 'class=active' : '' %>>
-        <%= link_to t('about'), about_path %>
-      </li>
-    </ul>
-  </nav>
 </div>
