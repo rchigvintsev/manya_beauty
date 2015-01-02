@@ -17,5 +17,11 @@ RSpec.describe "StaticPages", :type => :request do
 
   describe "Home page" do
     before { visit root_path }
+
+    describe "jCarousel" do
+      it {should have_selector('div.jcarousel-wrapper > .jcarousel > ul > li > img')}
+      it {should have_selector('div.jcarousel-wrapper > a.jcarousel-prev')}
+      it {should have_selector('div.jcarousel-wrapper > a.jcarousel-next')}
+    end
   end
 end

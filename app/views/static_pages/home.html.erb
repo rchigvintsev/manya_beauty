@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-4">
+
+  </div>
+
+  <div class="col-md-8">
+    <div class="jcarousel-wrapper">
+      <div class="jcarousel">
+        <ul>
+          <li><%= image_tag 'carousel/sewing-machine.jpg', width: 750, height: 500 %></li>
+          <li><%= image_tag 'carousel/centimeter.jpg', width: 750, height: 500 %></li>
+          <li><%= image_tag 'carousel/fabric.jpg', width: 750, height: 500 %></li>
+          <li><%= image_tag 'carousel/buttons.jpg', width: 750, height: 500 %></li>
+          <li><%= image_tag 'carousel/bobbins.jpg', width: 750, height: 500 %></li>
+        </ul>
+      </div>
+
+      <a class="jcarousel-prev carousel-control left" href="#" tabindex="-1">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+
+      <a class="jcarousel-next carousel-control right" href="#" tabindex="-1">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function () {
+    $('.jcarousel').jcarousel({ wrap: 'circular' }).jcarouselAutoscroll({
+      interval: 3000,
+      target: '+=1',
+      autostart: true
+    });
+
+    $('.jcarousel-prev, .jcarousel-next').click(function () { $(this).blur(); });
+    $('.jcarousel-prev').jcarouselControl({ target: '-=1' });
+    $('.jcarousel-next').jcarouselControl({ target: '+=1' });
+  });
+</script>

@@ -14,14 +14,11 @@
  *= require_self
  */
 
+@import "bootstrap-sprockets";
 @import 'bootstrap';
 
 body {
   background: image_url('symphony.png');
-}
-
-.container {
-  max-width: 970px;
 }
 
 /* Header */
