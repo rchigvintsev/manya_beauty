@@ -1,17 +1,20 @@
-<div class="row">
-  <div class="col-md-4">
-
+<div class="row tiled-row carousel-row">
+  <div class="col-md-4 tiled-column">
+    <div class="greeting-container">
+      <h3 class="greeting"><%= t('greeting') %></h3>
+      <%= image_tag 'tailor-logo.png', width: 192, height: 192 %>
+    </div>
   </div>
 
-  <div class="col-md-8">
+  <div class="col-md-8 tiled-column">
     <div class="jcarousel-wrapper">
       <div class="jcarousel">
         <ul>
-          <li><%= image_tag 'carousel/sewing-machine.jpg', width: 750, height: 500 %></li>
-          <li><%= image_tag 'carousel/centimeter.jpg', width: 750, height: 500 %></li>
-          <li><%= image_tag 'carousel/fabric.jpg', width: 750, height: 500 %></li>
-          <li><%= image_tag 'carousel/buttons.jpg', width: 750, height: 500 %></li>
-          <li><%= image_tag 'carousel/bobbins.jpg', width: 750, height: 500 %></li>
+          <li><%= image_tag 'carousel/sewing-machine.jpg', width: 760, height: 500 %></li>
+          <li><%= image_tag 'carousel/centimeter.jpg', width: 760, height: 500 %></li>
+          <li><%= image_tag 'carousel/fabric.jpg', width: 760, height: 500 %></li>
+          <li><%= image_tag 'carousel/buttons.jpg', width: 760, height: 500 %></li>
+          <li><%= image_tag 'carousel/bobbins.jpg', width: 760, height: 500 %></li>
         </ul>
       </div>
 

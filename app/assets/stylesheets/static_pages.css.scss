@@ -1,3 +1,5 @@
+/* Carousel */
+
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
@@ -31,10 +33,18 @@
   float: left;
 }
 
-.jcarousel-prev {
-  margin-left: 15px;
+.carousel-row {
+  background-color: #84ccc1;
 }
 
-.jcarousel-next {
-  margin-right: 15px;
+/* Greeting */
+
+.greeting-container {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.greeting {
+  color: #ffffff;
+  font-family: Open Sans, sans-serif;
 }
