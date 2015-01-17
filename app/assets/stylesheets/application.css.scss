@@ -17,8 +17,35 @@
 @import "bootstrap-sprockets";
 @import 'bootstrap';
 
+html, body {
+  height: 100%;
+}
+
 body {
   background: image_url('symphony.png');
+}
+
+.valign-container {
+  height: 100%;
+  margin: 0 auto;
+}
+
+.valign-container:before, .valign-middle {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.valign-container:before {
+  width: 0;
+  height: 100%;
+  display: inline-block;
+  content: "";
+  vertical-align: middle;
+  margin-left: -0.25em;
+}
+
+.valign-middle {
+  height: auto !important;
 }
 
 .tiled-row {
@@ -27,6 +54,18 @@ body {
 
 .tiled-column {
   padding: 0;
+}
+
+/* Page wrapper */
+
+.page-wrapper {
+  min-height: 100%;
+  margin-bottom: -78px;
+}
+
+.page-wrapper:after {
+  content: "";
+  display: block;
 }
 
 /* Header */
@@ -58,8 +97,33 @@ body {
   background-color: inherit;
 }
 
-/* Page container */
+/* Footer */
 
-.page-container {
-  background-color: #fff;
+.page-wrapper:after, .footer {
+  height: 78px;
+}
+
+.footer, .footer a {
+  color: #fff;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer div {
+  height: 100%;
+}
+
+.footer-content {
+  background-color: #087070;
+}
+
+.copyright {
+  padding-left: 20px;
+}
+
+.locale {
+  text-align: right;
+  padding-right: 20px;
 }

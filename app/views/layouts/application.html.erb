@@ -19,12 +19,16 @@
   <![endif]-->
 </head>
 <body>
+<div class="page-wrapper">
   <div class="container">
     <%= render 'layouts/header' %>
 
-    <div class="page-container">
-        <%= yield %>
+    <div class="page-content">
+      <%= yield %>
     </div>
   </div>
+</div>
+
+<%= render 'layouts/footer' %>
 </body>
 </html>
