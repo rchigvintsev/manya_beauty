@@ -1,25 +1,19 @@
 <div class="footer">
   <div class="container">
     <div class="footer-content">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="copyright valign-container">
-            <div class="valign-middle">
-              <p>ManyaBeauty &#169; <%= Time.now.year %></p>
-            </div>
-          </div>
+      <div class="copyright valign-container">
+        <div class="valign-middle">
+          <p>ManyaBeauty &#169; <%= Time.now.year %></p>
         </div>
+      </div>
 
-        <div class="col-md-9">
-          <div class="locale valign-container">
-            <div class="valign-middle">
-              <p>
-                <%= link_to 'RU', url_for(locale: 'ru'), class: 'locale-ru' %>
-                <span>|</span>
-                <%= link_to 'EN', url_for(locale: 'en'), class: 'locale-en' %>
-              </p>
-            </div>
-          </div>
+      <div class="locale valign-container">
+        <div class="valign-middle">
+          <p>
+            <%= link_to 'RU', url_for(locale: 'ru'), class: 'locale-ru' %>
+            <span>|</span>
+            <%= link_to 'EN', url_for(locale: 'en'), class: 'locale-en' %>
+          </p>
         </div>
       </div>
     </div>
