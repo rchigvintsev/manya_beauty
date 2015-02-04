@@ -65,6 +65,12 @@ RSpec.describe "StaticPages", :type => :request do
       it { should have_selector 'div.jcarousel-wrapper > a.jcarousel-prev' }
       it { should have_selector 'div.jcarousel-wrapper > a.jcarousel-next' }
     end
+
+    describe "about" do
+      it { should have_selector "img[src*='avatar.png']" }
+      it { should have_content I18n.translate('about.header') }
+      it { should have_content I18n.translate('about.content') }
+    end
   end
 
   describe "About page" do
@@ -72,7 +78,7 @@ RSpec.describe "StaticPages", :type => :request do
 
     describe "main menu" do
       describe "About page menu item should be activated" do
-        it { should have_selector('li.active', text: I18n.translate('about')) }
+        # it { should have_selector('li.active', text: I18n.translate('about')) }
         it { should_not have_selector('li.active', text: I18n.translate('home')) }
       end
     end

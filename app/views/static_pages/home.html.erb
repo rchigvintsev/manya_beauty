@@ -31,6 +31,21 @@
   </div>
 </div>
 
+<div class="row tiled-row about-row">
+  <div class="col-md-4 tiled-column">
+    <div class="avatar-container">
+      <%= image_tag 'avatar.png', width: 256, height: 256 %>
+    </div>
+  </div>
+
+  <div class="col-md-8 tiled-column">
+    <div class="about-container">
+      <h3><%= t 'about.header' %></h3>
+      <p><%= t 'about.content' %></p>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
   $(function () {
     $('.jcarousel').jcarousel({ wrap: 'circular' }).jcarouselAutoscroll({
