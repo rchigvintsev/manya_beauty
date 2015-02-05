@@ -32,7 +32,7 @@ RSpec.describe "StaticPages", :type => :request do
     describe "main menu" do
       describe "Home page menu item should be activated" do
         it { should have_selector('li.active', text: I18n.translate('home')) }
-        it { should_not have_selector('li.active', text: I18n.translate('about')) }
+        it { should_not have_selector('li.active', text: I18n.translate('gallery')) }
       end
     end
 
@@ -73,12 +73,12 @@ RSpec.describe "StaticPages", :type => :request do
     end
   end
 
-  describe "About page" do
-    before { visit about_path }
+  describe "Gallery page" do
+    before { visit gallery_path }
 
     describe "main menu" do
-      describe "About page menu item should be activated" do
-        # it { should have_selector('li.active', text: I18n.translate('about')) }
+      describe "Gallery page menu item should be activated" do
+        it { should have_selector('li.active', text: I18n.translate('gallery')) }
         it { should_not have_selector('li.active', text: I18n.translate('home')) }
       end
     end

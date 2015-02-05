@@ -3,8 +3,8 @@ module StaticPagesHelper
     static_pages_action?('home')
   end
 
-  def about_page?
-    static_pages_action?('about')
+  def gallery_page?
+    static_pages_action?('gallery')
   end
 
   private
