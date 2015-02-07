@@ -41,6 +41,8 @@ gem 'pg', '0.18.1'
 gem 'bootstrap-sass', '3.2.0.1'
 gem 'sprockets', '2.12.3'
 
+gem 'faker', '1.4.3'
+
 gem 'rails_12factor', '0.0.2', group: :production
 
 group :development, :test do
