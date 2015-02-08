@@ -3,5 +3,6 @@ class StaticPagesController < ApplicationController
   end
 
   def gallery
+    @categories = Category.all
   end
 end

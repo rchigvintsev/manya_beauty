@@ -1,8 +1,10 @@
-/* Carousel */
-
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'colors';
+
+/* Carousel */
 
 // This is the visible area of you carousel.
 // Set a width here to define how much items are visible.
@@ -34,7 +36,7 @@
 }
 
 .carousel-row {
-  background-color: #84ccc1;
+  background-color: $primaryColor;
 }
 
 /* Greeting */
