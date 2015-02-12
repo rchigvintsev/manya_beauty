@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'categories/new'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -59,4 +57,8 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   get '/gallery' => 'static_pages#gallery'
+
+  get 'categories/new'
+
+  get '/photo_albums' => 'photo_albums#index', constraints: -> (req) { req.xhr? }
 end

@@ -1,1 +1,2 @@
-<li><a href="#"><%= category.name %></a></li>
+<li><%= link_to category.name, photo_albums_path(category_id: category.id),
+        remote: true %></li>
