@@ -36,6 +36,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
+gem 'coffee-script-source', '1.8.0'
+
 gem 'pg', '0.18.1'
 
 gem 'bootstrap-sass', '3.2.0.1'
@@ -47,6 +49,7 @@ gem 'rails_12factor', '0.0.2', group: :production
 
 group :development, :test do
   gem 'rspec-rails', '3.0.2'
+  gem 'factory_girl_rails', '4.4.1'
 end
 
 group :test do

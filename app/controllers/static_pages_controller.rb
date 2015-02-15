@@ -4,5 +4,6 @@ class StaticPagesController < ApplicationController
 
   def gallery
     @categories = Category.all
+    @photo_albums = PhotoAlbum.all
   end
 end

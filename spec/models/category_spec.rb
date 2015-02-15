@@ -6,6 +6,7 @@ RSpec.describe Category, :type => :model do
   subject { @category }
 
   it { should respond_to :name }
+  it { should respond_to :photo_albums }
 
   it { should be_valid }
 
