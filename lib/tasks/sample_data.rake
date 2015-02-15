@@ -23,8 +23,6 @@ namespace :db do
   end
 
   def fake_name
-    words = Faker::Lorem.words(1 + Random.rand(3))
-    words[0].capitalize!
-    words.join(' ')
+    Faker::Lorem.sentence(1 + Random.rand(3))[0..-2]
   end
 end
