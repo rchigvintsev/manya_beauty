@@ -13,9 +13,8 @@ namespace :db do
   end
 
   def make_photo_albums
-    for category in Category.all do
-      album_number = Random.rand(21)
-      album_number.times do |n|
+    Category.all.each do |category|
+      Random.rand(21).times do |n|
         category.photo_albums.create!(name: fake_name,
             description: Faker::Lorem.paragraph(1 + Random.rand(3)))
       end

@@ -74,12 +74,44 @@ RSpec.describe "StaticPages", :type => :request do
   end
 
   describe "Gallery page" do
-    before { visit gallery_path }
+    before do
+      5.times do
+         category = FactoryGirl.create(:category)
+         Random.rand(11).times do
+           FactoryGirl.create(:photo_album, category: category)
+         end
+       end
+      visit gallery_path
+    end
 
     describe "main menu" do
       describe "Gallery page menu item should be activated" do
         it { should have_selector('li.active', text: I18n.translate('gallery')) }
         it { should_not have_selector('li.active', text: I18n.translate('home')) }
+      end
+    end
+
+    describe "categories" do
+      let(:all_categories) { Category.all }
+
+      it { should have_content I18n.translate('categories') }
+
+      it "should render all categories" do
+        all_categories.each do |category|
+          expect(page).to have_link(category.name,
+            href: photo_albums_path(category_id: category.id, locale: I18n.locale))
+        end
+      end
+    end
+
+    describe "photo albums" do
+      let(:all_photo_albums) { PhotoAlbum.all }
+
+      it "should render all photo albums" do
+        all_photo_albums.each do |photo_album|
+          expect(page).to have_content photo_album.name
+          expect(page).to have_content photo_album.description
+        end
       end
     end
   end

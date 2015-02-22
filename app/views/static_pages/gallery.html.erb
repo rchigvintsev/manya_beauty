@@ -10,8 +10,7 @@
   </div>
 
   <div class="photo-album-container col-md-8">
-    <ul>
-      <%= render @photo_albums %>
-    </ul>
+    <%= render partial: 'photo_albums/thumbnails',
+               locals: { photo_albums: @photo_albums } %>
   </div>
 </div>

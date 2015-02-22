@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PhotoAlbum, :type => :model do
-  let(:category) { FactoryGirl.create(:category) }
+  let(:category) { FactoryGirl.create(:category, name: 'Lorem ipsum') }
 
   before do
     @photo_album = category.photo_albums.build(name: 'Test Photo Album',

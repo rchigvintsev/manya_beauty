@@ -1,0 +1,15 @@
+<% photo_albums.each_slice(2) do |slice| %>
+  <div class="row">
+    <% slice.each do |photo_album| %>
+      <div class="col-md-6">
+        <div class="thumbnail">
+          <img alt="<%= photo_album.name %>"></img>
+          <div class="caption">
+            <h3><%= photo_album.name %></h3>
+            <p><%= photo_album.description %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
