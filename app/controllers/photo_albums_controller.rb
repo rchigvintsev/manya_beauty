@@ -10,4 +10,8 @@ class PhotoAlbumsController < ApplicationController
     end
     respond_with @photo_albums
   end
+
+  def show
+    @photos = Photo.where photo_album_id: params[:id]
+  end
 end
