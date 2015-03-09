@@ -49,6 +49,7 @@ gem 'rails_12factor', '0.0.2', group: :production
 
 group :development, :test do
   gem 'rspec-rails', '3.0.2'
+  gem 'rspec-its', '1.0.1'
   gem 'factory_girl_rails', '4.4.1'
 end
 

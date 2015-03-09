@@ -13,13 +13,16 @@ RSpec.describe PhotoAlbum, :type => :model do
   subject { @photo_album }
 
   it { should respond_to(:category_id) }
+  it { should respond_to(:category) }
   it { should respond_to(:name) }
   it { should respond_to(:description) }
 
+  its(:category) { should eq category }
+
   it { should be_valid }
 
-  describe "when name is not present" do
-    before { @photo_album.name = " " }
+  describe "with blank name" do
+    before { @photo_album.name = '' }
 
     it { should_not be_valid }
   end

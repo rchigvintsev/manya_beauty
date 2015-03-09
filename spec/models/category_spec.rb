@@ -10,8 +10,8 @@ RSpec.describe Category, :type => :model do
 
   it { should be_valid }
 
-  describe "when name is not present" do
-    before { @category.name = " " }
+  describe "with blank name" do
+    before { @category.name = '' }
 
     it { should_not be_valid }
   end
