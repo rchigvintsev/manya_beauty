@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Photo, :type => :model do
-  let(:category) { FactoryGirl.create(:category, name: 'Lorem ipsum') }
+  let(:category) { FactoryGirl.create(:category, name: 'Test Category') }
   let(:photo_album) do
-    FactoryGirl.create(:photo_album, name: 'Dolor sit amet', category: category)
+    FactoryGirl.create(:photo_album, name: 'Test Photo Album', category: category)
   end
 
   before do
