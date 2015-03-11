@@ -1,2 +1,2 @@
-$('.photo-album-container').html("<%= escape_javascript(render partial:
-  'photo_albums/thumbnails', locals: { photo_albums: @photo_albums }) %>");
+$('.photo-album-container').
+    html("<%= escape_javascript(render partial: 'photo_albums/covers') %>");
