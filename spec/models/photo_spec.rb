@@ -10,8 +10,7 @@ RSpec.describe Photo, :type => :model do
     @photo = photo_album.photos.build(title: 'Test Photo',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing ' +
                      'elit, sed do eiusmod tempor incididunt ut labore et ' +
-                     'dolore magna aliqua.',
-        file_name: 'test.jpg')
+                     'dolore magna aliqua.')
   end
 
   subject { @photo }
@@ -20,7 +19,7 @@ RSpec.describe Photo, :type => :model do
   it { should respond_to(:photo_album) }
   it { should respond_to(:title) }
   it { should respond_to(:description) }
-  it { should respond_to(:file_name) }
+  it { should respond_to(:photo_file) }
 
   its(:photo_album) { should eq photo_album }
 
@@ -34,12 +33,6 @@ RSpec.describe Photo, :type => :model do
 
   describe "with blank title" do
     before { @photo.title = '' }
-
-    it { should_not be_valid }
-  end
-
-  describe "with blank file_name" do
-    before { @photo.file_name = '' }
 
     it { should_not be_valid }
   end
