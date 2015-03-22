@@ -43,6 +43,14 @@ namespace :db do
   end
 
   def fake_description
-    Faker::Lorem.paragraph(1 + Random.rand(3))
+    truncate(Faker::Lorem.paragraph(1 + Random.rand(3)))
+  end
+
+  def truncate(text, length = 255, truncate_string = "...")
+    if text
+      l = length - truncate_string.chars.length
+      chars = text.chars
+      (chars.length > length ? chars[0...l].join + truncate_string : text).to_s
+    end
   end
 end

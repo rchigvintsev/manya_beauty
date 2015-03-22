@@ -46,6 +46,7 @@ gem 'sprockets', '2.12.3'
 gem 'faker', '1.4.3'
 
 gem 'carrierwave', '0.10.0'
+gem 'mini_magick', '4.1.0'
 
 gem 'rails_12factor', '0.0.2', group: :production
 

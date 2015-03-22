@@ -1,7 +1,7 @@
 <div id="links">
   <% @photos.each do |photo| %>
     <a href="<%= photo.photo_file_url %>" title="<%= photo.title %>" data-gallery>
-      <%= image_tag photo.photo_file_url %>
+      <%= image_tag photo.photo_file_url(:thumb) %>
     </a>
   <% end %>
 </div>
@@ -43,3 +43,11 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function () {
+    $('#links').justifiedGallery({
+      captions: false
+    });
+  })
+</script>
