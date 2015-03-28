@@ -48,7 +48,11 @@ gem 'faker', '1.4.3'
 gem 'carrierwave', '0.10.0'
 gem 'mini_magick', '4.1.0'
 
-gem 'rails_12factor', '0.0.2', group: :production
+group :production do
+  gem 'rails_12factor', '0.0.2'
+
+  gem 'fog-aws', '0.1.1'
+end
 
 group :development, :test do
   gem 'rspec-rails', '3.0.2'
