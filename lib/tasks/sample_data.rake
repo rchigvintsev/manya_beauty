@@ -29,10 +29,14 @@ namespace :db do
     end
 
     PhotoAlbum.all.each do |photo_album|
-      Random.rand(images.length + 1).times do |n|
-        File.open(images[n]) do |f|
-          photo_album.photos.create!(title: fake_name_or_title,
-              description: fake_description, photo_file: f)
+      photos_number = Random.rand(images.length + 1)
+      if photos_number > 0
+        images.shuffle!
+        photos_number.times do |n|
+          File.open(images[n]) do |f|
+            photo_album.photos.create!(title: fake_name_or_title,
+                description: fake_description, photo_file: f)
+          end
         end
       end
     end
