@@ -84,6 +84,8 @@ RSpec.describe "StaticPages", :type => :request do
       visit gallery_path
     end
 
+    it_should_behave_like "all static pages"
+
     describe "main menu" do
       describe "Gallery page menu item should be activated" do
         it { should have_selector('li.active', text: I18n.translate('gallery')) }
