@@ -2,7 +2,7 @@
   <div class="row">
     <% slice.each do |photo_album| %>
       <div class="col-md-6">
-        <div class="thumbnail <%= !photo_album.empty? ? 'photo-album' : 'empty-photo-album' %>">
+        <div class="thumbnail <%= !photo_album.cover_photo.nil? ? 'photo-album' : 'empty-photo-album' %>">
           <a href="<%= photo_album_path(photo_album) %>">
             <img alt="<%= photo_album.name %>"
                  src="<%= photo_album.cover_photo ? photo_album.cover_photo.photo_file_url(:thumb) : image_url('fallback/default.png') %>"></img>

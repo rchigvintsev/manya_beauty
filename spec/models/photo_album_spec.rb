@@ -16,6 +16,7 @@ RSpec.describe PhotoAlbum, :type => :model do
   it { should respond_to(:category) }
   it { should respond_to(:name) }
   it { should respond_to(:description) }
+  it { should respond_to(:cover_photo) }
 
   its(:category) { should eq category }
 

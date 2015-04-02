@@ -6,8 +6,4 @@ class PhotoAlbum < ActiveRecord::Base
   validates :name, presence: true
 
   attr_accessor :cover_photo
-
-  def empty?
-    cover_photo.nil?
-  end
 end

@@ -5,17 +5,13 @@ RSpec.describe "PhotoUploader", :type => :uploader do
   include CarrierWave::Test::Matchers
 
   before do
-    photo = FactoryGirl.create(:photo)
+    photo_album = PhotoAlbum.new(name: 'Test Photo Album')
+    photo = photo_album.photos.build(title: 'Test Photo')
 
     PhotoUploader.enable_processing = true
-    @uploader = PhotoUploader.new(photo)
+    @uploader = PhotoUploader.new(photo, :photo_file)
 
-    images = []
-    Dir.glob('spec/fixtures/files/*.jpg') do |image|
-      images << image
-    end
-
-    File.open(images[Random.rand(images.length)]) do |f|
+    File.open(Dir.glob('spec/fixtures/files/*.jpg')[0]) do |f|
       @uploader.store!(f)
     end
   end

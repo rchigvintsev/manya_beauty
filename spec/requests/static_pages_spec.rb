@@ -74,13 +74,23 @@ RSpec.describe "StaticPages", :type => :request do
   end
 
   describe "Gallery page" do
+    before(:all) do
+      3.times do
+        category = FactoryGirl.create(:category)
+        5.times do
+          photo_album = FactoryGirl.create(:photo_album, category: category)
+          7.times do
+            photo = FactoryGirl.create(:photo, photo_album: photo_album)
+          end
+        end
+      end
+    end
+
+    after(:all) do
+      DatabaseCleaner.clean_with(:truncation)
+    end
+
     before do
-      5.times do
-         category = FactoryGirl.create(:category)
-         Random.rand(11).times do
-           FactoryGirl.create(:photo_album, category: category)
-         end
-       end
       visit gallery_path
     end
 
@@ -101,7 +111,7 @@ RSpec.describe "StaticPages", :type => :request do
       it "should render all categories" do
         all_categories.each do |category|
           expect(page).to have_link(category.name,
-            href: photo_albums_path(category_id: category.id, locale: I18n.locale))
+              href: photo_albums_path(category_id: category.id, locale: I18n.locale))
         end
       end
     end
@@ -113,6 +123,29 @@ RSpec.describe "StaticPages", :type => :request do
         all_photo_albums.each do |photo_album|
           expect(page).to have_content photo_album.name
           expect(page).to have_content photo_album.description
+        end
+      end
+
+      describe "covers" do
+        it "should render first photo in photo album" do
+          all_photo_albums.each do |photo_album|
+            expect(page).to have_selector "a[href=" +
+                "'#{photo_album_path(photo_album, locale: I18n.locale)}'] > " +
+                "img[src='#{photo_album.photos.first.photo_file_url(:thumb)}']"
+          end
+        end
+      end
+
+      describe "photos" do
+        let(:photo_album) { PhotoAlbum.first }
+
+        before { visit photo_album_path(photo_album) }
+
+        it "should render all photos in photo album" do
+          photo_album.photos.each do |photo|
+            expect(page).to have_selector "a[href='#{photo.photo_file_url}'] > " +
+                "img[src='#{photo.photo_file_url(:thumb)}']"
+          end
         end
       end
     end
