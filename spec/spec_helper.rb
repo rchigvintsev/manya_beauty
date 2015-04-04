@@ -81,4 +81,11 @@ RSpec.configure do |config|
 =end
 
   config.include Capybara::DSL
+
+  config.after(:all) do
+    if Rails.env.test? || Rails.env.cucumber?
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/#{Rails.env}/[^.]*"])
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/tmp/[^.]*"])
+    end
+  end
 end
