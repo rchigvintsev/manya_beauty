@@ -144,7 +144,7 @@ body {
 .sidebar-module > h3 {
   margin: -20px -20px 20px -20px;
   padding: 20px;
-  background-color: $primaryColor;
+  background-color: $primary_color;
   color: #fff;
   font: normal 18px/22px Open Sans;
   text-transform: uppercase;
@@ -166,7 +166,7 @@ body {
 }
 
 .sidebar-module > ul > li:before {
-  color: $primaryColor;
+  color: $primary_color;
   padding-right: 10px;
   @extend .glyphicon;
   @extend .glyphicon-chevron-right;

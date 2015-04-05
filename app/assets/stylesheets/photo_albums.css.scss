@@ -2,10 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'colors';
+
 .empty-photo-album {
   a {
     img {
       opacity: 0.5;
+    }
+  }
+}
+
+.modal-dialog {
+  .modal-content {
+    border-radius: 0;
+
+    .modal-header {
+      border-bottom: none;
+    }
+
+    .modal-footer {
+      border-top: none;
+
+      .btn.prev, .btn.next {
+        color: #fff;
+        background-color: $primary_color;
+        border-color: $primary_color;
+        border-radius: 0;
+      }
+
+      .btn.prev:hover, .btn.next:hover,
+      .btn.prev:focus, .btn.next:focus,
+      .btn.prev.focus, .btn.next.focus,
+      .btn.prev:active, .btn.next:active,
+      .btn.prev.active, .btn.next.active {
+        background-color: $primary_color_dark;
+        border-color: $primary_color_dark;
+      }
     }
   }
 }
