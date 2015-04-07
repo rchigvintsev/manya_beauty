@@ -7,6 +7,8 @@ ru:
 
   gallery: "Галерея"
   categories: "Категории"
+  category:
+    all: "Все"
 
   date:
     abbr_day_names:

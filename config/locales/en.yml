@@ -30,3 +30,5 @@ en:
 
   gallery: "Gallery"
   categories: "Categories"
+  category:
+    all: "All"

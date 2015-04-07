@@ -4,6 +4,8 @@
       <h3><%= t 'categories' %></h3>
 
       <ul>
+        <li><%= link_to t('category.all'), photo_albums_path, remote: true %></li>
+
         <%= render @categories %>
       </ul>
     </div>
