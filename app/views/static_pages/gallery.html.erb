@@ -1,10 +1,11 @@
 <div class="row">
   <div class="sidebar col-md-4">
-    <div class="sidebar-module">
+    <div class="sidebar-module categories">
       <h3><%= t 'categories' %></h3>
 
       <ul>
-        <li><%= link_to t('category.all'), photo_albums_path, remote: true %></li>
+        <li><%= link_to t('category.all'), photo_albums_path, remote: true,
+            class: params[:category_id] ? nil : 'active-category' %></li>
 
         <%= render @categories %>
       </ul>
