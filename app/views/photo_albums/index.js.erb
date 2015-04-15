@@ -1,2 +1,24 @@
-$('.photo-album-container').
-    html("<%= escape_javascript(render partial: 'photo_albums/covers') %>");
+(function () {
+  $('.photo-album-container').
+      html("<%= escape_javascript(render partial: 'photo_albums/covers') %>");
+
+  $('.active-category').removeClass('active-category');
+
+  var categoryId = '<%= params[:category_id] %>';
+
+  if (!categoryId)
+    $('.categories > ul > li > a').first().addClass('active-category');
+  else {
+    var categoryIdRegexp = /category_id=(\d+)/;
+
+    $('.categories > ul > li > a').each(function (i, a) {
+      var $a = $(a);
+      var match = categoryIdRegexp.exec($a.attr('href'));
+
+      if (match && match[1] == categoryId) {
+        $a.addClass('active-category');
+        return false;
+      }
+    });
+  }
+})();
