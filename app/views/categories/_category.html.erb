@@ -1,2 +1,2 @@
 <li><%= link_to category.name, photo_albums_path(category_id: category.id),
-    remote: true, class: (params[:category_id] == category.id.to_s ? 'active-category' : nil) %></li>
+    remote: true, class: "category#{current_category?(category) ? ' active-category' : ''}" %></li>

@@ -5,7 +5,7 @@
 
       <ul>
         <li><%= link_to t('category.all'), photo_albums_path, remote: true,
-            class: params[:category_id] ? nil : 'active-category' %></li>
+            class: "category#{params[:category_id] ? '' : ' active-category'}" %></li>
 
         <%= render @categories %>
       </ul>
@@ -16,3 +16,16 @@
     <%= render partial: 'photo_albums/covers' %>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function () {
+    $('a.category').click(function (e) {
+      var $this = $(this);
+
+      if (!$this.hasClass('active-category')) {
+        $('a.active-category').removeClass('active-category');
+        $this.addClass('active-category');
+      }
+    });
+  });
+</script>
