@@ -5,7 +5,8 @@
 
       <ul>
         <li><%= link_to t('category.all'), photo_albums_path, remote: true,
-            class: "category#{params[:category_id] ? '' : ' active-category'}" %></li>
+                class: "category#{params[:category_id] ? '' : ' active-category'}",
+                data: { 'history-href' => gallery_path } %></li>
 
         <%= render @categories %>
       </ul>
@@ -19,12 +20,14 @@
 
 <script type="text/javascript">
   $(function () {
-    $('a.category').click(function (e) {
+    $(document).on('click', 'a.category', function (e) {
       var $this = $(this);
 
       if (!$this.hasClass('active-category')) {
         $('a.active-category').removeClass('active-category');
         $this.addClass('active-category');
+
+        history.pushState(null, '', $this.data('history-href'));
       }
     });
   });

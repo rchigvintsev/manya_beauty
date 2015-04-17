@@ -1,2 +1,3 @@
 <li><%= link_to category.name, photo_albums_path(category_id: category.id),
-    remote: true, class: "category#{current_category?(category) ? ' active-category' : ''}" %></li>
+    remote: true, class: "category#{current_category?(category) ? ' active-category' : ''}",
+    data: { 'history-href' => gallery_path(category_id: category.id) } %></li>
