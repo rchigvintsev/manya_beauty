@@ -4,6 +4,32 @@
 
 @import 'colors';
 
+.photo-album-caption p {
+  margin-top: 0;
+}
+
+.breadcrumb-container .breadcrumb {
+  margin-bottom: 10px;
+  background-color: #fff;
+
+  li {
+    text-transform: uppercase;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover, &:focus {
+        color: $primary_color_light;
+      }
+    }
+
+    &.active {
+      color: $primary_color_light;
+    }
+  }
+}
+
 .empty-photo-album {
   a {
     img {
@@ -28,6 +54,7 @@
         background-color: $primary_color;
         border-color: $primary_color;
         border-radius: 0;
+        outline: none;
       }
 
       .btn.prev:hover, .btn.next:hover,
@@ -35,8 +62,8 @@
       .btn.prev.focus, .btn.next.focus,
       .btn.prev:active, .btn.next:active,
       .btn.prev.active, .btn.next.active {
-        background-color: $primary_color_dark;
-        border-color: $primary_color_dark;
+        color: $primary_color;
+        background-color: #fff;
       }
     }
   }

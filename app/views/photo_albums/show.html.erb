@@ -1,5 +1,26 @@
+<div class="photo-album-caption row">
+  <div class="col-md-12">
+    <p class="text-center h3"><%= @photo_album.name %></p>
+  </div>
+</div>
+
+<div class="breadcrumb-container row">
+  <div class="col-md-12">
+    <ol class="breadcrumb">
+      <li><a href="<%= root_path %>"><%= t('home') %></a></li>
+      <li><a href="<%= gallery_path %>"><%= t('gallery') %></a></li>
+      <li>
+        <a href="<%= gallery_path(category_id: (@photo_album.category ? @photo_album.category.id : nil)) %>">
+          <%= @photo_album.category ? @photo_album.category.name : t('category.all') %>
+        </a>
+      </li>
+      <li class="active"><%= @photo_album.name %></li>
+    </ol>
+  </div>
+</div>
+
 <div id="links">
-  <% @photos.each do |photo| %>
+  <% @photo_album.photos.each do |photo| %>
     <a href="<%= photo.photo_file_url %>" title="<%= photo.title %>" data-gallery>
       <%= image_tag photo.photo_file_url(:thumb) %>
     </a>
@@ -34,7 +55,7 @@
             Previous
           </button>
 
-          <button type="button" class="btn btn-primary next">
+          <button type="button" class="btn btn-default next">
             Next
             <i class="glyphicon glyphicon-chevron-right"></i>
           </button>
