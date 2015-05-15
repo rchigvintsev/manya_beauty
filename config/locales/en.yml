@@ -32,3 +32,5 @@ en:
   categories: "Categories"
   category:
     all: "All"
+  photos:
+    comments: "Comments"

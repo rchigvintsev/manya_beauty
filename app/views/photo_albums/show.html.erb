@@ -21,7 +21,9 @@
 
 <div id="links">
   <% @photo_album.photos.each do |photo| %>
-    <a href="<%= photo.photo_file_url %>" title="<%= photo.title %>" data-gallery>
+    <a href="<%= photo.photo_file_url %>" title="<%= photo.title %>"
+       data-comments-href="<%= photo_comments_path(photo) %>"
+       data-photo-id="<%= photo.id %>" data-gallery>
       <%= image_tag photo.photo_file_url(:thumb) %>
     </a>
   <% end %>
@@ -70,5 +72,18 @@
     $('#links').justifiedGallery({
       captions: false
     });
-  })
+
+    $('#blueimp-gallery').on('opened', function () {
+      var gallery = $(this).data('gallery');
+
+      $('.slides > .slide').each(function (index, slide) {
+        var $link = $(gallery.list[index]);
+        $(slide).attr('data-photo-id', $link.attr('data-photo-id'));
+        $.ajax({ url: $link.attr('data-comments-href'), type: "GET", headers: {
+          Accept: '*/*;q=0.5, text/javascript, application/javascript, ' +
+                  'application/ecmascript, application/x-ecmascript'
+        }});
+      })
+    });
+  });
 </script>

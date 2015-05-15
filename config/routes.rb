@@ -62,5 +62,8 @@ Rails.application.routes.draw do
       constraints: -> (req) { req.xhr? }, as: 'photo_albums'
   get '/gallery/photo_albums/:id' => 'photo_albums#show', as: 'photo_album'
 
+  get '/gallery/photos/:id/comments' => 'photos#comments',
+      constraints: -> (req) { req.xhr? }, as: 'photo_comments'
+
   get 'categories/new'
 end

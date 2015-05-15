@@ -17,4 +17,18 @@ FactoryGirl.define do
     photo_file File.open(Dir.glob('spec/fixtures/files/*.jpg')[0])
     photo_album
   end
+
+  factory :comment do
+    author Faker::Name.name
+    text TextUtils::truncate(Faker::Lorem.paragraph(1 + Random.rand(3)))
+
+    factory :published_comment do
+      published true
+      published_at Faker::Time.between(1.year.ago, Time.now)
+    end
+
+    factory :draft_comment do
+      published false
+    end
+  end
 end

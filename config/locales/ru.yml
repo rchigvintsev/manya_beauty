@@ -9,6 +9,8 @@ ru:
   categories: "Категории"
   category:
     all: "Все"
+  photos:
+    comments: "Комментарии"
 
   date:
     abbr_day_names:

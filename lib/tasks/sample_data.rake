@@ -7,6 +7,7 @@ namespace :db do
     make_categories
     make_photo_albums
     make_photos
+    make_comments
   end
 
   def make_categories
@@ -19,7 +20,7 @@ namespace :db do
     Category.all.each do |category|
       Random.rand(21).times do |n|
         category.photo_albums.create!(name: fake_name_or_title,
-            description: fake_description)
+            description: fake_text)
       end
     end
   end
@@ -37,9 +38,21 @@ namespace :db do
         photos_number.times do |n|
           File.open(images[n]) do |f|
             photo_album.photos.create!(title: fake_name_or_title,
-                description: fake_description, photo_file: f)
+                description: fake_text, photo_file: f)
           end
         end
+      end
+    end
+  end
+
+  def make_comments
+    Photo.all.each do |photo|
+      comments_number = Random.rand(50)
+      comments_number.times do |n|
+        published = [true, false].sample
+        published_at = published ? Faker::Time.between(1.year.ago, Time.now) : nil
+        photo.comments.create!(author: Faker::Name.name,
+            text: fake_text, published: published, published_at: published_at)
       end
     end
   end
@@ -48,7 +61,7 @@ namespace :db do
     Faker::Lorem.sentence(1 + Random.rand(3), false, 0)[0..-2]
   end
 
-  def fake_description
+  def fake_text
     TextUtils::truncate(Faker::Lorem.paragraph(1 + Random.rand(3)))
   end
 end

@@ -1,0 +1,13 @@
+<% if comment.published? %>
+  <li class="comment text-left">
+    <div class="clearfix">
+      <h5>
+        <strong><%= comment.author %></strong>
+        <span class="text-muted">
+          <%= l comment.published_at, format: '%d %B %Y %H:%M' %>
+        </span>
+      </h5>
+    </div>
+    <p><%= comment.text %></p>
+  </li>
+<% end %>

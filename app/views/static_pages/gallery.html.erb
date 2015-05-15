@@ -27,7 +27,7 @@
         $('a.active-category').removeClass('active-category');
         $this.addClass('active-category');
 
-        history.pushState(null, '', $this.data('history-href'));
+        history.pushState(null, '', $this.attr('data-history-href'));
       }
     });
   });
