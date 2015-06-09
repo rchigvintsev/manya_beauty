@@ -40,9 +40,22 @@
 
 #blueimp-gallery {
   .modal {
-    overflow: scroll;
+    overflow: auto;
 
     .modal-dialog {
+      .btn {
+        color: #fff;
+        background-color: $primary_color;
+        border-color: $primary_color;
+        border-radius: 0;
+        outline: none;
+      }
+
+      .btn:hover, .btn:hover {
+        color: $primary_color;
+        background-color: #fff;
+      }
+
       .modal-content {
         border-radius: 0;
 
@@ -52,23 +65,10 @@
 
         .modal-footer {
           border-top: none;
+        }
 
-          .btn.prev, .btn.next {
-            color: #fff;
-            background-color: $primary_color;
-            border-color: $primary_color;
-            border-radius: 0;
-            outline: none;
-          }
-
-          .btn.prev:hover, .btn.next:hover,
-          .btn.prev:focus, .btn.next:focus,
-          .btn.prev.focus, .btn.next.focus,
-          .btn.prev:active, .btn.next:active,
-          .btn.prev.active, .btn.next.active {
-            color: $primary_color;
-            background-color: #fff;
-          }
+        .comment-form-container {
+          padding: 0 15px 15px 15px;
         }
 
         .comments {
@@ -77,7 +77,7 @@
 
           li {
             margin: 0;
-            padding: 0; 
+            padding: 0;
             list-style: none;
             border-bottom: 1px solid #eee;
           }
@@ -98,4 +98,11 @@
       }
     }
   }
+}
+
+.blueimp-gallery > .slides > .slide > .slide-content {
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
 }

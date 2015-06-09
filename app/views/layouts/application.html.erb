@@ -27,7 +27,8 @@
   <div class="container">
     <%= render 'layouts/header' %>
 
-    <div class="page-content">
+    <div id='<%= "#{params[:controller]}_#{params[:action]}" %>'
+         class="page-content">
       <%= yield %>
     </div>
   </div>

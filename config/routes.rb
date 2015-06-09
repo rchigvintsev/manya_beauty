@@ -65,5 +65,7 @@ Rails.application.routes.draw do
   get '/gallery/photos/:id/comments' => 'photos#comments',
       constraints: -> (req) { req.xhr? }, as: 'photo_comments'
 
+  resources :comments, only: [:create]
+
   get 'categories/new'
 end

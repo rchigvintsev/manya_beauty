@@ -29,8 +29,19 @@ en:
     content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
   gallery: "Gallery"
+
   categories: "Categories"
   category:
     all: "All"
+
   photos:
     comments: "Comments"
+
+    comment_form:
+      title: "Leave a comment"
+      author: "Your name"
+      text: "Your comment"
+      submit: "Submit"
+      submitting: "Submitting..."
+      approval_warning: "<strong>Warning!</strong> All comments need to be approved by an administrator before publishing."
+      success_message: "Your comment has been received. Be patient and as soon as the comment is approved, it will appear here. Thank you."

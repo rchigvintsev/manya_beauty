@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423222624) do
+ActiveRecord::Schema.define(version: 20150522211131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150423222624) do
   create_table "comments", force: true do |t|
     t.integer  "photo_id"
     t.string   "author"
-    t.string   "text"
+    t.text     "text"
     t.boolean  "published"
     t.datetime "published_at"
     t.datetime "created_at"

@@ -23,7 +23,7 @@
   <% @photo_album.photos.each do |photo| %>
     <a href="<%= photo.photo_file_url %>" title="<%= photo.title %>"
        data-comments-href="<%= photo_comments_path(photo) %>"
-       data-photo-id="<%= photo.id %>" data-gallery>
+       data-photo-id="<%= photo.id %>">
       <%= image_tag photo.photo_file_url(:thumb) %>
     </a>
   <% end %>
@@ -41,11 +41,11 @@
 
   <ol class="indicator"></ol>
 
-  <div class="modal fade">
+  <div class="modal fade" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" aria-hidden="true">&times;</button>
+          <button type="button" class="close close-slideshow" aria-hidden="true">&times;</button>
           <h4 class="modal-title"></h4>
         </div>
 
@@ -62,28 +62,40 @@
             <i class="glyphicon glyphicon-chevron-right"></i>
           </button>
         </div>
+
+        <div class="comment-form-container">
+          <h4><%= t('photos.comment_form.title') %></h4>
+
+          <%= form_tag(comments_path, remote: true,
+                                      id: 'comment_form') do |f| %>
+            <div id="author" class="form-group">
+              <%= text_field_tag 'comment[author]', nil, placeholder: t('photos.comment_form.author'),
+                                                         class: 'form-control' %>
+            </div>
+
+            <div id="text" class="form-group">
+              <%= text_area_tag 'comment[text]', nil, placeholder: t('photos.comment_form.text'),
+                                                      rows: 5,
+                                                      class: 'form-control' %>
+            </div>
+
+            <div class="text-right">
+              <div class="pull-left">
+                <p class="text-warning">
+                  <%= raw t('photos.comment_form.approval_warning') %>
+                </p>
+              </div>
+
+              <%= submit_tag(t('photos.comment_form.submit'), class: 'btn btn-default',
+                                                              autocomplete: 'off',
+                                                              disabled: 'disabled',
+                                                              data: { loading_text: t('photos.comment_form.submitting') }) %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<script type="text/javascript">
-  $(function () {
-    $('#links').justifiedGallery({
-      captions: false
-    });
-
-    $('#blueimp-gallery').on('opened', function () {
-      var gallery = $(this).data('gallery');
-
-      $('.slides > .slide').each(function (index, slide) {
-        var $link = $(gallery.list[index]);
-        $(slide).attr('data-photo-id', $link.attr('data-photo-id'));
-        $.ajax({ url: $link.attr('data-comments-href'), type: "GET", headers: {
-          Accept: '*/*;q=0.5, text/javascript, application/javascript, ' +
-                  'application/ecmascript, application/x-ecmascript'
-        }});
-      })
-    });
-  });
-</script>
+<%= javascript_include_tag 'photo_albums/show' %>
