@@ -68,4 +68,10 @@ Rails.application.routes.draw do
   resources :comments, only: [:create]
 
   get 'categories/new'
+
+  namespace :admin do
+    get 'dashboard/index'
+  end
+
+  devise_for :users
 end

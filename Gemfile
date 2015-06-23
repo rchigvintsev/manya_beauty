@@ -48,6 +48,8 @@ gem 'faker', '1.4.3'
 gem 'carrierwave', '0.10.0'
 gem 'mini_magick', '4.1.0'
 
+gem 'devise', '3.5.1'
+
 group :production do
   gem 'rails_12factor', '0.0.2'
 
