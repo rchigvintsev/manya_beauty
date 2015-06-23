@@ -31,4 +31,14 @@ FactoryGirl.define do
       published false
     end
   end
+
+  factory :user do
+    email Faker::Internet.email
+    password Faker::Internet.password
+    is_admin false
+
+    factory :admin do
+      is_admin true
+    end
+  end
 end

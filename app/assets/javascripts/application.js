@@ -16,4 +16,5 @@
 //= require bootstrap-sprockets
 //= require jquery.blueimp-gallery.min
 //= require bootstrap-image-gallery
+//= require_directory ./admin
 //= require_directory .
