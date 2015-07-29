@@ -111,13 +111,13 @@ RSpec.describe "StaticPages", :type => :request do
       it "should render all categories" do
         all_categories.each do |category|
           expect(page).to have_link(category.name,
-              href: photo_albums_path(category_id: category.id, locale: I18n.locale))
+              href: gallery_path(category_id: category.id, locale: I18n.locale))
         end
       end
 
       it "should render special category to show all photo albums" do
         expect(page).to have_link(I18n.translate('category.all'),
-            href: photo_albums_path(locale: I18n.locale))
+            href: gallery_path(locale: I18n.locale))
       end
     end
 

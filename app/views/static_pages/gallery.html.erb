@@ -4,9 +4,8 @@
       <h3><%= t 'categories' %></h3>
 
       <ul>
-        <li><%= link_to t('category.all'), photo_albums_path, remote: true,
-                class: "category#{params[:category_id] ? '' : ' active-category'}",
-                data: { 'history-href' => gallery_path } %></li>
+        <li><%= link_to t('category.all'), gallery_path,
+                class: "category#{params[:category_id] ? '' : ' active-category'}" %></li>
 
         <%= render @categories %>
       </ul>
@@ -17,18 +16,3 @@
     <%= render partial: 'photo_albums/covers' %>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(function () {
-    $(document).on('click', 'a.category', function (e) {
-      var $this = $(this);
-
-      if (!$this.hasClass('active-category')) {
-        $('a.active-category').removeClass('active-category');
-        $this.addClass('active-category');
-
-        history.pushState(null, '', $this.attr('data-history-href'));
-      }
-    });
-  });
-</script>

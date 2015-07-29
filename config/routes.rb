@@ -58,8 +58,6 @@ Rails.application.routes.draw do
 
   get '/gallery' => 'static_pages#gallery'
 
-  get '/gallery/photo_albums' => 'photo_albums#index',
-      constraints: -> (req) { req.xhr? }, as: 'photo_albums'
   get '/gallery/photo_albums/:id' => 'photo_albums#show', as: 'photo_album'
 
   get '/gallery/photos/:id/comments' => 'photos#comments',
