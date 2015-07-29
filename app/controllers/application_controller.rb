@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  layout :layout_by_resource
+
   before_action :set_locale
 
   def set_locale
@@ -19,6 +21,20 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource_or_scope)
-    
+
   end
+
+  private
+
+    def layout_by_resource
+      if devise_controller?
+        if user_signed_in?
+          'dashboard'
+        else
+          'signin'
+        end
+      else
+        'application'
+      end
+    end
 end
