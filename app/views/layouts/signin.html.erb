@@ -9,14 +9,8 @@
   <%= render 'layouts/html5shim' %>
 </head>
 <body class="signin-body">
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <%= link_to t('brand'), root_path, class: 'navbar-brand' %>
-    </div>
-  </div>
-</nav>
+  <%= render 'layouts/navbar' %>
 
-<%= yield %>
+  <%= yield %>
 </body
 </html>

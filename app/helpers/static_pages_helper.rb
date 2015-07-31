@@ -10,7 +10,7 @@ module StaticPagesHelper
 
   private
 
-  def static_pages_action?(action_name)
-    params[:controller] == 'static_pages' && params[:action] == action_name
-  end
+    def static_pages_action?(action_name)
+      params[:controller] == 'static_pages' && params[:action] == action_name
+    end
 end

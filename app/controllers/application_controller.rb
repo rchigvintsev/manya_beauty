@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include CurrentController
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -26,11 +28,11 @@ class ApplicationController < ActionController::Base
   private
 
     def layout_by_resource
-      if devise_controller?
-        if user_signed_in?
-          'dashboard'
-        else
+      if devise_controller? or dashboard_controller?
+        if !user_signed_in?
           'signin'
+        else
+          'dashboard'
         end
       else
         'application'
