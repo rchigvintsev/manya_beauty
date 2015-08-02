@@ -68,7 +68,7 @@ Rails.application.routes.draw do
   get 'categories/new'
 
   namespace :admin do
-    get 'dashboard/index'
+    get 'dashboard' => 'dashboard#index'
   end
 
   devise_for :users
