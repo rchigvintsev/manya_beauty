@@ -55,4 +55,6 @@ en:
       email: "Email address"
       password: "Password"
       remember_me: 'Remember me'
-      sign_in: 'Sign in'
+      sign_in: "Sign in"
+
+  sign_out: "Sign out"

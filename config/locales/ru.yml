@@ -32,7 +32,9 @@ ru:
       email: "Адрес электронной почты"
       password: "Пароль"
       remember_me: 'Запомнить меня'
-      sign_in: 'Войти'
+      sign_in: "Войти"
+
+  sign_out: "Выйти"
 
   date:
     abbr_day_names:
