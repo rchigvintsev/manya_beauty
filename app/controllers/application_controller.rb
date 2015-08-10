@@ -7,13 +7,13 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
-  before_action :set_locale
+  before_filter :set_locale
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
-  def default_url_options(options={})
+  def self.default_url_options(options={})
     options[:locale] = I18n.locale
     options
   end
