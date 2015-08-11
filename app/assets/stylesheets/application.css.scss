@@ -178,3 +178,9 @@ html, body {
   color: inherit;
   text-decoration: none;
 }
+
+.russian-flag {
+  background-image: image_url('flag_russia.png');
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+}
