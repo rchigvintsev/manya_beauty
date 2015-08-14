@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include CurrentController
+  include PathUtils
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   private
 
     def layout_by_resource
-      if devise_controller? or dashboard_controller?
+      if devise_controller? or admin_page?
         if !user_signed_in?
           'sign_in'
         else

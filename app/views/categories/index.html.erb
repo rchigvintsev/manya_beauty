@@ -1,0 +1,11 @@
+<h2 class="categories-caption"><%= t 'categories' %></h2>
+
+<table class="table table-striped">
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

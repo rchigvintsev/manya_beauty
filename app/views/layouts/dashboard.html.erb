@@ -11,6 +11,21 @@
 <body class="dashboard-body">
   <%= render 'layouts/navbar' %>
 
-  <%= yield %>
+  <div class="container-fluid">
+    <div class="row">
+      <div id="dashboard_sidebar" class="col-sm-3 col-md-2 dashboard-sidebar">
+        <ul class="nav dashboard-nav-sidebar">
+          <li<%= params[:controller] == 'categories' ? ' class=active' : '' %>>
+            <%= link_to t('categories'), categories_path %>
+          </li>
+        </ul>
+      </div>
+
+      <div id="dashboard_main"
+           class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 dashboard-main">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 </body
 </html>
