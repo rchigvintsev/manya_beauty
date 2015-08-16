@@ -1,6 +1,30 @@
-<h2 class="categories-caption"><%= t 'categories' %></h2>
+<div class="row table-header">
+  <div class="col-md-8">
+    <h2><%= t 'categories' %></h2>
+  </div>
 
-<table class="table table-striped">
+  <div class="col-md-4">
+    <ul class="pull-right">
+      <li>
+        <a href="#" class="btn btn-success btn-new">
+          <%= t 'actions.new' %>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="btn btn-primary btn-edit" disabled="disabled">
+          <%= t 'actions.edit' %>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="btn btn-danger btn-delete" disabled="disabled">
+          <%= t 'actions.delete' %>
+        </a>
+      </li>
+    <ul>
+  </div>
+</div>
+
+<table class="table table-hover categories">
   <tbody>
     <% @categories.each do |category| %>
       <tr>

@@ -37,6 +37,11 @@ ru:
 
   sign_out: "Выйти"
 
+  actions:
+    new: "Создать"
+    edit: "Редактировать"
+    delete: "Удалить"
+
   date:
     abbr_day_names:
     - Вс

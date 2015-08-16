@@ -59,3 +59,8 @@ en:
       sign_in: "Sign in"
 
   sign_out: "Sign out"
+
+  actions:
+    new: "New"
+    edit: "Edit"
+    delete: "Delete"

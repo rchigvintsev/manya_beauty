@@ -8,6 +8,38 @@
   color: $primary_color_light;
 }
 
-.categories-caption {
-  margin-bottom: 20px;
+.table-header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  h2 {
+    margin: 0;
+  }
+
+  ul {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      float: left;
+      position: relative;
+      display: block;
+
+      a {
+        position: relative;
+        display: block;
+      }
+    }
+
+    li+li {
+      margin-left: 2px;
+    }
+  }
+}
+
+table.categories {
+  tr {
+    cursor: pointer;
+  }
 }
