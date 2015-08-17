@@ -11,8 +11,12 @@ ru:
   gallery: "Галерея"
 
   categories: "Категории"
+
   category:
     all: "Все"
+    new: "Новая категория"
+    failed_to:
+      create: "новую категорию"
 
   photos:
     comments: "Комментарии"
@@ -38,9 +42,21 @@ ru:
   sign_out: "Выйти"
 
   actions:
-    new: "Создать"
+    create: "Создать"
     edit: "Редактировать"
     delete: "Удалить"
+    cancel: "Отмена"
+
+  activerecord:
+    attributes:
+      category:
+        name: "Имя"
+
+  form_errors:
+    one: "%{count} ошибка не позволяет сохранить %{model}:"
+    few: "%{count} ошибки не позволяют сохранить %{model}:"
+    many: "%{count} ошибок не позволяют сохранить %{model}:"
+    other: "%{count} ошибок не позволяют сохранить %{model}:"
 
   date:
     abbr_day_names:

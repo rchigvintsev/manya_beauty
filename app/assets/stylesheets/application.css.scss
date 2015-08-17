@@ -179,8 +179,6 @@ html, body {
   text-decoration: none;
 }
 
-.russian-flag {
-  background-image: image_url('flag_russia.png');
-  background-repeat: no-repeat;
-  background-size: 32px 32px;
+.field_with_errors {
+  @extend .has-error;
 }

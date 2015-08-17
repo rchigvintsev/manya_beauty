@@ -34,8 +34,12 @@ en:
   gallery: "Gallery"
 
   categories: "Categories"
+
   category:
     all: "All"
+    new: "New category"
+    failed_to:
+      create: "category"
 
   photos:
     comments: "Comments"
@@ -61,6 +65,16 @@ en:
   sign_out: "Sign out"
 
   actions:
-    new: "New"
+    create: "Create"
     edit: "Edit"
     delete: "Delete"
+    cancel: "Cancel"
+
+  activerecord:
+    attributes:
+      category:
+        name: "Name"
+
+  form_errors:
+    one: "%{count} error prohibited this %{model} from being saved:"
+    other: "%{count} errors prohibited this %{model} from being saved:"
