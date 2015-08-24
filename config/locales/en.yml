@@ -37,9 +37,17 @@ en:
 
   category:
     all: "All"
-    new: "New category"
+    creating: "Сategory creating"
+    editing: "Category editing"
     failed_to:
       create: "category"
+      update: "category"
+    flash:
+      actions:
+        update:
+          notice: "Category was successfully updated"
+        create:
+          notice: "Category was successfully created"
 
   photos:
     comments: "Comments"
@@ -69,6 +77,7 @@ en:
     edit: "Edit"
     delete: "Delete"
     cancel: "Cancel"
+    save: "Save"
 
   activerecord:
     attributes:

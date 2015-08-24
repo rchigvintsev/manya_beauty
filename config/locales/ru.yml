@@ -14,9 +14,17 @@ ru:
 
   category:
     all: "Все"
-    new: "Новая категория"
+    creating: "Создание категории"
+    editing: "Редактирование категории"
     failed_to:
       create: "новую категорию"
+      update: "категорию"
+    flash:
+      actions:
+        update:
+          notice: "Категория была успешно обновлена"
+        create:
+          notice: "Новая категория была успешно сохранена"
 
   photos:
     comments: "Комментарии"
@@ -46,6 +54,7 @@ ru:
     edit: "Редактировать"
     delete: "Удалить"
     cancel: "Отмена"
+    save: "Сохранить"
 
   activerecord:
     attributes:

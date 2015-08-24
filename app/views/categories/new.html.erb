@@ -1,26 +1,3 @@
-<h2><%= t 'category.new' %></h2>
+<h2><%= t 'category.creating' %></h2>
 
-<%= form_for(@category) do |f| %>
-  <% if @category.errors.any? %>
-    <div class="alert alert-danger">
-      <h4>
-        <%= t(:form_errors, count: @category.errors.count,
-            model: t('category.failed_to.create')) %>
-      </h4>
-
-      <ul>
-        <% @category.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :name, class: 'control-label' %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-
-  <%= f.submit t('actions.create'), class: 'btn btn-success' %>
-  <%= link_to t('actions.cancel'), categories_path, class: 'btn btn-default' %>
-<% end %>
+<%= render 'form', new_category: true %>
