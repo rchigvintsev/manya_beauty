@@ -22,7 +22,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         format.html { redirect_to categories_url,
-            notice: I18n.translate('category.flash.actions.create.notice.') }
+            notice: I18n.translate('category.flash.actions.create.notice') }
         format.json { render :index, status: :created, location: categories_url }
       else
         format.html { render :new }
@@ -35,12 +35,21 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.update(category_params)
         format.html { redirect_to @category,
-            notice: I18n.translate('category.flash.actions.update.notice.') }
+            notice: I18n.translate('category.flash.actions.update.notice') }
         format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @category.destroy
+    respond_to do |format|
+      format.html { redirect_to categories_url,
+          notice: I18n.translate('category.flash.actions.destroy.notice') }
+      format.json { head :no_content }
     end
   end
 

@@ -48,6 +48,11 @@ en:
           notice: "Category was successfully updated"
         create:
           notice: "Category was successfully created"
+        destroy:
+          notice: "Category was successfully destroyed"
+    confirm:
+      actions:
+        destroy: "Do you really want to destroy selected category?"
 
   photos:
     comments: "Comments"

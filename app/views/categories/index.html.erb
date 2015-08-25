@@ -10,14 +10,13 @@
             class: 'btn btn-success btn-new' %>
       </li>
       <li>
-        <a href="#" class="btn btn-primary btn-edit" disabled="disabled">
-          <%= t 'actions.edit' %>
-        </a>
+        <%= link_to t('actions.edit'), '#', class: 'btn btn-primary btn-edit',
+            disabled: 'disabled' %>
       </li>
       <li>
-        <a href="#" class="btn btn-danger btn-delete" disabled="disabled">
-          <%= t 'actions.delete' %>
-        </a>
+        <%= link_to t('actions.delete'), '#', class: 'btn btn-danger btn-delete',
+            method: :delete, disabled: 'disabled',
+            data: { confirm: t('category.confirm.actions.destroy') } %>
       </li>
     <ul>
   </div>

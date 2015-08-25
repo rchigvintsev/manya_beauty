@@ -15,3 +15,4 @@ $ ->
     id = $this.find('td.hidden.id').text()
     if id
       $('.table-header .btn-edit').attr 'href', UrlUtils.append(id + '/edit')
+      $('.table-header .btn-delete').attr 'href', UrlUtils.append(id)
