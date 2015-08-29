@@ -5,6 +5,10 @@ FactoryGirl.define do
     sequence(:name) { |n| "Category #{n}" }
   end
 
+  factory :invalid_category, parent: :category do
+    name nil
+  end
+
   factory :photo_album do
     sequence(:name) { |n| "Photo album #{n}" }
     description TextUtils::truncate(Faker::Lorem.paragraph(1 + Random.rand(3)))
