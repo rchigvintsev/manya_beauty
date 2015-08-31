@@ -31,6 +31,13 @@ ru:
       actions:
         destroy: "Вы действительно хотите удалить выбранную категорию?"
 
+  photo_albums: "Фотоальбомы"
+
+  photo_album:
+    confirm:
+      actions:
+        destroy: "Вы действительно хотите удалить выбранный фотоальбом?"
+
   photos:
     comments: "Комментарии"
 
@@ -65,12 +72,20 @@ ru:
     attributes:
       category:
         name: "Имя"
+      photo_album:
+        name: "Имя"
+        description: "Описание"
+        category: "Категория"
 
   form_errors:
     one: "%{count} ошибка не позволяет сохранить %{model}:"
     few: "%{count} ошибки не позволяют сохранить %{model}:"
     many: "%{count} ошибок не позволяют сохранить %{model}:"
     other: "%{count} ошибок не позволяют сохранить %{model}:"
+
+  will_paginate:
+    previous_label: "<"
+    next_label: ">"
 
   date:
     abbr_day_names:

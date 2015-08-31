@@ -69,7 +69,7 @@ RSpec.describe "Dashboard", :type => :request do
       click_link I18n.translate('categories')
     end
 
-    it { should have_selector 'table.categories' }
+    it { should have_selector '.dashboard-table' }
 
     it "should render all categories" do
       all_categories.each do |category|
@@ -122,7 +122,7 @@ RSpec.describe "Dashboard", :type => :request do
           before { click_button submit }
 
           it { should have_content I18n.translate('category.flash.actions.create.notice') }
-          it { should have_selector 'table.categories' }
+          it { should have_selector '.dashboard-table' }
         end
       end
     end

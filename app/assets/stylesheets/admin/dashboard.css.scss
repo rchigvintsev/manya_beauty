@@ -46,3 +46,49 @@
   margin-top: 20px;
   margin-bottom: 0;
 }
+
+.dashboard-table-header {
+  padding-top: 20px;
+  padding-bottom: 10px;
+
+  h2 {
+    margin: 0;
+  }
+
+  ul {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      float: left;
+      position: relative;
+      display: block;
+
+      a {
+        position: relative;
+        display: block;
+      }
+    }
+
+    li+li {
+      margin-left: 2px;
+    }
+  }
+}
+
+.table.dashboard-table {
+  margin-bottom: 10px;
+
+  td {
+    cursor: pointer;
+  }
+}
+
+div.pagination {
+  margin: 0 0 10px 0;
+
+  ul.pagination {
+    margin: 0;
+  }
+}

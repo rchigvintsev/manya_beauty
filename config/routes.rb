@@ -71,6 +71,7 @@ Rails.application.routes.draw do
 
   scope '/admin/dashboard' do
     resources :categories
+    resources :photo_albums, only: [:index, :new]
   end
 
   devise_for :users

@@ -54,6 +54,13 @@ en:
       actions:
         destroy: "Do you really want to destroy selected category?"
 
+  photo_albums: "Photo albums"
+
+  photo_album:
+    confirm:
+      actions:
+        destroy: "Do you really want to destroy selected photo album?"
+
   photos:
     comments: "Comments"
 
@@ -88,7 +95,15 @@ en:
     attributes:
       category:
         name: "Name"
+      photo_album:
+        name: "Name"
+        description: "Description"
+        category: "Category"
 
   form_errors:
     one: "%{count} error prohibited this %{model} from being saved:"
     other: "%{count} errors prohibited this %{model} from being saved:"
+
+  will_paginate:
+    previous_label: "<"
+    next_label: ">"
