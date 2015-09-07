@@ -57,6 +57,19 @@ en:
   photo_albums: "Photo albums"
 
   photo_album:
+    creating: "Photo album creating"
+    editing: "Photo album editing"
+    failed_to:
+      create: "photo album"
+      update: "photo album"
+    flash:
+      actions:
+        update:
+          notice: "Photo album was successfully updated"
+        create:
+          notice: "Photo album was successfully created"
+        destroy:
+          notice: "Photo album was successfully destroyed"
     confirm:
       actions:
         destroy: "Do you really want to destroy selected photo album?"
@@ -99,6 +112,7 @@ en:
         name: "Name"
         description: "Description"
         category: "Category"
+        category_id: "Category"
 
   form_errors:
     one: "%{count} error prohibited this %{model} from being saved:"

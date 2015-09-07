@@ -1,0 +1,14 @@
+<% if model.errors.any? %>
+  <div class="alert alert-danger">
+    <h4>
+      <%= t(:form_errors, count: model.errors.count,
+          model: t("#{model.class.model_name.singular}.failed_to.#{new_model ? 'create' : 'update'}")) %>
+    </h4>
+
+    <ul>
+      <% model.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

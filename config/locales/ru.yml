@@ -34,6 +34,19 @@ ru:
   photo_albums: "Фотоальбомы"
 
   photo_album:
+    creating: "Создание фотоальбома"
+    editing: "Редактирование фотоальбома"
+    failed_to:
+      create: "новый фотоальбом"
+      update: "фотоальбом"
+    flash:
+      actions:
+        update:
+          notice: "Фотоальбом был успешно обновлён"
+        create:
+          notice: "Новый фотоальбом был успешно сохранён"
+        destroy:
+          notice: "Фотоальбом был успешно удалён"
     confirm:
       actions:
         destroy: "Вы действительно хотите удалить выбранный фотоальбом?"
@@ -76,6 +89,7 @@ ru:
         name: "Имя"
         description: "Описание"
         category: "Категория"
+        category_id: "Категория"
 
   form_errors:
     one: "%{count} ошибка не позволяет сохранить %{model}:"

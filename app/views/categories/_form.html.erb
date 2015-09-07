@@ -1,18 +1,5 @@
 <%= form_for(@category) do |f| %>
-  <% if @category.errors.any? %>
-    <div class="alert alert-danger">
-      <h4>
-        <%= t(:form_errors, count: @category.errors.count,
-            model: t("category.failed_to.#{new_category ? 'create' : 'update'}")) %>
-      </h4>
-
-      <ul>
-        <% @category.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/form_errors', model: @category, new_model: new_category %>
 
   <div class="form-group">
     <%= f.label :name, class: 'control-label' %>

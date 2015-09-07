@@ -34,7 +34,7 @@
       <tr>
         <td class="hidden id"><%= photo_album.id %></td>
         <td><%= photo_album.name %></td>
-        <td><%= photo_album.category.name %></td>
+        <td><%= photo_album.category.nil? ? '' : photo_album.category.name %></td>
       </tr>
     <% end %>
   </tbody>
