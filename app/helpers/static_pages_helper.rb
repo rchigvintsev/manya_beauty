@@ -5,7 +5,7 @@ module StaticPagesHelper
 
   def gallery_page?
     static_pages_action?('gallery') ||
-        (params[:controller] == 'photo_albums' && params[:action] == 'show')
+        (params[:controller] == 'gallery/photo_albums' && params[:action] == 'show')
   end
 
   private

@@ -135,7 +135,7 @@ RSpec.describe "StaticPages", :type => :request do
         it "should render first photo in photo album" do
           all_photo_albums.each do |photo_album|
             expect(page).to have_selector "a[href=" +
-                "'#{photo_album_path(photo_album, locale: I18n.locale)}'] > " +
+                "'#{gallery_photo_album_path(photo_album, locale: I18n.locale)}'] > " +
                 "img[src='#{photo_album.photos.first.photo_file_url(:thumb)}']"
           end
         end
@@ -144,7 +144,7 @@ RSpec.describe "StaticPages", :type => :request do
       describe "photos" do
         let(:photo_album) { PhotoAlbum.first }
 
-        before { visit photo_album_path(photo_album) }
+        before { visit gallery_photo_album_path(photo_album) }
 
         it "should render photo album name" do
           expect(page).to have_content photo_album.name

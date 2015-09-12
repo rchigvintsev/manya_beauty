@@ -58,12 +58,13 @@ Rails.application.routes.draw do
 
   get '/gallery' => 'static_pages#gallery'
 
-  get '/gallery/photo_albums/:id' => 'photo_albums#show', as: 'photo_album'
+  namespace :gallery do
+    get '/photo_albums/:id' => 'photo_albums#show', as: 'photo_album'
+    get '/photos/:id/comments' => 'photos#comments',
+        constraints: -> (req) { req.xhr? }, as: 'photo_comments'
 
-  get '/gallery/photos/:id/comments' => 'photos#comments',
-      constraints: -> (req) { req.xhr? }, as: 'photo_comments'
-
-  resources :comments, only: [:create]
+    resources :comments, only: [:create]
+  end
 
   namespace :admin do
     get 'dashboard' => 'dashboard#index'
@@ -71,7 +72,7 @@ Rails.application.routes.draw do
 
   scope '/admin/dashboard' do
     resources :categories
-    resources :photo_albums, only: [:index, :new, :create]
+    resources :photo_albums
   end
 
   devise_for :users

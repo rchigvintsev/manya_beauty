@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CommentsController, :type => :controller do
+RSpec.describe Gallery::CommentsController, :type => :controller do
   let(:photo) { FactoryGirl.create(:photo) }
   let(:comment_params) {{
     author: 'Test Author',
