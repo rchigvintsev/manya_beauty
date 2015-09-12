@@ -44,6 +44,15 @@ class PhotoAlbumsController < ApplicationController
     end
   end
 
+  def destroy
+    @photo_album.destroy
+    respond_to do |format|
+      format.html { redirect_to photo_albums_url,
+          notice: I18n.translate('photo_album.flash.actions.destroy.notice') }
+      format.json { head :no_content }
+    end
+  end
+
   private
     def set_photo_album
       @photo_album = PhotoAlbum.find(params[:id])
