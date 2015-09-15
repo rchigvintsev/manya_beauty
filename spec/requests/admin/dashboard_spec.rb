@@ -4,7 +4,12 @@ RSpec.describe "Dashboard", :type => :request do
   subject { page }
 
   before(:all) do
-    3.times { FactoryGirl.create(:category) }
+    3.times do
+      category = FactoryGirl.create(:category)
+      5.times do
+        FactoryGirl.create(:photo_album, category: category)
+      end
+    end
   end
 
   after(:all) do
@@ -59,70 +64,138 @@ RSpec.describe "Dashboard", :type => :request do
     end
   end
 
-  describe "categories" do
+  describe "dashboard pages" do
     let(:user) { FactoryGirl.create(:admin) }
-    let(:all_categories) { Category.all }
 
     before do
       visit user_session_path
       sign_in user
-      click_link I18n.translate('categories')
     end
 
-    it { should have_selector '.dashboard-table' }
+    describe "categories" do
+      let(:all_categories) { Category.all }
 
-    it "should render all categories" do
-      all_categories.each do |category|
-        expect(page).to have_content category.name
-      end
-    end
+      before { click_link I18n.translate('categories') }
 
-    describe "controls" do
-      it { should have_link I18n.translate('actions.create'),
-          href: new_category_path(locale: I18n.locale) }
-      it { should have_link I18n.translate('actions.edit'), href: '#' }
-      it { should have_link I18n.translate('actions.delete'), href: '#' }
+      it { should have_selector '.dashboard-table' }
 
-      it { should have_selector "a.btn-edit[disabled='disabled']" }
-      it { should have_selector "a.btn-delete[disabled='disabled']" }
-    end
-
-    describe "creating new category" do
-      before { click_link I18n.translate('actions.create') }
-
-      let(:submit) { I18n.translate('actions.create') }
-
-      it { should have_content I18n.translate('category.creating') }
-      it { should have_selector "form[action='#{categories_path(locale: I18n.locale)}']" }
-
-      describe "with invalid information" do
-        it "should not create a category" do
-          expect { click_button submit }.not_to change(Category, :count)
-        end
-
-        describe "after submission" do
-          before { click_button submit }
-
-          it { should have_content I18n.translate('category.creating') }
-          it { should have_selector 'form .alert.alert-danger' }
+      it "should render all categories" do
+        all_categories.each do |category|
+          expect(page).to have_content category.name
         end
       end
 
-      describe "with valid information" do
-        before do
-          fill_in I18n.translate('activerecord.attributes.category.name'),
-              with: 'Test Category'
+      describe "controls" do
+        it { should have_link I18n.translate('actions.create'),
+            href: new_category_path(locale: I18n.locale) }
+        it { should have_link I18n.translate('actions.edit'), href: '#' }
+        it { should have_link I18n.translate('actions.delete'), href: '#' }
+
+        it { should have_selector "a.btn-edit[disabled='disabled']" }
+        it { should have_selector "a.btn-delete[disabled='disabled']" }
+      end
+
+      describe "creating new category" do
+        before { click_link I18n.translate('actions.create') }
+
+        let(:submit) { I18n.translate('actions.create') }
+
+        it { should have_content I18n.translate('category.creating') }
+        it { should have_selector "form[action='#{categories_path(locale: I18n.locale)}']" }
+
+        describe "with invalid information" do
+          it "should not create a category" do
+            expect { click_button submit }.not_to change(Category, :count)
+          end
+
+          describe "after submission" do
+            before { click_button submit }
+
+            it { should have_content I18n.translate('category.creating') }
+            it { should have_selector 'form .alert.alert-danger' }
+          end
         end
 
-        it "should create a category" do
-          expect { click_button submit }.to change(Category, :count).by(1)
+        describe "with valid information" do
+          before do
+            fill_in I18n.translate('activerecord.attributes.category.name'),
+                with: 'Test Category'
+          end
+
+          it "should create a category" do
+            expect { click_button submit }.to change(Category, :count).by(1)
+          end
+
+          describe "after saving the category" do
+            before { click_button submit }
+
+            it { should have_content I18n.translate('category.flash.actions.create.notice') }
+            it { should have_selector '.dashboard-table' }
+          end
+        end
+      end
+    end
+
+    describe "photo albums" do
+      let(:all_photo_albums) { PhotoAlbum.all }
+
+      before { click_link I18n.translate('photo_albums') }
+
+      it { should have_selector '.dashboard-table' }
+
+      it "should render all photo albums" do
+        PhotoAlbum.paginate(page: 1).each do |photo_album|
+          expect(page).to have_content photo_album.name
+        end
+      end
+
+      describe "controls" do
+        it { should have_link I18n.translate('actions.create'),
+            href: new_photo_album_path(locale: I18n.locale) }
+        it { should have_link I18n.translate('actions.edit'), href: '#' }
+        it { should have_link I18n.translate('actions.delete'), href: '#' }
+
+        it { should have_selector "a.btn-edit[disabled='disabled']" }
+        it { should have_selector "a.btn-delete[disabled='disabled']" }
+      end
+
+      describe "creating new photo album" do
+        before { click_link I18n.translate('actions.create') }
+
+        let(:submit) { I18n.translate('actions.create') }
+
+        it { should have_content I18n.translate('photo_album.creating') }
+        it { should have_selector "form[action='#{photo_albums_path(locale: I18n.locale)}']" }
+
+        describe "with invalid information" do
+          it "should not create a photo album" do
+            expect { click_button submit }.not_to change(PhotoAlbum, :count)
+          end
+
+          describe "after submission" do
+            before { click_button submit }
+
+            it { should have_content I18n.translate('photo_album.creating') }
+            it { should have_selector 'form .alert.alert-danger' }
+          end
         end
 
-        describe "after saving the category" do
-          before { click_button submit }
+        describe "with valid information" do
+          before do
+            fill_in I18n.translate('activerecord.attributes.photo_album.name'),
+                with: 'Test Photo Album'
+          end
 
-          it { should have_content I18n.translate('category.flash.actions.create.notice') }
-          it { should have_selector '.dashboard-table' }
+          it "should create a photo album" do
+            expect { click_button submit }.to change(PhotoAlbum, :count).by(1)
+          end
+
+          describe "after saving the photo album" do
+            before { click_button submit }
+
+            it { should have_content I18n.translate('photo_album.flash.actions.create.notice') }
+            it { should have_selector '.dashboard-table' }
+          end
         end
       end
     end

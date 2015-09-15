@@ -15,6 +15,10 @@ FactoryGirl.define do
     category
   end
 
+  factory :invalid_photo_album, parent: :photo_album do
+    name nil
+  end
+
   factory :photo do
     sequence(:title) { |n| "Title #{n}" }
     description TextUtils::truncate(Faker::Lorem.paragraph(1 + Random.rand(3)))
