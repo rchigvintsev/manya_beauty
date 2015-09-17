@@ -21,6 +21,9 @@
           <li<%= params[:controller] == 'photo_albums' ? ' class=active' : '' %>>
             <%= link_to t('photo_albums'), photo_albums_path %>
           </li>
+          <li<%= params[:controller] == 'photos' ? ' class=active' : '' %>>
+            <%= link_to t('photos'), photos_path %>
+          </li>
         </ul>
       </div>
 

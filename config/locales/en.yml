@@ -74,9 +74,26 @@ en:
       actions:
         destroy: "Do you really want to destroy selected photo album?"
 
-  photos:
-    comments: "Comments"
+  photos: "Photos"
 
+  photo:
+    creating: "Photo adding"
+    editing: "Photo editing"
+    failed_to:
+      create: "photo"
+      update: "photo"
+    flash:
+      actions:
+        update:
+          notice: "Photo was successfully updated"
+        create:
+          notice: "Photo was successfully created"
+        destroy:
+          notice: "Photo was successfully destroyed"
+    confirm:
+      actions:
+        destroy: "Do you really want to destroy selected photo?"
+    comments: "Comments"
     comment_form:
       title: "Leave a comment"
       author: "Your name"
@@ -113,6 +130,11 @@ en:
         description: "Description"
         category: "Category"
         category_id: "Category"
+      photo:
+        title: "Title"
+        photo_file: "File"
+        photo_album: "Photo album"
+        photo_album_id: "Photo album"
 
   form_errors:
     one: "%{count} error prohibited this %{model} from being saved:"

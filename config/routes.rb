@@ -73,6 +73,7 @@ Rails.application.routes.draw do
   scope '/admin/dashboard' do
     resources :categories
     resources :photo_albums
+    resources :photos
   end
 
   devise_for :users

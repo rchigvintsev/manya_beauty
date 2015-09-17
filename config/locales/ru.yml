@@ -51,9 +51,26 @@ ru:
       actions:
         destroy: "Вы действительно хотите удалить выбранный фотоальбом?"
 
-  photos:
-    comments: "Комментарии"
+  photos: "Фотографии"
 
+  photo:
+    creating: "Добавление фотографии"
+    editing: "Редактирование фотографии"
+    failed_to:
+      create: "новая фотография"
+      update: "фотография"
+    flash:
+      actions:
+        update:
+          notice: "Фотография была успешно обновлена"
+        create:
+          notice: "Новая фотография была успешно сохранена"
+        destroy:
+          notice: "Фотография была успешно удалена"
+    confirm:
+      actions:
+        destroy: "Вы действительно хотите удалить выбранную фотографию?"
+    comments: "Комментарии"
     comment_form:
       title: "Оставить комментарий"
       author: "Ваше имя"
@@ -90,6 +107,11 @@ ru:
         description: "Описание"
         category: "Категория"
         category_id: "Категория"
+      photo:
+        title: "Заголовок"
+        photo_file: "Файл"
+        photo_album: "Фотоальбом"
+        photo_album_id: "Фотоальбом"
 
   form_errors:
     one: "%{count} ошибка не позволяет сохранить %{model}:"

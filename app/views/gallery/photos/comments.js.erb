@@ -1,7 +1,7 @@
 var $slide = $(".slides > .slide[data-photo-id='<%= @photo.id %>']");
 <% if @photo.comments.any? %>
   $slide.find('.modal-content').append('<ul class="comments">' +
-      '<h4><%= t "photos.comments" %></h4>' +
+      '<h4><%= t "photo.comments" %></h4>' +
       '<%= escape_javascript(render @photo.comments) %>' +
       '</ul>');
 <% end %>

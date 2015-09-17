@@ -64,17 +64,17 @@
         </div>
 
         <div class="comment-form-container">
-          <h4><%= t('photos.comment_form.title') %></h4>
+          <h4><%= t('photo.comment_form.title') %></h4>
 
           <%= form_tag(gallery_comments_path, remote: true,
                                               id: 'comment_form') do |f| %>
             <div id="author" class="form-group">
-              <%= text_field_tag 'comment[author]', nil, placeholder: t('photos.comment_form.author'),
+              <%= text_field_tag 'comment[author]', nil, placeholder: t('photo.comment_form.author'),
                                                          class: 'form-control' %>
             </div>
 
             <div id="text" class="form-group">
-              <%= text_area_tag 'comment[text]', nil, placeholder: t('photos.comment_form.text'),
+              <%= text_area_tag 'comment[text]', nil, placeholder: t('photo.comment_form.text'),
                                                       rows: 5,
                                                       class: 'form-control' %>
             </div>
@@ -82,14 +82,14 @@
             <div class="text-right">
               <div class="pull-left">
                 <p class="text-warning">
-                  <%= raw t('photos.comment_form.approval_warning') %>
+                  <%= raw t('photo.comment_form.approval_warning') %>
                 </p>
               </div>
 
-              <%= submit_tag(t('photos.comment_form.submit'), class: 'btn btn-default',
+              <%= submit_tag(t('photo.comment_form.submit'), class: 'btn btn-default',
                                                               autocomplete: 'off',
                                                               disabled: 'disabled',
-                                                              data: { loading_text: t('photos.comment_form.submitting') }) %>
+                                                              data: { loading_text: t('photo.comment_form.submitting') }) %>
             </div>
           <% end %>
         </div>
