@@ -109,6 +109,7 @@ ru:
         category_id: "Категория"
       photo:
         title: "Заголовок"
+        description: "Описание"
         photo_file: "Файл"
         photo_album: "Фотоальбом"
         photo_album_id: "Фотоальбом"

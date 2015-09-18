@@ -132,6 +132,7 @@ en:
         category_id: "Category"
       photo:
         title: "Title"
+        description: "Description"
         photo_file: "File"
         photo_album: "Photo album"
         photo_album_id: "Photo album"
