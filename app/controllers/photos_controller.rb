@@ -13,6 +13,9 @@ class PhotosController < ApplicationController
     @photo = Photo.new
   end
 
+  def edit
+  end
+
   def create
     @photo = Photo.new(photo_params)
 
@@ -23,6 +26,19 @@ class PhotosController < ApplicationController
         format.json { render :index, status: :created, location: photos_url }
       else
         format.html { render :new }
+        format.json { render json: @photo.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @photo.update(photo_params)
+        format.html { redirect_to @photo,
+            notice: I18n.translate('photo.flash.actions.update.notice') }
+        format.json { render :show, status: :ok, location: @photo }
+      else
+        format.html { render :edit }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
       end
     end
