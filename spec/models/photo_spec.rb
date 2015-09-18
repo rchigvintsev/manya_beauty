@@ -5,12 +5,17 @@ RSpec.describe Photo, :type => :model do
     FactoryGirl.create(:photo_album, name: 'Test Photo Album')
   end
 
-  before do
-    @photo = FactoryGirl.create(:photo, title: 'Test Photo',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing ' +
-                     'elit, sed do eiusmod tempor incididunt ut labore et ' +
-                     'dolore magna aliqua.', photo_album: photo_album)
+  let(:photo_params) do
+    {
+      title: 'Test Photo',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing ' +
+                   'elit, sed do eiusmod tempor incididunt ut labore et ' +
+                   'dolore magna aliqua.',
+      photo_album: photo_album
+    }
   end
+
+  before { @photo = FactoryGirl.create(:photo, photo_params) }
 
   subject { @photo }
 
@@ -33,6 +38,12 @@ RSpec.describe Photo, :type => :model do
 
   describe "with blank title" do
     before { @photo.title = '' }
+
+    it { should_not be_valid }
+  end
+
+  describe "when photo_file is not present" do
+    before { @photo = Photo.new(photo_params) }
 
     it { should_not be_valid }
   end

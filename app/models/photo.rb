@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
 
   has_many :comments, -> { order(published_at: :desc) }
 
-  validates :photo_album_id, :title, presence: true
+  validates :photo_album_id, :title, :photo_file, presence: true
 
   mount_uploader :photo_file, PhotoUploader
 end
