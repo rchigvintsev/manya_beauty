@@ -179,6 +179,10 @@ html, body {
   text-decoration: none;
 }
 
+.categories > ul > li > a.active-category {
+  color: $primary_color_light;
+}
+
 .field_with_errors {
   @extend .has-error;
 }

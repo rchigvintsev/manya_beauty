@@ -77,6 +77,7 @@ en:
   photos: "Photos"
 
   photo:
+    thumbnail: "Thumbnail"
     creating: "Photo adding"
     editing: "Photo editing"
     failed_to:

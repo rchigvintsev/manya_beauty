@@ -1,0 +1,108 @@
+// Place all the styles related to the PhotoAlbums controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'colors';
+
+.photo-album-caption p {
+  margin-top: 0;
+}
+
+.breadcrumb-container .breadcrumb {
+  margin-bottom: 10px;
+  background-color: #fff;
+
+  li {
+    text-transform: uppercase;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover, &:focus {
+        color: $primary_color_light;
+      }
+    }
+
+    &.active {
+      color: $primary_color_light;
+    }
+  }
+}
+
+.empty-photo-album {
+  a {
+    img {
+      opacity: 0.5;
+    }
+  }
+}
+
+#blueimp-gallery {
+  .modal {
+    overflow: auto;
+
+    .modal-dialog {
+      .btn {
+        color: #fff;
+        background-color: $primary_color;
+        border-color: $primary_color;
+        border-radius: 0;
+        outline: none;
+      }
+
+      .btn:hover, .btn:hover {
+        color: $primary_color;
+        background-color: #fff;
+      }
+
+      .modal-content {
+        border-radius: 0;
+
+        .modal-header {
+          border-bottom: none;
+        }
+
+        .modal-footer {
+          border-top: none;
+        }
+
+        .comment-form-container {
+          padding: 0 15px 15px 15px;
+        }
+
+        .comments {
+          margin: 0;
+          padding: 0 15px 15px 15px;
+
+          li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border-bottom: 1px solid #eee;
+          }
+
+          li:last-child {
+            border-bottom: none;
+
+            &:before, &:after {
+              content: " ";
+              display: table;
+            }
+
+            &:after {
+              clear: both;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.blueimp-gallery > .slides > .slide > .slide-content {
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
+}

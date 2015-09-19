@@ -28,6 +28,7 @@
       <th><%= t 'activerecord.attributes.photo.title' %></th>
       <th><%= t 'activerecord.attributes.photo.photo_file' %></th>
       <th><%= t 'activerecord.attributes.photo.photo_album' %></th>
+      <th><%= t 'photo.thumbnail' %></th>
     </tr>
   </thead>
   <tbody>
@@ -37,6 +38,11 @@
         <td><%= photo.title %></td>
         <td><%= photo.photo_file %></td>
         <td><%= photo.photo_album.name %></td>
+        <td>
+          <div class="photo-thumbnail">
+            <img src="<%= photo.photo_file_url(:thumb) %>"></img>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>

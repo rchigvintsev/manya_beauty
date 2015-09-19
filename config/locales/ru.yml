@@ -54,6 +54,7 @@ ru:
   photos: "Фотографии"
 
   photo:
+    thumbnail: "Миниатюра"
     creating: "Добавление фотографии"
     editing: "Редактирование фотографии"
     failed_to:
