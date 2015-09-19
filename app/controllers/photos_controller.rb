@@ -44,7 +44,17 @@ class PhotosController < ApplicationController
     end
   end
 
+  def destroy
+    @photo.destroy
+    respond_to do |format|
+      format.html { redirect_to photos_url,
+          notice: I18n.translate('photo.flash.actions.destroy.notice') }
+      format.json { head :no_content }
+    end
+  end
+
   private
+
     def set_photo
       @photo = Photo.find(params[:id])
     end
