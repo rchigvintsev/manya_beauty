@@ -2,11 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.photo-thumbnail {
-  img {
-    max-width: 160px;
-    max-height: 106px;
-    display: block;
-    margin: 0 auto;
+table {
+  .photo-thumbnail {
+    img {
+      max-width: 160px;
+      max-height: 106px;
+      display: block;
+      margin: 0 auto;
+    }
   }
+}
+
+.form-group {
+  .row {
+    .thumbnail {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#photo-lightbox {
+  z-index: 1050;
+}
+
+.thumbnail > canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
 }

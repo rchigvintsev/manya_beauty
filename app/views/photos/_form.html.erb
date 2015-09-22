@@ -19,7 +19,25 @@
 
   <div class="form-group">
     <%= f.label :photo_file, class: 'control-label' %>
-    <%= f.file_field :photo_file %>
+    <%= f.file_field :photo_file, class: 'photo-file-field' %>
+  </div>
+
+  <div class="form-group">
+    <div class="photo-preview<%= @photo.photo_file_url ? '' : ' hidden' %>">
+      <div class="row">
+        <div class="col-xs-6 col-md-3">
+          <div class="thumbnail">
+            <p class="text-danger text-center uploading-failure hidden">
+              <%= t 'upload.error.uploading_failure' %>
+            </p>
+            <p class="text-danger text-center api-not-supported hidden">
+              <%= t 'upload.error.api_not_supported' %>
+            </p>
+            <%= image_tag @photo.photo_file_url(:thumb) %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <%= f.submit t("actions.#{new_photo ? 'create' : 'save'}"),

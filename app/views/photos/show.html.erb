@@ -20,6 +20,25 @@
   <%= @photo.photo_album.name %>
 </div>
 
+<div class="form-group">
+  <div class="row">
+    <div class="col-xs-6 col-md-3">
+      <a data-toggle="lightbox" href="#photo-lightbox" class="thumbnail">
+        <%= image_tag @photo.photo_file_url(:thumb) %>
+      </a>
+    </div>
+  </div>
+</div>
+
 <%= link_to t('actions.edit'), edit_photo_path(@photo),
     class: 'btn btn-primary' %>
 <%= link_to t('actions.cancel'), photos_path, class: 'btn btn-default' %>
+
+<div id="photo-lightbox" class="lightbox fade" tabindex="-1" role="dialog"
+     area-hidden="true">
+  <div class="lightbox-dialog">
+  	<div class="lightbox-content">
+  		<%= image_tag @photo.photo_file_url %>
+  	</div>
+  </div>
+</div>

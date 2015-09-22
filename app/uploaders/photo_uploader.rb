@@ -6,6 +6,10 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
+  def fix_exif_rotation
+    manipulate! { |img| img.tap(&:auto_orient) }
+  end
+
   # Choose what kind of storage to use for this uploader:
   # storage :file
   # storage :fog
@@ -26,6 +30,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
+  process :fix_exif_rotation
+
   #
   # def scale(width, height)
   #   # do something
