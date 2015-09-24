@@ -199,5 +199,70 @@ RSpec.describe "Dashboard", :type => :request do
         end
       end
     end
+
+    describe "photos" do
+      before { click_link I18n.translate('photos') }
+
+      it { should have_selector '.dashboard-table' }
+
+      it "should render all photos" do
+        Photo.paginate(page: 1).each do |photo|
+          expect(page).to have_content photo.title
+          expect(page).to have_selector "img[src='#{photo.photo_file_url(:thumb)}']"
+        end
+      end
+
+      describe "controls" do
+        it { should have_link I18n.translate('actions.create'),
+            href: new_photo_path(locale: I18n.locale) }
+        it { should have_link I18n.translate('actions.edit'), href: '#' }
+        it { should have_link I18n.translate('actions.delete'), href: '#' }
+
+        it { should have_selector "a.btn-edit[disabled='disabled']" }
+        it { should have_selector "a.btn-delete[disabled='disabled']" }
+      end
+
+      describe "creating new photo" do
+        before { click_link I18n.translate('actions.create') }
+
+        let(:submit) { I18n.translate('actions.create') }
+
+        it { should have_content I18n.translate('photo.creating') }
+        it { should have_selector "form[action='#{photos_path(locale: I18n.locale)}']" }
+
+        describe "with invalid information" do
+          it "should not create a photo" do
+            expect { click_button submit }.not_to change(Photo, :count)
+          end
+
+          describe "after submission" do
+            before { click_button submit }
+
+            it { should have_content I18n.translate('photo.creating') }
+            it { should have_selector 'form .alert.alert-danger' }
+          end
+        end
+
+        describe "with valid information" do
+          before do
+            fill_in I18n.translate('activerecord.attributes.photo.title'),
+                with: 'Test Photo'
+            attach_file I18n.translate('activerecord.attributes.photo.photo_file'),
+                Rails.root + 'spec/fixtures/files/dirt-bike-690770.jpg'
+          end
+
+          it "should create a photo" do
+            expect { click_button submit }.to change(Photo, :count).by(1)
+          end
+
+          describe "after saving the photo" do
+            before { click_button submit }
+
+            it { should have_content I18n.translate('photo.flash.actions.create.notice') }
+            it { should have_selector '.dashboard-table' }
+          end
+        end
+      end
+    end
   end
 end

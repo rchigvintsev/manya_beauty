@@ -26,6 +26,10 @@ FactoryGirl.define do
     photo_album
   end
 
+  factory :invalid_photo, parent: :photo do
+    title nil
+  end
+
   factory :comment do
     author Faker::Name.name
     text TextUtils::truncate(Faker::Lorem.paragraph(1 + Random.rand(3)))
