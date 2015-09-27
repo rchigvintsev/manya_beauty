@@ -58,8 +58,8 @@ ru:
     creating: "Добавление фотографии"
     editing: "Редактирование фотографии"
     failed_to:
-      create: "новая фотография"
-      update: "фотография"
+      create: "новую фотографию"
+      update: "фотографию"
     flash:
       actions:
         update:

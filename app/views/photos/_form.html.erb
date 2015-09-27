@@ -1,4 +1,4 @@
-<%= form_for(@photo) do |f| %>
+<%= form_for(@photo, url: { action: (new_photo ? :create : :update), page: params[:page] }) do |f| %>
   <%= render 'shared/form_errors', model: @photo, new_model: new_photo %>
 
   <div class="form-group">
@@ -42,5 +42,6 @@
 
   <%= f.submit t("actions.#{new_photo ? 'create' : 'save'}"),
       class: 'btn btn-success' %>
-  <%= link_to t('actions.cancel'), photos_path, class: 'btn btn-default' %>
+  <%= link_to t('actions.cancel'), photos_path(page: params[:page]),
+      class: 'btn btn-default' %>
 <% end %>

@@ -6,4 +6,6 @@ class Photo < ActiveRecord::Base
   validates :photo_album_id, :title, :photo_file, presence: true
 
   mount_uploader :photo_file, PhotoUploader
+
+  default_scope { order('created_at') }
 end

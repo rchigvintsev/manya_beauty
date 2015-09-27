@@ -30,9 +30,10 @@
   </div>
 </div>
 
-<%= link_to t('actions.edit'), edit_photo_path(@photo),
+<%= link_to t('actions.edit'), edit_photo_path(@photo, page: params[:page]),
     class: 'btn btn-primary' %>
-<%= link_to t('actions.cancel'), photos_path, class: 'btn btn-default' %>
+<%= link_to t('actions.cancel'), photos_path(page: params[:page]),
+    class: 'btn btn-default' %>
 
 <div id="photo-lightbox" class="lightbox fade" tabindex="-1" role="dialog"
      area-hidden="true">
