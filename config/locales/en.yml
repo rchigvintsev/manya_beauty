@@ -125,13 +125,16 @@ en:
   activerecord:
     attributes:
       category:
+        id: "Identifier"
         name: "Name"
       photo_album:
+        id: "Identifier"
         name: "Name"
         description: "Description"
         category: "Category"
         category_id: "Category"
       photo:
+        id: "Identifier"
         title: "Title"
         description: "Description"
         photo_file: "File"

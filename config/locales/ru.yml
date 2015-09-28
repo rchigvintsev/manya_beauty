@@ -102,13 +102,16 @@ ru:
   activerecord:
     attributes:
       category:
+        id: "Идентификатор"
         name: "Имя"
       photo_album:
+        id: "Идентификатор"
         name: "Имя"
         description: "Описание"
         category: "Категория"
         category_id: "Категория"
       photo:
+        id: "Идентификатор"
         title: "Заголовок"
         description: "Описание"
         photo_file: "Файл"

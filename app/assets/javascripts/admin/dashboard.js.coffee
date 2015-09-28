@@ -12,7 +12,7 @@ $ ->
 
     $('.dashboard-table-header .btn-edit, .dashboard-table-header .btn-delete').removeAttr 'disabled'
 
-    id = $row.find('td.hidden.id').text()
+    id = $row.find('td.id').text()
     if id
       $('.dashboard-table-header .btn-edit').attr 'href', UrlUtils.append(id + '/edit')
       $('.dashboard-table-header .btn-delete').attr 'href', UrlUtils.append(id)

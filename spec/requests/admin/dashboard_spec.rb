@@ -81,6 +81,7 @@ RSpec.describe "Dashboard", :type => :request do
 
       it "should render all categories" do
         all_categories.each do |category|
+          expect(page).to have_content category.id
           expect(page).to have_content category.name
         end
       end
@@ -145,6 +146,7 @@ RSpec.describe "Dashboard", :type => :request do
 
       it "should render all photo albums" do
         PhotoAlbum.paginate(page: 1).each do |photo_album|
+          expect(page).to have_content photo_album.id
           expect(page).to have_content photo_album.name
         end
       end
@@ -207,6 +209,7 @@ RSpec.describe "Dashboard", :type => :request do
 
       it "should render all photos" do
         Photo.paginate(page: 1).each do |photo|
+          expect(page).to have_content photo.id
           expect(page).to have_content photo.title
           expect(page).to have_selector "img[src='#{photo.photo_file_url(:thumb)}']"
         end

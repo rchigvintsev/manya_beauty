@@ -23,10 +23,16 @@
 </div>
 
 <table class="table table-hover dashboard-table">
+  <thead>
+    <tr>
+      <th><%= t 'activerecord.attributes.category.id' %></th>
+      <th><%= t 'activerecord.attributes.category.name' %></th>
+    </tr>
+  </thead>
   <tbody>
     <% @categories.each do |category| %>
       <tr>
-        <td class="hidden id"><%= category.id %></td>
+        <td class="id"><%= category.id %></td>
         <td><%= category.name %></td>
       </tr>
     <% end %>

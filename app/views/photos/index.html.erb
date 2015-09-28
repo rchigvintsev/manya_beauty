@@ -25,6 +25,7 @@
 <table class="table table-hover dashboard-table photos">
   <thead>
     <tr>
+      <th><%= t 'activerecord.attributes.photo.id' %></th>
       <th><%= t 'activerecord.attributes.photo.title' %></th>
       <th><%= t 'activerecord.attributes.photo.photo_file' %></th>
       <th><%= t 'activerecord.attributes.photo.photo_album' %></th>
@@ -34,7 +35,7 @@
   <tbody>
     <% @photos.each do |photo| %>
       <tr>
-        <td class="hidden id"><%= photo.id %></td>
+        <td class="id"><%= photo.id %></td>
         <td><%= photo.title %></td>
         <td><%= photo.photo_file %></td>
         <td><%= photo.photo_album.name %></td>
