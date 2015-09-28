@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  include PaginationUtils
+
   before_action :authenticate_user!
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
@@ -21,10 +23,10 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to photos_url(page: last_page),
+        format.html { redirect_to photos_url(page: last_page(:photo)),
             notice: I18n.translate('photo.flash.actions.create.notice') }
         format.json { render :index, status: :created,
-            location: photos_url(page: last_page) }
+            location: photos_url(page: last_page(:photo)) }
       else
         format.html { render :new }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
@@ -50,7 +52,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     respond_to do |format|
-      page = last_page
+      page = last_page :photo
       if not page.nil? and page > current_page.to_i
         page = current_page
       end
@@ -70,15 +72,5 @@ class PhotosController < ApplicationController
     def photo_params
       params.require(:photo).permit(:title, :description, :photo_file,
           :photo_album_id)
-    end
-
-    def current_page
-      page = params[:page]
-      (page.nil? or page.empty?) ? nil : page
-    end
-
-    def last_page
-      last_page = Photo.paginate(page: 1).total_pages
-      last_page == 1 ? nil : last_page
     end
 end
