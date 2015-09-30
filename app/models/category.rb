@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  has_many :photo_albums
+  has_many :photo_albums, dependent: :nullify
 
   validates :name, presence: true, uniqueness: true
 

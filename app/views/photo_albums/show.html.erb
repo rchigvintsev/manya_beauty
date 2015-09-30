@@ -12,7 +12,7 @@
 
 <div class="form-group">
   <strong><%= t 'activerecord.attributes.photo_album.category' %>:</strong>
-  <%= @photo_album.category.name %>
+  <%= @photo_album.category.nil? ? '' : @photo_album.category.name %>
 </div>
 
 <%= link_to t('actions.edit'), edit_photo_album_path(@photo_album, page: params[:page]),

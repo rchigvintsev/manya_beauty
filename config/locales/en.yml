@@ -94,7 +94,6 @@ en:
     confirm:
       actions:
         destroy: "Do you really want to destroy selected photo?"
-    comments: "Comments"
     comment_form:
       title: "Leave a comment"
       author: "Your name"
@@ -103,6 +102,22 @@ en:
       submitting: "Submitting..."
       approval_warning: "<strong>Warning!</strong> All comments need to be approved by an administrator before publishing."
       success_message: "Your comment has been received. Be patient and as soon as the comment is approved, it will appear here. Thank you."
+
+  comments: "Comments"
+
+  comment:
+    editing: "Comment editing"
+    failed_to:
+      update: "comment"
+    flash:
+      actions:
+        update:
+          notice: "Comment was successfully updated"
+        destroy:
+          notice: "Comment was successfully destroyed"
+    confirm:
+      actions:
+        destroy: "Do you really want to destroy selected comment?"
 
   sign_in:
     prompt: "Please sign in"
@@ -140,6 +155,13 @@ en:
         photo_file: "File"
         photo_album: "Photo album"
         photo_album_id: "Photo album"
+      comment:
+        id: "Identifier"
+        created_at: "Created at"
+        published_at: "Published at"
+        author: "Author"
+        text: "Text"
+        photo: "Photo"
 
   form_errors:
     one: "%{count} error prohibited this %{model} from being saved:"

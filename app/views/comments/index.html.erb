@@ -1,0 +1,51 @@
+<div class="row dashboard-table-header">
+  <div class="col-md-8">
+    <h2><%= t 'comments' %></h2>
+  </div>
+
+  <div class="col-md-4">
+    <ul class="pull-right">
+      <li>
+        <%= link_to t('actions.edit'), '#', class: 'btn btn-primary btn-edit',
+            disabled: 'disabled' %>
+      </li>
+      <li>
+        <%= link_to t('actions.delete'), '#', class: 'btn btn-danger btn-delete',
+            method: :delete, disabled: 'disabled',
+            data: { confirm: t('comment.confirm.actions.destroy') } %>
+      </li>
+    <ul>
+  </div>
+</div>
+
+<table class="table table-hover dashboard-table comments">
+  <thead>
+    <tr>
+      <th><%= t 'activerecord.attributes.comment.id' %></th>
+      <th><%= t 'activerecord.attributes.comment.created_at' %></th>
+      <th><%= t 'activerecord.attributes.comment.published_at' %></th>
+      <th><%= t 'activerecord.attributes.comment.author' %></th>
+      <th><%= t 'activerecord.attributes.comment.text' %></th>
+      <th><%= t 'activerecord.attributes.comment.photo' %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr<%= comment.published ? ' class=success' : '' %>>
+        <td class="id"><%= comment.id %></td>
+        <td><%= l comment.created_at, format: date_time_format %></td>
+        <td><%= comment.published_at.nil? ? '' :
+            l(comment.published_at, format: date_time_format) %></td>
+        <td><%= comment.author %></td>
+        <td><%= comment.text.truncate 75 %></td>
+        <td>
+          <div class="photo-thumbnail">
+            <img src="<%= comment.photo.photo_file_url(:thumb) %>"></img>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate class: 'pagination pull-right' %>

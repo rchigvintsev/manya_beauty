@@ -63,7 +63,7 @@ Rails.application.routes.draw do
     get '/photos/:id/comments' => 'photos#comments',
         constraints: -> (req) { req.xhr? }, as: 'photo_comments'
 
-    resources :comments, only: [:create]
+    resources :comments
   end
 
   namespace :admin do
@@ -74,6 +74,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :photo_albums
     resources :photos
+    resources :comments
   end
 
   devise_for :users

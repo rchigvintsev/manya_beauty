@@ -1,7 +1,7 @@
 class PhotoAlbum < ActiveRecord::Base
   belongs_to :category
 
-  has_many :photos
+  has_many :photos, dependent: :delete_all
 
   validates :name, presence: true
 
