@@ -35,11 +35,4 @@
 <%= link_to t('actions.cancel'), photos_path(page: params[:page]),
     class: 'btn btn-default' %>
 
-<div id="photo-lightbox" class="lightbox fade" tabindex="-1" role="dialog"
-     area-hidden="true">
-  <div class="lightbox-dialog">
-  	<div class="lightbox-content">
-  		<%= image_tag @photo.photo_file_url %>
-  	</div>
-  </div>
-</div>
+<%= render 'shared/photo_lightbox', photo: @photo %>

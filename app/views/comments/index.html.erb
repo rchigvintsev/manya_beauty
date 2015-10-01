@@ -22,10 +22,10 @@
   <thead>
     <tr>
       <th><%= t 'activerecord.attributes.comment.id' %></th>
-      <th><%= t 'activerecord.attributes.comment.created_at' %></th>
-      <th><%= t 'activerecord.attributes.comment.published_at' %></th>
       <th><%= t 'activerecord.attributes.comment.author' %></th>
       <th><%= t 'activerecord.attributes.comment.text' %></th>
+      <th><%= t 'activerecord.attributes.comment.created_at' %></th>
+      <th><%= t 'activerecord.attributes.comment.published_at' %></th>
       <th><%= t 'activerecord.attributes.comment.photo' %></th>
     </tr>
   </thead>
@@ -33,11 +33,11 @@
     <% @comments.each do |comment| %>
       <tr<%= comment.published ? ' class=success' : '' %>>
         <td class="id"><%= comment.id %></td>
+        <td><%= comment.author %></td>
+        <td><%= comment.text.truncate 75 %></td>
         <td><%= l comment.created_at, format: date_time_format %></td>
         <td><%= comment.published_at.nil? ? '' :
             l(comment.published_at, format: date_time_format) %></td>
-        <td><%= comment.author %></td>
-        <td><%= comment.text.truncate 75 %></td>
         <td>
           <div class="photo-thumbnail">
             <img src="<%= comment.photo.photo_file_url(:thumb) %>"></img>

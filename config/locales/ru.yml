@@ -152,8 +152,8 @@ ru:
 
   upload:
     error:
-      api_not_supported: Ваш браузер не поддерживает URL или FileReader API.
-      uploading_failure: Не удалось загрузить файл изображения.
+      api_not_supported: "Ваш браузер не поддерживает URL или FileReader API."
+      uploading_failure: "Не удалось загрузить файл изображения."
 
   date:
     abbr_day_names:

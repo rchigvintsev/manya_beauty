@@ -173,5 +173,5 @@ en:
 
   upload:
     error:
-      api_not_supported: Your browser does not support the URL or FileReader API.
-      uploading_failure: Failed to upload image file.
+      api_not_supported: "Your browser does not support the URL or FileReader API."
+      uploading_failure: "Failed to upload image file."

@@ -1,0 +1,39 @@
+<h2><%= @comment.text.truncate(50) %></h2>
+
+<div class="form-group">
+  <strong><%= t 'activerecord.attributes.comment.author' %>:</strong>
+  <%= @comment.author %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'activerecord.attributes.comment.text' %>:</strong>
+  <%= @comment.text %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'activerecord.attributes.comment.created_at' %>:</strong>
+  <%= l @comment.created_at, format: date_time_format %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'activerecord.attributes.comment.published_at' %>:</strong>
+  <%= @comment.published_at.nil? ? '' :
+      l(@comment.published_at, format: date_time_format) %>
+</div>
+
+<div class="form-group">
+  <div class="row">
+    <div class="col-xs-6 col-md-3">
+      <a data-toggle="lightbox" href="#photo-lightbox" class="thumbnail">
+        <%= image_tag @comment.photo.photo_file_url(:thumb) %>
+      </a>
+    </div>
+  </div>
+</div>
+
+<%= link_to t('actions.edit'), edit_comment_path(@comment, page: params[:page]),
+    class: 'btn btn-primary' %>
+<%= link_to t('actions.cancel'), comments_path(page: params[:page]),
+    class: 'btn btn-default' %>
+
+<%= render 'shared/photo_lightbox', photo: @comment.photo %>
