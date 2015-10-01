@@ -28,4 +28,21 @@ RSpec.describe PhotoAlbum, :type => :model do
 
     it { should_not be_valid }
   end
+
+  describe "photo associations" do
+    before { @photo_album.save! }
+
+    let!(:photo) { FactoryGirl.create :photo, photo_album: @photo_album }
+
+    it "should have associated photos" do
+      expect(@photo_album.photos.to_a).to eq [photo]
+    end
+
+    it "should destroy associated photos" do
+      associated_photos = @photo_album.photos.to_a
+      @photo_album.destroy
+      expect(associated_photos).not_to be_empty
+      associated_photos.each { |p| expect(Photo.where(id: p.id)).to be_empty }
+    end
+  end
 end

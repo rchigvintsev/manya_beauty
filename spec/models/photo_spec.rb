@@ -15,7 +15,7 @@ RSpec.describe Photo, :type => :model do
     }
   end
 
-  before { @photo = FactoryGirl.create(:photo, photo_params) }
+  before { @photo = FactoryGirl.create :photo, photo_params }
 
   subject { @photo }
 
@@ -48,7 +48,7 @@ RSpec.describe Photo, :type => :model do
     it { should_not be_valid }
   end
 
-  describe "comments" do
+  describe "comment associations" do
     before do
       FactoryGirl.create(:published_comment, published_at: 1.day.ago.localtime,
           photo: @photo)
@@ -62,6 +62,15 @@ RSpec.describe Photo, :type => :model do
 
     it "should be sorted by publication date in descending order" do
       expect(comments.first.published_at).to be > comments.last.published_at
+    end
+
+    it "should destroy associated comments" do
+      associated_comments = comments.to_a
+      @photo.destroy
+      expect(associated_comments).not_to be_empty
+      associated_comments.to_a.each do |c|
+        expect(Comment.where(id: c.id)).to be_empty
+      end
     end
   end
 end
