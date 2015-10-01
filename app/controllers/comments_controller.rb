@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   include PaginationUtils
 
   before_action :authenticate_user!
-  before_action :set_comment, only: [:show, :edit, :update]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
   helper_method :date_time_format
 
   @@date_time_format = '%d %B %Y %H:%M:%S'
@@ -30,6 +30,20 @@ class CommentsController < ApplicationController
         format.json { render json: @comment.errors,
             status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @comment.destroy
+    respond_to do |format|
+      page = last_page :comment
+      if not page.nil? and page > current_page.to_i
+        page = current_page
+      end
+
+      format.html { redirect_to comments_url(page: page),
+          notice: I18n.translate('comment.flash.actions.destroy.notice') }
+      format.json { head :no_content }
     end
   end
 
