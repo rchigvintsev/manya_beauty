@@ -115,6 +115,10 @@ en:
           notice: "Comment was successfully updated"
         destroy:
           notice: "Comment was successfully destroyed"
+        publish:
+          notice: "Comment was successfully published"
+          warn: "Comment is already published"
+          alert: "Failed to publish comment: %{errors}"
     confirm:
       actions:
         destroy: "Do you really want to destroy selected comment?"
@@ -136,6 +140,8 @@ en:
     delete: "Delete"
     cancel: "Cancel"
     save: "Save"
+    publish: "Publish"
+    unpublish: "Unpublish"
 
   activerecord:
     attributes:

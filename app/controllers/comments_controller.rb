@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
   include PaginationUtils
 
   before_action :authenticate_user!
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment,
+      only: [:show, :edit, :update, :destroy, :publish, :unpublish]
   helper_method :date_time_format
 
   @@date_time_format = '%d %B %Y %H:%M:%S'
@@ -45,6 +46,39 @@ class CommentsController < ApplicationController
           notice: I18n.translate('comment.flash.actions.destroy.notice') }
       format.json { head :no_content }
     end
+  end
+
+  def publish
+    respond_to do |format|
+      if @comment.published
+        warning = I18n.translate('comment.flash.actions.publish.warn')
+
+        format.html { redirect_to comments_url(page: current_page),
+            flash: { warn: warning }}
+        format.json { render json: warning, status: :unprocessable_entity }
+      else
+        @comment.published = true
+        @comment.published_at = DateTime.now
+
+        if @comment.save
+          format.html { redirect_to comments_url(page: current_page),
+              notice: I18n.translate('comment.flash.actions.publish.notice') }
+          format.json { render :index, status: :ok,
+              location: comments_url(page: current_page) }
+        else
+          alert = I18n.translate('comment.flash.actions.publish.alert',
+              errors: @comment.errors.full_messages.to_sentence)
+
+          format.html { redirect_to comments_url(page: current_page),
+              alert: alert }
+          format.json { render json: @comment.errors,
+              status: :unprocessable_entity }
+        end
+      end
+    end
+  end
+
+  def unpublish
   end
 
   def date_time_format

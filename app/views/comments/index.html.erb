@@ -1,13 +1,21 @@
 <div class="row dashboard-table-header">
-  <div class="col-md-8">
+  <div class="col-md-6">
     <h2><%= t 'comments' %></h2>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-6">
     <ul class="pull-right">
       <li>
         <%= link_to t('actions.edit'), '#', class: 'btn btn-primary btn-edit',
             disabled: 'disabled' %>
+      </li>
+      <li>
+        <%= link_to t('actions.publish'), '#', method: :post,
+            class: 'btn btn-success btn-publish', disabled: 'disabled' %>
+      </li>
+      <li>
+        <%= link_to t('actions.unpublish'), '#',
+            class: 'btn btn-default btn-unpublish', disabled: 'disabled' %>
       </li>
       <li>
         <%= link_to t('actions.delete'), '#', class: 'btn btn-danger btn-delete',
@@ -31,7 +39,11 @@
   </thead>
   <tbody>
     <% @comments.each do |comment| %>
-      <tr<%= comment.published ? ' class=success' : '' %>>
+      <% if comment.published %>
+        <tr class="success published">
+      <% else %>
+        <tr>
+      <% end %>
         <td class="id"><%= comment.id %></td>
         <td><%= comment.author %></td>
         <td><%= comment.text.truncate 75 %></td>

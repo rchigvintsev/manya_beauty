@@ -74,7 +74,11 @@ Rails.application.routes.draw do
     resources :categories
     resources :photo_albums
     resources :photos
-    resources :comments
+    resources :comments do
+      member do
+        post 'publish'
+      end
+    end
   end
 
   devise_for :users

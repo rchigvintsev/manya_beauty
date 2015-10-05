@@ -38,6 +38,12 @@
          </div>
         <% end %>
 
+        <% if flash[:warn] %>
+          <div class="alert dashboard-alert alert-warning">
+            <%= flash[:warn] %>
+          </div>
+        <% end %>
+
         <% if flash[:alert] %>
           <div class="alert dashboard-alert alert-danger">
             <%= alert %>
