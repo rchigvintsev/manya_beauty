@@ -77,6 +77,7 @@ Rails.application.routes.draw do
     resources :comments do
       member do
         post 'publish'
+        post 'unpublish'
       end
     end
   end

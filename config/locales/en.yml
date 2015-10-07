@@ -119,9 +119,15 @@ en:
           notice: "Comment was successfully published"
           warn: "Comment is already published"
           alert: "Failed to publish comment: %{errors}"
+        unpublish:
+          notice: "Comment was successfully unpublished"
+          warn: "Comment is already unpublished"
+          alert: "Failed to unpublish comment: %{errors}"
     confirm:
       actions:
         destroy: "Do you really want to destroy selected comment?"
+        publish: "Do you really want to publish selected comment?"
+        unpublish: "Do you really want to unpublish selected comment?"
 
   sign_in:
     prompt: "Please sign in"

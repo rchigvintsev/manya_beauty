@@ -79,6 +79,33 @@ class CommentsController < ApplicationController
   end
 
   def unpublish
+    respond_to do |format|
+      if not @comment.published
+        warning = I18n.translate('comment.flash.actions.unpublish.warn')
+
+        format.html { redirect_to comments_url(page: current_page),
+            flash: { warn: warning }}
+        format.json { render json: warning, status: :unprocessable_entity }
+      else
+        @comment.published = false
+        @comment.published_at = nil
+
+        if @comment.save
+          format.html { redirect_to comments_url(page: current_page),
+              notice: I18n.translate('comment.flash.actions.unpublish.notice') }
+          format.json { render :index, status: :ok,
+              location: comments_url(page: current_page) }
+        else
+          alert = I18n.translate('comment.flash.actions.unpublish.alert',
+              errors: @comment.errors.full_messages.to_sentence)
+
+          format.html { redirect_to comments_url(page: current_page),
+              alert: alert }
+          format.json { render json: @comment.errors,
+              status: :unprocessable_entity }
+        end
+      end
+    end
   end
 
   def date_time_format
