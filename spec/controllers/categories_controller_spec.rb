@@ -41,7 +41,7 @@ RSpec.describe CategoriesController, :type => :controller do
     end
 
     describe "with valid attributes" do
-      it "located the requested @category" do
+      it "locates the requested @category" do
         put :update, id: @category, category: FactoryGirl.attributes_for(:category)
         expect(assigns(:category)).to eq(@category)
       end

@@ -41,7 +41,7 @@ RSpec.describe PhotoAlbumsController, :type => :controller do
     end
 
     describe "with valid attributes" do
-      it "located the requested @photo_album" do
+      it "locates the requested @photo_album" do
         put :update, id: @photo_album, photo_album: FactoryGirl.attributes_for(:photo_album)
         expect(assigns(:photo_album)).to eq(@photo_album)
       end

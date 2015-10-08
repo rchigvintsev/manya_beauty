@@ -6,8 +6,13 @@ RSpec.describe "Dashboard", :type => :request do
   before(:all) do
     3.times do
       category = FactoryGirl.create(:category)
-      5.times do
-        FactoryGirl.create(:photo_album, category: category)
+      3.times do
+        photo_album = FactoryGirl.create(:photo_album, category: category)
+        3.times do
+          photo = FactoryGirl.create(:photo, photo_album: photo_album)
+          2.times { FactoryGirl.create(:published_comment, photo: photo) }
+          FactoryGirl.create(:draft_comment, photo: photo)
+        end
       end
     end
   end
@@ -77,7 +82,7 @@ RSpec.describe "Dashboard", :type => :request do
 
       before { click_link I18n.translate('categories') }
 
-      it { should have_selector '.dashboard-table' }
+      it { should have_selector '.dashboard-table.categories' }
 
       it "should render all categories" do
         all_categories.each do |category|
@@ -131,7 +136,7 @@ RSpec.describe "Dashboard", :type => :request do
             before { click_button submit }
 
             it { should have_content I18n.translate('category.flash.actions.create.notice') }
-            it { should have_selector '.dashboard-table' }
+            it { should have_selector '.dashboard-table.categories' }
           end
         end
       end
@@ -142,7 +147,7 @@ RSpec.describe "Dashboard", :type => :request do
 
       before { click_link I18n.translate('photo_albums') }
 
-      it { should have_selector '.dashboard-table' }
+      it { should have_selector '.dashboard-table.photo-albums' }
 
       it "should render all photo albums" do
         PhotoAlbum.paginate(page: 1).each do |photo_album|
@@ -196,7 +201,7 @@ RSpec.describe "Dashboard", :type => :request do
             before { click_button submit }
 
             it { should have_content I18n.translate('photo_album.flash.actions.create.notice') }
-            it { should have_selector '.dashboard-table' }
+            it { should have_selector '.dashboard-table.photo-albums' }
           end
         end
       end
@@ -205,7 +210,7 @@ RSpec.describe "Dashboard", :type => :request do
     describe "photos" do
       before { click_link I18n.translate('photos') }
 
-      it { should have_selector '.dashboard-table' }
+      it { should have_selector '.dashboard-table.photos' }
 
       it "should render all photos" do
         Photo.paginate(page: 1).each do |photo|
@@ -262,9 +267,44 @@ RSpec.describe "Dashboard", :type => :request do
             before { click_button submit }
 
             it { should have_content I18n.translate('photo.flash.actions.create.notice') }
-            it { should have_selector '.dashboard-table' }
+            it { should have_selector '.dashboard-table.photos' }
           end
         end
+      end
+    end
+
+    describe "comments" do
+      include CommentsHelper
+
+      before { click_link I18n.translate('comments') }
+
+      it { should have_selector '.dashboard-table.comments' }
+
+      it "should render all comments" do
+        Comment.order('created_at DESC').paginate(page: 1).each do |comment|
+          expect(page).to have_content comment.id
+          expect(page).to have_content comment.author
+          expect(page).to have_content truncate_text(comment)
+          expect(page).to have_content I18n.localize(comment.created_at,
+              format: date_time_format)
+          if not comment.published_at.nil?
+            expect(page).to have_content I18n.localize(comment.published_at,
+                format: date_time_format)
+          end
+          expect(page).to have_selector "img[src='#{comment.photo.photo_file_url(:thumb)}']"
+        end
+      end
+
+      describe "controls" do
+        it { should have_link I18n.translate('actions.edit'), href: '#' }
+        it { should have_link I18n.translate('actions.publish'), href: '#' }
+        it { should have_link I18n.translate('actions.unpublish'), href: '#' }
+        it { should have_link I18n.translate('actions.delete'), href: '#' }
+
+        it { should have_selector "a.btn-edit[disabled='disabled']" }
+        it { should have_selector "a.btn-publish[disabled='disabled']" }
+        it { should have_selector "a.btn-unpublish[disabled='disabled']" }
+        it { should have_selector "a.btn-delete[disabled='disabled']" }
       end
     end
   end

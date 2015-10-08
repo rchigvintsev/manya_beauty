@@ -45,12 +45,10 @@ RSpec.describe PhotosController, :type => :controller do
   end
 
   describe "PUT update" do
-    before :each do
-      @photo = FactoryGirl.create(:photo, title: 'Alpha')
-    end
+    before(:each) { @photo = FactoryGirl.create(:photo, title: 'Alpha') }
 
     describe "with valid attributes" do
-      it "located the requested @photo" do
+      it "locates the requested @photo" do
         put :update, id: @photo, photo: FactoryGirl.attributes_for(:photo)
         expect(assigns(:photo)).to eq(@photo)
       end

@@ -4,9 +4,6 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_comment,
       only: [:show, :edit, :update, :destroy, :publish, :unpublish]
-  helper_method :date_time_format
-
-  @@date_time_format = '%d %B %Y %H:%M:%S'
 
   def index
     @comments = Comment.order('created_at DESC').paginate(page: params[:page])
@@ -106,10 +103,6 @@ class CommentsController < ApplicationController
         end
       end
     end
-  end
-
-  def date_time_format
-    @@date_time_format
   end
 
   private

@@ -33,6 +33,7 @@ FactoryGirl.define do
   factory :comment do
     author Faker::Name.name
     text TextUtils::truncate(Faker::Lorem.paragraph(1 + Random.rand(3)))
+    photo
 
     factory :published_comment do
       published true
@@ -42,6 +43,10 @@ FactoryGirl.define do
     factory :draft_comment do
       published false
     end
+  end
+
+  factory :invalid_comment, parent: :comment do
+    text nil
   end
 
   factory :user do
