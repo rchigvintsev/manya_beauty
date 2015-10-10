@@ -8,4 +8,8 @@ module CommentsHelper
   def date_time_format
     @@date_time_format
   end
+
+  def draft_comment_count
+    Comment.where(published: false).count
+  end
 end

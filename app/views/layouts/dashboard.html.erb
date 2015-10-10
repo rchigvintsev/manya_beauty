@@ -25,7 +25,12 @@
             <%= link_to t('photos'), photos_path %>
           </li>
           <li<%= params[:controller] == 'comments' ? ' class=active' : '' %>>
-            <%= link_to t('comments'), comments_path %>
+            <a href="<%= comments_path %>">
+              <span class="badge draft-comment-counter">
+                <%= draft_comment_count %>
+              </span>
+              <%= t 'comments' %>
+            </a>
           </li>
         </ul>
       </div>

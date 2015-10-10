@@ -38,6 +38,8 @@ RSpec.describe "Dashboard", :type => :request do
 
     before { visit user_session_path }
 
+    it_should_behave_like "all admin pages"
+
     describe "with invalid credentials" do
       before { click_button I18n.translate('sign_in.form.sign_in') }
 
@@ -75,6 +77,25 @@ RSpec.describe "Dashboard", :type => :request do
     before do
       visit user_session_path
       sign_in user
+    end
+
+    it_should_behave_like "all admin pages"
+
+    describe "sidebar" do
+      include CommentsHelper
+
+      let(:sidebar_item_selector) { '.dashboard-sidebar > ul > li > a' }
+
+      it { should have_selector sidebar_item_selector,
+          text: /#{I18n.translate('categories')}/i }
+      it { should have_selector sidebar_item_selector,
+          text: /#{I18n.translate('photo_albums')}/i }
+      it { should have_selector sidebar_item_selector,
+          text: /#{I18n.translate('photos')}/i }
+      it { should have_selector sidebar_item_selector,
+          text: /#{I18n.translate('comments')}/i }
+      it { should have_selector ".draft-comment-counter",
+          text: /#{draft_comment_count}/i }
     end
 
     describe "categories" do
