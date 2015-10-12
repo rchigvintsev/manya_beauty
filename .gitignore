@@ -15,8 +15,5 @@
 /log/*.log
 /tmp
 
-/config/initializers/carrierwave.rb
-
 /.idea
-
 /public/uploads
