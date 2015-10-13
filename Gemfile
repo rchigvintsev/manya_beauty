@@ -57,7 +57,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 group :production do
   gem 'rails_12factor', '0.0.2'
 
-  gem 'fog-aws', '0.1.1'
+  gem 'fog-aws', '0.7.6'
 end
 
 group :development, :test do
