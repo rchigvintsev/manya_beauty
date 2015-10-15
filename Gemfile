@@ -54,6 +54,8 @@ gem 'devise', '3.5.1'
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 
+gem 'puma', '2.14.0'
+
 group :production do
   gem 'rails_12factor', '0.0.2'
 
@@ -63,7 +65,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '3.0.2'
-  gem 'rspec-its', '1.0.1'
+  gem 'rspec-its', '1.2.0'
   gem 'factory_girl_rails', '4.4.1'
 end
 
