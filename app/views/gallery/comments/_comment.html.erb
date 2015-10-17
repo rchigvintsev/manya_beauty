@@ -1,12 +1,22 @@
 <% if comment.published? %>
   <li class="comment text-left">
     <div class="clearfix">
-      <h5>
-        <strong><%= comment.author %></strong>
-        <span class="text-muted">
-          <%= l comment.published_at, format: '%d %B %Y %H:%M' %>
-        </span>
-      </h5>
+      <div class="pull-left">
+        <h5>
+          <strong><%= comment.author %></strong>
+          <span class="text-muted">
+            <%= l comment.published_at, format: '%d %B %Y %H:%M' %>
+          </span>
+        </h5>
+      </div>
+
+      <% if comment.edited_by_admin %>
+        <div class="pull-right">
+          <h5>
+            <span class="text-warning"><%= t 'photo.comment_edited' %></span>
+          </h5>
+        </div>
+      <% end %>
     </div>
     <p><%= comment.text %></p>
   </li>

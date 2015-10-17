@@ -102,6 +102,7 @@ en:
       submitting: "Submitting..."
       approval_warning: "<strong>Warning!</strong> All comments need to be approved by an administrator before publishing."
       success_message: "Your comment has been received. Be patient and as soon as the comment is approved, it will appear here. Thank you."
+    comment_edited: "Edited by administrator"
 
   comments: "Comments"
 

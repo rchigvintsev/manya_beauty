@@ -23,6 +23,12 @@ RSpec.describe CommentsController, :type => :controller do
         expect(@comment.text).to eq('Bravo')
       end
 
+      it "changes 'edited_by_admin' flag" do
+        put :update, id: @comment, comment: FactoryGirl.attributes_for(:comment)
+        @comment.reload
+        expect(@comment.edited_by_admin).to be_truthy
+      end
+
       it "redirects to the updated comment" do
         put :update, id: @comment, comment: FactoryGirl.attributes_for(:comment)
         expect(response).to redirect_to @comment
@@ -41,6 +47,13 @@ RSpec.describe CommentsController, :type => :controller do
             comment: FactoryGirl.attributes_for(:invalid_comment)
         @comment.reload
         expect(@comment.text).to eq('Alpha')
+      end
+
+      it "does not change 'edited_by_admin' flag" do
+        put :update, id: @comment,
+            comment: FactoryGirl.attributes_for(:invalid_comment)
+        @comment.reload
+        expect(@comment.edited_by_admin).to be_falsey
       end
 
       it "re-renders the edit view" do

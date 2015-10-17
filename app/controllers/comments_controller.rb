@@ -18,7 +18,8 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-
+        @comment.edited_by_admin = true
+        @comment.save
         format.html { redirect_to comment_url(@comment, page: current_page),
             notice: I18n.translate('comment.flash.actions.update.notice') }
         format.json { render :show, status: :ok,
