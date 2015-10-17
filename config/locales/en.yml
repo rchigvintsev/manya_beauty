@@ -148,6 +148,8 @@ en:
     save: "Save"
     publish: "Publish"
     unpublish: "Unpublish"
+    previous: "Previous"
+    next: "Next"
 
   activerecord:
     attributes:

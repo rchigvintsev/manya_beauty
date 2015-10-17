@@ -125,6 +125,8 @@ ru:
     save: "Сохранить"
     publish: "Опубликовать"
     unpublish: "Снять с публикации"
+    previous: "Предыдущая"
+    next: "Следующая"
 
   activerecord:
     attributes:
