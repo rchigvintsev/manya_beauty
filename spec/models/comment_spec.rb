@@ -17,6 +17,7 @@ RSpec.describe Comment, :type => :model do
   it { should respond_to(:text) }
   it { should respond_to(:published) }
   it { should respond_to(:published_at) }
+  it { should respond_to(:edited_by_admin) }
 
   its(:photo) { should eq photo }
 
