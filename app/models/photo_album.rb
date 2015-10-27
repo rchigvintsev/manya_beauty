@@ -7,5 +7,7 @@ class PhotoAlbum < ActiveRecord::Base
 
   default_scope { order('created_at') }
 
-  attr_accessor :cover_photo
+  def cover_photo
+    @cover_photo ||= Photo.where(photo_album_id: id).first
+  end
 end

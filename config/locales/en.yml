@@ -73,6 +73,9 @@ en:
     confirm:
       actions:
         destroy: "Do you really want to destroy selected photo album?"
+    favorite:
+      name: "Latest works"
+      description: ""
 
   photos: "Photos"
 
@@ -170,6 +173,7 @@ en:
         photo_file: "File"
         photo_album: "Photo album"
         photo_album_id: "Photo album"
+        favorite: "Favorite photo"
       comment:
         id: "Identifier"
         created_at: "Created at"
@@ -190,3 +194,7 @@ en:
     error:
       api_not_supported: "Your browser does not support the URL or FileReader API."
       uploading_failure: "Failed to upload image file."
+
+  answer:
+    positive: "yes"
+    negative: "no"

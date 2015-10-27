@@ -25,6 +25,7 @@
 <table class="table table-hover dashboard-table photos">
   <thead>
     <tr>
+      <th></th>
       <th><%= t 'activerecord.attributes.photo.id' %></th>
       <th><%= t 'activerecord.attributes.photo.title' %></th>
       <th><%= t 'activerecord.attributes.photo.photo_file' %></th>
@@ -35,6 +36,13 @@
   <tbody>
     <% @photos.each do |photo| %>
       <tr>
+        <td>
+          <% if photo.favorite %>
+            <span class="glyphicon glyphicon-star glyphicon-favorite"
+                  aria-hidden="true">
+            </span>
+          <% end %>
+        </td>
         <td class="id"><%= photo.id %></td>
         <td><%= photo.title %></td>
         <td><%= photo.photo_file %></td>

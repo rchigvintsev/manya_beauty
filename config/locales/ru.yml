@@ -50,6 +50,9 @@ ru:
     confirm:
       actions:
         destroy: "Вы действительно хотите удалить выбранный фотоальбом?"
+    favorite:
+      name: "Новинки"
+      description: ""
 
   photos: "Фотографии"
 
@@ -147,6 +150,7 @@ ru:
         photo_file: "Файл"
         photo_album: "Фотоальбом"
         photo_album_id: "Фотоальбом"
+        favorite: "Избранная фотография"
       comment:
         id: "Идентификатор"
         created_at: "Создан"
@@ -169,6 +173,10 @@ ru:
     error:
       api_not_supported: "Ваш браузер не поддерживает URL или FileReader API."
       uploading_failure: "Не удалось загрузить файл изображения."
+
+  answer:
+    positive: "да"
+    negative: "нет"
 
   date:
     abbr_day_names:

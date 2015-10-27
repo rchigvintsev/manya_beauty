@@ -21,6 +21,11 @@
 </div>
 
 <div class="form-group">
+  <strong><%= t 'activerecord.attributes.photo.favorite' %>:</strong>
+  <%= t "answer.#{@photo.favorite ? 'positive' : 'negative'}" %>
+</div>
+
+<div class="form-group">
   <div class="row">
     <div class="col-xs-6 col-md-3">
       <a data-toggle="lightbox" href="#photo-lightbox" class="thumbnail">

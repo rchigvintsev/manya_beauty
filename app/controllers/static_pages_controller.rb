@@ -6,10 +6,12 @@ class StaticPagesController < ApplicationController
     @categories = Category.all
 
     category_id = params[:category_id]
-    
-    @photo_albums = category_id ? PhotoAlbum.where(category_id: category_id) : PhotoAlbum.all
-    @photo_albums.each do |photo_album|
-      photo_album.cover_photo = Photo.where(photo_album_id: photo_album.id).first
+    if category_id
+      @photo_albums = PhotoAlbum.where(category_id: category_id)
+    else
+      all_photo_albums = PhotoAlbum.all
+      all_photo_albums.unshift FavoritePhotoAlbum.new
+      @photo_albums = all_photo_albums
     end
   end
 end
