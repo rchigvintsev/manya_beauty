@@ -79,8 +79,9 @@ RSpec.describe "StaticPages", :type => :request do
         category = FactoryGirl.create(:category)
         5.times do
           photo_album = FactoryGirl.create(:photo_album, category: category)
-          7.times do
-            photo = FactoryGirl.create(:photo, photo_album: photo_album)
+          7.times do |i|
+            photo = FactoryGirl.create(:photo, photo_album: photo_album,
+                favorite: (i % 2 == 0))
           end
         end
       end
@@ -122,7 +123,7 @@ RSpec.describe "StaticPages", :type => :request do
     end
 
     describe "photo albums" do
-      let(:all_photo_albums) { PhotoAlbum.all }
+      let(:all_photo_albums) { PhotoAlbum.all.unshift FavoritePhotoAlbum.new }
 
       it "should render all photo albums" do
         all_photo_albums.each do |photo_album|
