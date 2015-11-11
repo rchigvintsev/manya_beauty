@@ -4,7 +4,7 @@ class Gallery::PhotoAlbumsController < ApplicationController
     if id == 'favorite'
       @photo_album = FavoritePhotoAlbum.new
     else
-      @photo_album = PhotoAlbum.find(params[:id])
+      @photo_album = PhotoAlbum.find(id)
     end
   end
 end
