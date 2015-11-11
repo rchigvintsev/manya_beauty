@@ -1,47 +1,70 @@
 <div class="row tiled-row carousel-row">
-  <div class="col-md-4 tiled-column">
-    <div class="greeting-container">
-      <h3 class="greeting"><%= t('greeting') %></h3>
-      <%= image_tag 'tailor-logo.png', width: 192, height: 192 %>
-    </div>
-  </div>
-
-  <div class="col-md-8 tiled-column">
-    <div class="jcarousel-wrapper">
-      <div class="jcarousel">
-        <ul>
-          <li><%= image_tag 'carousel/sewing-machine.jpg', width: 760, height: 500 %></li>
-          <li><%= image_tag 'carousel/centimeter.jpg', width: 760, height: 500 %></li>
-          <li><%= image_tag 'carousel/fabric.jpg', width: 760, height: 500 %></li>
-          <li><%= image_tag 'carousel/buttons.jpg', width: 760, height: 500 %></li>
-          <li><%= image_tag 'carousel/bobbins.jpg', width: 760, height: 500 %></li>
-        </ul>
+  <div class="row-full-height">
+    <div class="col-md-4 col-md-full-height col-align-center tiled-column">
+      <div class="greeting-container">
+        <h3 class="greeting"><%= t('greeting') %></h3>
       </div>
 
-      <a class="jcarousel-prev carousel-control left" href="#" tabindex="-1">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
+      <div class="tailor-logo-container">
+        <%= image_tag 'tailor-logo.png', width: 192, height: 192 %>
+      </div>
+    </div>
 
-      <a class="jcarousel-next carousel-control right" href="#" tabindex="-1">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+    <div class="col-md-8 col-md-full-height tiled-column">
+      <div class="jcarousel-wrapper">
+        <div class="jcarousel">
+          <ul>
+            <li><%= image_tag 'carousel/sewing-machine.jpg', width: 760, height: 500 %></li>
+            <li><%= image_tag 'carousel/centimeter.jpg', width: 760, height: 500 %></li>
+            <li><%= image_tag 'carousel/fabric.jpg', width: 760, height: 500 %></li>
+            <li><%= image_tag 'carousel/buttons.jpg', width: 760, height: 500 %></li>
+            <li><%= image_tag 'carousel/bobbins.jpg', width: 760, height: 500 %></li>
+          </ul>
+        </div>
+
+        <a class="jcarousel-prev carousel-control left" href="#" tabindex="-1">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="jcarousel-next carousel-control right" href="#" tabindex="-1">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="row tiled-row about-row">
   <div class="col-md-4 tiled-column">
-    <div class="avatar-container">
+    <div class="tiled-container avatar-container">
       <%= image_tag 'avatar.png', width: 256, height: 256 %>
     </div>
   </div>
 
   <div class="col-md-8 tiled-column">
-    <div class="about-container">
+    <div class="tiled-container about-container">
       <h3><%= t 'about.header' %></h3>
       <p><%= t 'about.content' %></p>
     </div>
   </div>
+</div>
+
+<div class="row tiled-row favorite-title-row">
+  <div class="tiled-container">
+    <h3><%= t 'photo_album.favorite.name' %></h3>
+  </div>
+</div>
+
+<div class="row tiled-row favorite-row">
+  <% @favorite_photos.each do |favorite_photo| %>
+    <%= render 'favorite_photo_thumbnail', favorite_photo: favorite_photo %>
+  <% end %>
+
+  <% if @favorite_photos.length < 3 %>
+    <% (3 - @favorite_photos.length).times do %>
+      <%= render 'favorite_photo_thumbnail', favorite_photo: nil %>
+    <% end %>
+  <% end %>
 </div>

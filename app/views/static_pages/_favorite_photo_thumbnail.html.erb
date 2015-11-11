@@ -1,0 +1,11 @@
+<div class="col-md-4">
+  <div class="thumbnail">
+    <a href="<%= gallery_favorite_photo_album_path %>">
+      <% if not favorite_photo %>
+        <img src="<%= image_url('fallback/default-lg.png') %>"></img>
+      <% else %>
+        <img src="<%= favorite_photo.photo_file_url(:thumb) %>"></img>
+      <% end %>
+    </a>
+  </div>
+</div>

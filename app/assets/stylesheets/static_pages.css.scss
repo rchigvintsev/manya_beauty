@@ -41,35 +41,70 @@
 
 /* Greeting */
 
-.greeting-container {
-  text-align: center;
-  padding-bottom: 20px;
+.greeting-container, .tailor-logo-container {
+  margin-bottom: 20px;
 }
 
-.greeting {
-  color: #ffffff;
-  font-family: Open Sans, sans-serif;
+@media (min-width: 992px) {
+  .greeting-container, .tailor-logo-container {
+    margin-bottom: 0;
+  }
+}
+
+.greeting-container {
+  .greeting {
+    color: #fff;
+    font-family: Open Sans, sans-serif;
+  }
 }
 
 /* About */
 
 .about-row {
   background-color: #fff;
+
+  .avatar-container {
+    text-align: center;
+  }
+
+  .about-container > h3 {
+    margin-bottom: 10px;
+  }
+
+  .about-container > p {
+    margin-bottom: 0;
+  }
 }
 
-.avatar-container {
-  padding: 20px;
-  text-align: center;
+/* Favorite */
+
+.favorite-row {
+  .col-md-4 {
+    padding-bottom: 20px;
+
+    .thumbnail {
+      border: none;
+      border-radius: initial;
+      margin: 0;
+      padding: 0;
+      background-color: inherit;
+
+      img {
+        background-color: #fff;
+        padding: 10px;
+      }
+    }
+  }
 }
 
-.about-container {
-  padding: 20px;
+.favorite-title-row, .favorite-row {
+  background-color: $primary_color_light;
+  color: #fff;
 }
 
-.about-container > h3 {
-  margin-top: 0;
-}
-
-.about-container > p {
-  margin-bottom: 0;
+@media (min-width: 992px) {
+  .row-full-height .col-md-full-height .greeting-container {
+    position: absolute;
+    top: 0;
+  }
 }
