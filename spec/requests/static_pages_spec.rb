@@ -25,6 +25,8 @@ RSpec.describe "StaticPages", :type => :request do
   end
 
   describe "Home page" do
+    let!(:favorite_photo) { FactoryGirl.create(:photo, favorite: true) }
+
     before { visit root_path }
 
     it_should_behave_like "all static pages"
@@ -70,6 +72,15 @@ RSpec.describe "StaticPages", :type => :request do
       it { should have_selector "img[src*='avatar.png']" }
       it { should have_content I18n.translate('about.header') }
       it { should have_content I18n.translate('about.content') }
+    end
+
+    describe "favorite photos" do
+      it { should have_content I18n.translate('photo_album.favorite.name') }
+      it { should have_selector "img[src='#{favorite_photo.photo_file_url(:thumb)}']" }
+
+      it "should render two fallback photos" do
+        expect(page).to have_selector "img[src*='fallback/default-lg.png']", count: 2
+      end
     end
   end
 
