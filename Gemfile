@@ -44,7 +44,7 @@ gem 'pg', '0.18.1'
 gem 'bootstrap-sass', '3.2.0.1'
 gem 'sprockets', '2.12.3'
 
-gem 'faker', '1.4.3'
+gem 'faker', '1.5.0'
 
 gem 'carrierwave', '0.10.0'
 gem 'mini_magick', '4.1.0'
