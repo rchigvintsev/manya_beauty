@@ -26,6 +26,10 @@ html, body {
 
 .application-body {
   background: image_url('symphony.png');
+
+  .alert {
+    border-radius: initial;
+  }
 }
 
 .valign-container {

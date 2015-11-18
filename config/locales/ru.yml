@@ -1,6 +1,7 @@
 ru:
   brand: "ManyaBeauty"
   language: "Язык"
+  locale_not_supported: "Язык с кодом %{unsupported_locale} не поддерживается"
 
   home: "Главная"
   greeting: "Добро пожаловать на сайт-выставку авторской одежды и аксессуаров"

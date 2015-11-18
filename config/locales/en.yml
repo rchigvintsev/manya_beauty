@@ -22,6 +22,7 @@
 en:
   brand: "ManyaBeauty"
   language: "Language"
+  locale_not_supported: "Locale %{unsupported_locale} is not supported"
 
   hello: "Hello world"
 

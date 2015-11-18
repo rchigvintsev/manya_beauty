@@ -13,6 +13,32 @@
     <div class="container">
       <%= render 'layouts/header' %>
 
+      <div class="row">
+        <% if flash[:notice] %>
+          <div class="col-md-12">
+            <div class="alert alert-info">
+              <%= notice %>
+            </div>
+          </div>
+        <% end %>
+
+        <% if flash[:warn] %>
+          <div class="col-md-12">
+            <div class="alert alert-warning">
+              <%= warn %>
+            </div>
+          </div>
+        <% end %>
+
+        <% if flash[:alert] %>
+          <div class="col-md-12">
+            <div class="alert alert-danger">
+              <%= alert %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
       <div id='<%= "#{params[:controller]}_#{params[:action]}" %>'
            class="page-content">
         <%= yield %>

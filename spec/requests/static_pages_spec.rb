@@ -59,6 +59,17 @@ RSpec.describe "StaticPages", :type => :request do
           it { should have_content I18n.translate('greeting', locale: 'ru') }
           it { should_not have_content I18n.translate('greeting', locale: 'en') }
         end
+
+        describe "for wrong locale" do
+          before do
+            visit root_path(locale: 'wrong')
+          end
+
+          it "should render warning" do
+            expect(page).to have_content
+                I18n.translate('locale_not_supported', unsupported_locale: 'wrong')
+          end
+        end
       end
     end
 
