@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'colors';
+@import 'fonts';
 
 /* Carousel */
 
@@ -52,9 +53,11 @@
 }
 
 .greeting-container {
+  margin: 0 5px;
+
   .greeting {
     color: #fff;
-    font-family: Open Sans, sans-serif;
+    font-family: $primary_font;
   }
 }
 
@@ -62,6 +65,7 @@
 
 .about-row {
   background-color: #fff;
+  font-family: $primary_font;
 
   .avatar-container {
     text-align: center;
@@ -100,6 +104,7 @@
 .favorite-title-row, .favorite-row {
   background-color: $primary_color_light;
   color: #fff;
+  font-family: $primary_font;
 }
 
 @media (min-width: 992px) {

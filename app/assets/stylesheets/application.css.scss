@@ -17,6 +17,7 @@
 @import "bootstrap-sprockets";
 @import 'bootstrap';
 @import 'colors';
+@import 'fonts';
 
 @import url('//fonts.googleapis.com/css?family=Open+Sans:400,700,600&subset=cyrillic,latin');
 
@@ -117,7 +118,7 @@ html, body {
 
 .main-menu > li > a {
   color: inherit;
-  font: bold 14px/18px Open Sans;
+  font: bold 14px/18px $primary_font;
   text-transform: uppercase;
   padding: 0;
   margin: 10px 15px;
@@ -180,7 +181,7 @@ html, body {
   padding: 20px;
   background-color: $primary_color_light;
   color: #fff;
-  font: normal 18px/22px Open Sans;
+  font: normal 18px/22px $primary_font;
   text-transform: uppercase;
 }
 
