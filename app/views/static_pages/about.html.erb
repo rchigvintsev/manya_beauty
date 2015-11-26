@@ -1,0 +1,22 @@
+<div class="row tiled-row about-row">
+  <div class="col-md-12 tiled-column">
+    <div class="tiled-container avatar-container pull-left">
+      <%= image_tag 'avatar.png', width: 256, height: 256 %>
+    </div>
+
+    <div class="tiled-container about-container">
+      <p class="text-justify">
+        <%= insert_emption_icons(t('about.content')).html_safe %>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="row tiled-row about-row">
+  <div class="col-md-12 tiled-column">
+    <div class="tiled-container pull-right">
+      <%= image_tag 'mail.png' %>
+      <a href="mailto:chigvintseva.marina@gmail.com">chigvintseva.marina@gmail.com</a>
+    </div>
+  </div>
+</div>

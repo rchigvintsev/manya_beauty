@@ -7,8 +7,8 @@
 <div class="breadcrumb-container row">
   <div class="col-md-12">
     <ol class="breadcrumb">
-      <li><a href="<%= root_path %>"><%= t('home') %></a></li>
-      <li><a href="<%= gallery_path %>"><%= t('gallery') %></a></li>
+      <li><a href="<%= root_path %>"><%= t('home_page') %></a></li>
+      <li><a href="<%= gallery_path %>"><%= t('gallery_page') %></a></li>
       <li>
         <a href="<%= gallery_path(category_id: (@photo_album.category ? @photo_album.category.id : nil)) %>">
           <%= @photo_album.category ? @photo_album.category.name : t('category.all') %>

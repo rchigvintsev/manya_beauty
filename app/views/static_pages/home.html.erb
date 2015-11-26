@@ -1,15 +1,5 @@
 <div class="row tiled-row carousel-row">
   <div class="row-full-height">
-    <div class="col-md-4 col-md-full-height col-align-center tiled-column">
-      <div class="greeting-container">
-        <h3 class="greeting"><%= t('greeting') %></h3>
-      </div>
-
-      <div class="tailor-logo-container">
-        <%= image_tag 'tailor-logo.png', width: 192, height: 192 %>
-      </div>
-    </div>
-
     <div class="col-md-8 col-md-full-height tiled-column">
       <div class="jcarousel-wrapper">
         <div class="jcarousel">
@@ -33,6 +23,16 @@
         </a>
       </div>
     </div>
+
+    <div class="col-md-4 col-md-full-height col-align-center tiled-column">
+      <div class="greeting-container">
+        <h3 class="greeting"><%= t('greeting') %></h3>
+      </div>
+
+      <div class="tailor-logo-container">
+        <%= image_tag 'tailor-logo.png', width: 192, height: 192 %>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -46,7 +46,10 @@
   <div class="col-md-8 tiled-column">
     <div class="tiled-container about-container">
       <h3><%= t 'about.header' %></h3>
-      <p><%= t 'about.content' %></p>
+      <p>
+        <%= insert_emption_icons(smart_truncate(t('about.content'), sentences: 7)).html_safe %>
+        <%= link_to t('about.read_more'), about_path %>
+      </p>
     </div>
   </div>
 </div>

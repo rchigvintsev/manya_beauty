@@ -15,4 +15,7 @@ class StaticPagesController < ApplicationController
       @photo_albums = all_photo_albums
     end
   end
+
+  def about
+  end
 end

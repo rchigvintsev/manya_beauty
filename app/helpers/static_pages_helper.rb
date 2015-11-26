@@ -8,6 +8,10 @@ module StaticPagesHelper
         (params[:controller] == 'gallery/photo_albums' && params[:action] == 'show')
   end
 
+  def about_page?
+    static_pages_action?('about')
+  end
+
   private
 
     def static_pages_action?(action_name)

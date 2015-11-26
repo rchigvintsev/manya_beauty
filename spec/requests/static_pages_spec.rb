@@ -33,8 +33,8 @@ RSpec.describe "StaticPages", :type => :request do
 
     describe "main menu" do
       describe "Home page menu item should be activated" do
-        it { should have_selector('li.active', text: I18n.translate('home')) }
-        it { should_not have_selector('li.active', text: I18n.translate('gallery')) }
+        it { should have_selector('li.active', text: I18n.translate('home_page')) }
+        it { should_not have_selector('li.active', text: I18n.translate('gallery_page')) }
       end
     end
 
@@ -121,8 +121,8 @@ RSpec.describe "StaticPages", :type => :request do
 
     describe "main menu" do
       describe "Gallery page menu item should be activated" do
-        it { should have_selector('li.active', text: I18n.translate('gallery')) }
-        it { should_not have_selector('li.active', text: I18n.translate('home')) }
+        it { should have_selector('li.active', text: I18n.translate('gallery_page')) }
+        it { should_not have_selector('li.active', text: I18n.translate('home_page')) }
       end
     end
 
@@ -178,10 +178,10 @@ RSpec.describe "StaticPages", :type => :request do
 
           expect(page).to have_selector "ol[class='breadcrumb'] > li > " +
               "a[href='#{root_path(locale: I18n.locale)}']",
-              text: I18n.translate('home')
+              text: I18n.translate('home_page')
           expect(page).to have_selector "ol[class='breadcrumb'] > li > " +
               "a[href='#{gallery_path(locale: I18n.locale)}']",
-              text: I18n.translate('gallery')
+              text: I18n.translate('gallery_page')
           expect(page).to have_selector "ol[class='breadcrumb'] > li > " +
               "a[href='#{gallery_path(category_id: photo_album.category.id, locale: I18n.locale)}']",
               text: photo_album.category.name

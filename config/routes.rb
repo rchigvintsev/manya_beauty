@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   get '/gallery' => 'static_pages#gallery'
+  get '/about' => 'static_pages#about'
 
   namespace :gallery do
     get '/photo_albums/:id' => 'photo_albums#show', as: 'photo_album'

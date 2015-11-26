@@ -26,13 +26,39 @@ en:
 
   hello: "Hello world"
 
-  home: "Home"
-  greeting: "Welcome to the exhibition website of the author's clothing and accessories"
+  home_page: "Home"
+  gallery_page: "Gallery"
+  about_page: "About me"
+
+  greeting: "Welcome to the website of the author's clothing and accessories"
   about:
     header: "About me"
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
-  gallery: "Gallery"
+    content: >
+      Welcome to my site! My name is Marina Chigvintseva. Since I can remember
+      (about five years), I have always sewn. First I invented the attires for
+      dolls, then for myself. I have never considered sewing as a profession,
+      but rather as a given (every woman can sew, so what :)), as a pleasant
+      pastime, a hobby. Therefore I have a chemistry degree and I was honestly
+      taking chemistry for a few years, but I never left my passion. Eventually
+      I realized that sewing gives me more fun and takes more thinking than
+      the profession. I sewed more and more, faster and faster and the more I
+      sewed, the more ideas I had, the more I wanted to bring them to life.
+      Finally I came to the conclusion that I must have two lives to wear all
+      things that I wanted and most importantly I could to sew and I lose sleep
+      and appetite because of unrealized ideas. So I began to sew for my
+      friends, acquaintances, then for friends of my friends, for acquaintances
+      of my friends, for acquaintances of my acquaintances, etc. And now the
+      hobby turned into a profession thanks to my beloved husband, who supported
+      me at the moment of responsible choice and instilled confidence in me, and
+      my customers, who trust me and give me the opportunity to create for them
+      at my pleasure. I am sincerely interested in every my customer, I try not
+      just to sew a thing, but to create a harmonious image, that adorns a woman
+      and gives her a comfort and a confidence. For that I strive to improve
+      myself all the time, learn and grow professionally and develop creatively.
+      My special passion are dresses and coats. I adore to sew it, especially
+      long dresses and nonstandard coats. So if your soul craves an originality
+      and is not afraid of experiments you are welcome.
+    read_more: "Read more"
 
   categories: "Categories"
 
