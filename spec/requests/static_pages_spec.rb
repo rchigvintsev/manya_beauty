@@ -7,8 +7,8 @@ RSpec.describe "StaticPages", :type => :request do
     describe "header" do
       it { should have_selector 'div.logo > a > img' }
 
-      it "should have main menu with two items" do
-        expect(find 'ul.main-menu').to have_selector('li', count: 2)
+      it "should have main menu with three items" do
+        expect(find 'ul.main-menu').to have_selector('li', count: 3)
       end
     end
 
@@ -24,12 +24,19 @@ RSpec.describe "StaticPages", :type => :request do
     end
   end
 
+  shared_examples_for "page with about info" do
+    it { should have_selector "img[src*='avatar.png']" }
+    it { should have_content I18n.translate('about.header') }
+    it { should have_content I18n.translate('about.content')[0..150] }
+  end
+
   describe "Home page" do
     let!(:favorite_photo) { FactoryGirl.create(:photo, favorite: true) }
 
     before { visit root_path }
 
     it_should_behave_like "all static pages"
+    it_should_behave_like "page with about info"
 
     describe "main menu" do
       describe "Home page menu item should be activated" do
@@ -79,12 +86,6 @@ RSpec.describe "StaticPages", :type => :request do
       it { should have_selector 'div.jcarousel-wrapper > a.jcarousel-next' }
     end
 
-    describe "about" do
-      it { should have_selector "img[src*='avatar.png']" }
-      it { should have_content I18n.translate('about.header') }
-      it { should have_content I18n.translate('about.content') }
-    end
-
     describe "favorite photos" do
       it { should have_content I18n.translate('photo_album.favorite.name') }
       it { should have_selector "img[src='#{favorite_photo.photo_file_url(:thumb)}']" }
@@ -113,9 +114,7 @@ RSpec.describe "StaticPages", :type => :request do
       DatabaseCleaner.clean_with(:truncation)
     end
 
-    before do
-      visit gallery_path
-    end
+    before { visit gallery_path }
 
     it_should_behave_like "all static pages"
 
@@ -196,6 +195,24 @@ RSpec.describe "StaticPages", :type => :request do
           end
         end
       end
+    end
+  end
+
+  describe "About page" do
+    before { visit about_path }
+
+    it_should_behave_like "all static pages"
+    it_should_behave_like "page with about info"
+
+    describe "main menu" do
+      describe "About page menu item should be activated" do
+        it { should have_selector('li.active', text: I18n.translate('about_page')) }
+        it { should_not have_selector('li.active', text: I18n.translate('home_page')) }
+      end
+    end
+
+    describe "email address" do
+      it { should have_link EMAIL, href: "mailto:#{EMAIL}" }
     end
   end
 end
