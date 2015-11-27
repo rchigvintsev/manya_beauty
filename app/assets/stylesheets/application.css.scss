@@ -122,6 +122,10 @@ html, body {
   text-transform: uppercase;
   padding: 0;
   margin: 10px 15px;
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -o-transition: color 0.3s;
+  transition: color 0.3s;
 }
 
 .main-menu > li > a:hover, .main-menu > li > a:focus {
@@ -129,8 +133,12 @@ html, body {
 }
 
 .main-menu > li.active > a, .main-menu > li.active > a:hover, .main-menu > li.active > a:focus {
-  color: #ee514a;
+  color: $secondary_color;
   background-color: inherit;
+}
+
+.main-menu > li > a:hover {
+  color: $secondary_color;
 }
 
 /* Footer */
