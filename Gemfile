@@ -61,6 +61,8 @@ group :production do
 
   gem 'fog', '1.34.0'
   gem 'fog-aws', '0.7.6'
+
+  gem 'net-ssh', '3.0.1'
 end
 
 group :development, :test do
