@@ -1,14 +1,10 @@
 <div class="footer">
-  <div class="container">
-    <div class="footer-content">
-      <div class="copyright valign-container">
-        <div class="valign-middle">
-          <p>ManyaBeauty &#169; <%= Time.now.year %></p>
-        </div>
-      </div>
+  <div class="container-fluid no-padding text-center">
+    <div class="row no-margins">
+      <div class="col-md-12 no-padding">
+        <div><p><%= t 'brand' %> &#169; <%= Time.now.year %></p></div>
 
-      <div class="locale valign-container">
-        <div class="valign-middle">
+        <div>
           <p>
             <%= link_to 'RU', url_for(locale: 'ru'), class: 'locale-ru' %>
             <span>|</span>

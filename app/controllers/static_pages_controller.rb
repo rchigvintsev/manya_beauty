@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @favorite_photos = Photo.where(favorite: true).limit(3)
+    @favorite_photos = Photo.where(favorite: true).limit(4)
   end
 
   def gallery

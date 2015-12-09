@@ -6,6 +6,14 @@ This is a simple website of author's clothing and accessories built with
 [Twitter Bootstrap](http://getbootstrap.com) framework is used to give the
 website a more or less presentable view.
 
+Of course [jQuery](https://jquery.com/) JavaScript library is used on the client
+side.
+
+In addition following jQuery plugins are used:
+
+* [OWL Carousel](http://owlgraphic.com/owlcarousel/) to make a carousel slider
+on the main page of the website.
+
 The website has an admin area and all matters related to authentication and
 authorization are handled by [Devise](https://github.com/plataformatec/devise)
 gem.
@@ -25,9 +33,9 @@ are included in [Fatcow](http://www.fatcow.com/free-icons) icon set that is
 licensed under a [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/)
 license.
 
-Icon `app/assets/images/mail.png` is included in
-[Miu Flat Social](http://linhpham.me/social) icon set that is free for personal
-and commercial use.
+Icon `app/assets/images/mail.png` is included in [Miu Flat Social]
+(http://linhpham.me/social) icon set that is free for personal and commercial
+use.
 
 Background pattern `app/assets/images/symphony.png` was taken from
 [Subtle Patterns](http://subtlepatterns.com/). It is licensed under a
@@ -45,3 +53,14 @@ icon that is included in [Technology and Hardware]
 (https://www.iconfinder.com/iconsets/technology-and-hardware-2) icon set
 designed by [Maxim Basinski](https://www.iconfinder.com/vasabii). This set is
 free for commercial use.
+
+Images in `app/assets/images/carousel` directory are resized versions of
+original images from [StockSnap.io](https://stocksnap.io). All photos in that
+photo stock are free from copyright restrictions.
+
+
+## Acknowledgments
+
+Thanks to the talented web designer and my friend [Egor Permyakov]
+(https://ru.linkedin.com/in/%D0%B5%D0%B3%D0%BE%D1%80-%D0%BF%D0%B5%D1%80%D0%BC%D1%8F%D0%BA%D0%BE%D0%B2-362733b1)
+for his advices on design of this website.

@@ -3,80 +3,143 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'colors';
-@import 'fonts';
 
 /* Carousel */
 
-// This is the visible area of you carousel.
-// Set a width here to define how much items are visible.
-// The width can be either fixed in px or flexible in %.
-// Position must be relative!
-.jcarousel {
-  position: relative;
-  overflow: hidden;
-}
-
-// This is the container of the carousel items.
-// You must ensure that the position is relative or absolute and
-// that the width is big enough to contain all items.
-.jcarousel ul {
-  width: 20000em;
-  position: relative;
-
-  /* Optional, required in this case since it's a <ul> element */
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-// These are the item elements. jCarousel works best, if the items
-// have a fixed width and height (but it's not required).
-.jcarousel li {
-  /* Required only for block elements like <li>'s */
-  float: left;
-}
-
-.carousel-row {
-  background-color: $primary_color_light;
-}
-
-/* Greeting */
-
-.greeting-container, .tailor-logo-container {
-  margin-bottom: 20px;
-}
-
-@media (min-width: 992px) {
-  .greeting-container, .tailor-logo-container {
-    margin-bottom: 0;
+.carousel-container {
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: #080d15;
+    opacity: .5;
   }
-}
 
-.greeting-container {
-  margin: 0 5px;
-
-  .greeting {
+  .hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    z-index: 15;
     color: #fff;
-    font-family: $primary_font;
+    text-align: center;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+       -moz-transform: translate3d(-50%, -50%, 0);
+        -ms-transform: translate3d(-50%, -50%, 0);
+         -o-transform: translate3d(-50%, -50%, 0);
+            transform: translate3d(-50%, -50%, 0);
+    h1 {
+      font-size: 50px;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    h1, h2 {
+      font-weight: 100;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .hero {
+      h1 {
+        font-size: 40px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .owl-carousel {
+    .item {
+      .slide {
+        height: 80vh;
+        min-height: 480px;
+        max-height: 720px;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+
+      .slide1 {
+        background-image: image_url('carousel/slide1.jpg');
+      }
+
+      .slide2 {
+        background-image: image_url('carousel/slide2.jpg');
+      }
+
+      .slide3 {
+        background-image: image_url('carousel/slide3.jpg');
+      }
+    }
+
+    .owl-controls {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      width: 60%;
+      margin-left: -30%;
+      z-index: 15;
+
+      .owl-page {
+        span {
+          background: #fff;
+        }
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      .owl-controls {
+        bottom: 20px;
+      }
+    }
   }
 }
 
 /* About */
 
-.about-row {
+.about-me {
   background-color: #fff;
-  font-family: $primary_font;
 
   .avatar-container {
     text-align: center;
+    margin-bottom: 20px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      max-width: 256px;
+      max-height: 256px;
+    }
   }
 
-  .about-container > h3 {
-    margin-bottom: 10px;
-  }
+  .about-container {
+    h3 {
+      margin-bottom: 30px
+    }
 
-  .about-container > p {
-    margin-bottom: 0;
+    h4 {
+      margin-bottom: 20px
+    }
+
+    h3, h4 {
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    .col-md-6:last-child p {
+      margin-bottom: 0;
+    }
+
+    h4, p {
+      font-style: italic;
+    }
   }
 }
 
@@ -88,34 +151,50 @@
 
 /* Favorite */
 
-.favorite-row {
-  .col-md-4 {
-    padding-bottom: 20px;
+.row.favorites {
+  background-color: inherit;
 
-    .thumbnail {
-      border: none;
-      border-radius: initial;
-      margin: 0;
-      padding: 0;
-      background-color: inherit;
+  a {
+    width: 290px;
+    height: 290px;
+    display: block;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 15px;
+  }
 
-      img {
-        background-color: #fff;
-        padding: 10px;
-      }
+  .container .row > div:last-child a {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 480px) {
+    a {
+      width: 340px;
+      height: 340px;
     }
   }
-}
 
-.favorite-title-row, .favorite-row {
-  background-color: $primary_color_light;
-  color: #fff;
-  font-family: $primary_font;
-}
+  @media (min-width: 768px) {
+    .container .row > div:nth-last-child(2) a {
+      margin-bottom: 0;
+    }
+  }
 
-@media (min-width: 992px) {
-  .row-full-height .col-md-full-height .greeting-container {
-    position: absolute;
-    top: 0;
+  @media (min-width: 992px) {
+    a {
+      width: 210px;
+      height: 210px;
+      margin-bottom: 0;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    a {
+      width: 260px;
+      height: 260px;
+      margin-bottom: 0;
+    }
   }
 }
