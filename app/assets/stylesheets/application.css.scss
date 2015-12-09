@@ -151,29 +151,43 @@ html, body {
   padding: 5px 0 5px 0;
 }
 
-.main-menu > li > a {
-  color: inherit;
-  font: bold 14px/18px 'Roboto', sans-serif;;
-  text-transform: uppercase;
-  padding: 0;
-  margin: 10px 15px;
-  -webkit-transition: color 0.3s;
-  -moz-transition: color 0.3s;
-  -o-transition: color 0.3s;
-  transition: color 0.3s;
-}
+.main-menu {
+  li {
+    border: 2px solid transparent;
+    -webkit-transition: border 0.3s;
+       -moz-transition: border 0.3s;
+         -o-transition: border 0.3s;
+            transition: border 0.3s;
 
-.main-menu > li > a:hover, .main-menu > li > a:focus {
-  background-color: inherit;
-}
+    a {
+      color: inherit;
+      font-size: 15px;
+      text-transform: uppercase;
+      padding: 0;
+      margin: 10px 15px;
+      -webkit-transition: color 0.3s;
+         -moz-transition: color 0.3s;
+           -o-transition: color 0.3s;
+              transition: color 0.3s;
+    }
 
-.main-menu > li.active > a, .main-menu > li.active > a:hover, .main-menu > li.active > a:focus {
-  color: $secondary_color;
-  background-color: inherit;
-}
+    a:hover, a:focus {
+      background-color: inherit;
+    }
 
-.main-menu > li > a:hover {
-  color: $secondary_color;
+    a:hover {
+      color: $primary_color_light;
+    }
+  }
+
+  li.active, li:hover {
+    border: 2px solid $primary_color_light;
+
+    a, a:hover, a:focus {
+      color: $primary_color_light;
+      background-color: inherit;
+    }
+  }
 }
 
 /* Footer */
@@ -196,7 +210,7 @@ html, body {
 
   .container-fluid {
     height: 100%;
-    background-color: #087070;
+    background-color: $theme_dark;
 
     .row {
       padding: 79px 0;
