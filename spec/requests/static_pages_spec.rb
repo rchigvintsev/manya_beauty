@@ -5,7 +5,7 @@ RSpec.describe "StaticPages", :type => :request do
 
   shared_examples_for "all static pages" do
     describe "header" do
-      it { should have_selector 'div.logo > a > img' }
+      it { should have_selector('div.logo > a', text: I18n.translate('brand')) }
 
       it "should have main menu with three items" do
         expect(find 'ul.main-menu').to have_selector('li', count: 3)
@@ -14,7 +14,7 @@ RSpec.describe "StaticPages", :type => :request do
 
     describe "footer" do
       describe "copyright" do
-        it { should have_content "ManyaBeauty \u00A9 #{Time.now.year}" }
+        it { should have_content "#{I18n.translate('brand')} \u00A9 #{Time.now.year}" }
       end
 
       describe "locale" do
@@ -45,8 +45,14 @@ RSpec.describe "StaticPages", :type => :request do
       end
     end
 
-    describe "greeting" do
-      it { should have_content(I18n.translate('greeting')) }
+    describe "OWL Carousel" do
+      it { should have_selector('.carousel-container #owl_carousel > .item > .slide',
+          count: 3) }
+
+      it { should have_selector('.carousel-container .hero > h1',
+          text: I18n.translate('author_name')) }
+      it { should have_selector('.carousel-container .hero > h2',
+          text: I18n.translate('specialization')) }
 
       describe "translation" do
         describe "for english locale" do
@@ -54,8 +60,10 @@ RSpec.describe "StaticPages", :type => :request do
             click_link 'EN'
           end
 
-          it { should have_content I18n.translate('greeting', locale: 'en') }
-          it { should_not have_content I18n.translate('greeting', locale: 'ru') }
+          it { should have_selector('.carousel-container .hero > h1',
+              text: I18n.translate('author_name', locale: 'en')) }
+          it { should_not have_selector('.carousel-container .hero > h1',
+              text: I18n.translate('author_name', locale: 'ru')) }
         end
 
         describe "for russian locale" do
@@ -63,8 +71,10 @@ RSpec.describe "StaticPages", :type => :request do
             click_link 'RU'
           end
 
-          it { should have_content I18n.translate('greeting', locale: 'ru') }
-          it { should_not have_content I18n.translate('greeting', locale: 'en') }
+          it { should have_selector('.carousel-container .hero > h1',
+              text: I18n.translate('author_name', locale: 'ru')) }
+          it { should_not have_selector('.carousel-container .hero > h1',
+              text: I18n.translate('author_name', locale: 'en')) }
         end
 
         describe "for wrong locale" do
@@ -80,19 +90,9 @@ RSpec.describe "StaticPages", :type => :request do
       end
     end
 
-    describe "jCarousel" do
-      it { should have_selector 'div.jcarousel-wrapper > .jcarousel > ul > li > img' }
-      it { should have_selector 'div.jcarousel-wrapper > a.jcarousel-prev' }
-      it { should have_selector 'div.jcarousel-wrapper > a.jcarousel-next' }
-    end
-
     describe "favorite photos" do
       it { should have_content I18n.translate('photo_album.favorite.name') }
-      it { should have_selector "img[src='#{favorite_photo.photo_file_url(:thumb)}']" }
-
-      it "should render two fallback photos" do
-        expect(page).to have_selector "img[src*='fallback/default-lg.png']", count: 2
-      end
+      it { should have_selector "a[style='background-image: url(#{favorite_photo.photo_file_url(:thumb)})']" }
     end
   end
 

@@ -66,13 +66,13 @@
 <div class="row row-lg-content no-margins favorites">
   <div class="container">
     <div class="row">
-        <% @favorite_photos.each do |favorite_photo| %>
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <a href="<%= gallery_favorite_photo_album_path %>"
-               style="background-image: url('<%= favorite_photo.photo_file_url(:thumb) %>')">
-            </a>
-          </div>
-        <% end %>
+      <% @favorite_photos.each do |favorite_photo| %>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <a href="<%= gallery_favorite_photo_album_path %>"
+             style="background-image: url(<%= favorite_photo.photo_file_url(:thumb) %>)">
+          </a>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
