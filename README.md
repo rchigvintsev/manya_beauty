@@ -6,13 +6,22 @@ This is a simple website of author's clothing and accessories built with
 [Twitter Bootstrap](http://getbootstrap.com) framework is used to give the
 website a more or less presentable view.
 
+[Bootstrap Image Gallery](https://blueimp.github.io/Bootstrap-Image-Gallery)
+extension was used to display photos in modal dialog.
+
 Of course [jQuery](https://jquery.com/) JavaScript library is used on the client
 side.
 
 In addition following jQuery plugins are used:
 
-* [OWL Carousel](http://owlgraphic.com/owlcarousel/) to make a carousel slider
+* [OWL Carousel](http://owlgraphic.com/owlcarousel) to make a carousel slider
 on the main page of the website.
+
+* [Justified Galley](http://miromannino.github.io/Justified-Gallery) to create
+justified gallery of photos.
+
+* [jQuery Mousewheel](https://plugins.jquery.com/mousewheel) by [Brandon Aaron]
+(http://brandon.aaron.sh) to fix scrolling in photo modal dialog.
 
 The website has an admin area and all matters related to authentication and
 authorization are handled by [Devise](https://github.com/plataformatec/devise)
