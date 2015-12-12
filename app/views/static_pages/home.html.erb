@@ -40,13 +40,13 @@
       </div>
 
       <div class="row no-margins">
-        <div class="col-md-6">
+        <div class="col-xs-12 col-sm-6 col-md-6">
           <p id="about_content" class="text-justify">
             <%= t 'about.content.paragraph1' %>
           </p>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-xs-12 col-sm-6 col-md-6">
           <p id="about_content" class="text-justify">
             <%= t 'about.content.paragraph2' %>
             <%= link_to t('about.read_more'), about_path %>
@@ -67,7 +67,11 @@
   <div class="container">
     <div class="row">
       <% @favorite_photos.each do |favorite_photo| %>
-        <div class="col-xs-12 col-sm-6 col-md-3">
+        <% if @favorite_photos.length == 1 %>
+          <div class="col-md-12">
+        <% else %>
+          <div class="col-xs-12 col-sm-6 col-md-<%= "#{12 / @favorite_photos.length}" %>">
+        <% end %>
           <a href="<%= gallery_favorite_photo_album_path %>"
              style="background-image: url(<%= favorite_photo.photo_file_url(:thumb) %>)">
           </a>

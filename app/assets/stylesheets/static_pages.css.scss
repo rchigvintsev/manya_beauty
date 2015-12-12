@@ -20,7 +20,6 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 100%;
     z-index: 15;
     color: #fff;
     text-align: center;
@@ -99,7 +98,7 @@
   }
 }
 
-/* About */
+/* About me */
 
 .about-me {
   background-color: #fff;
@@ -149,7 +148,7 @@
   }
 }
 
-/* Favorite */
+/* Favorites */
 
 .row.favorites {
   background-color: inherit;
@@ -158,27 +157,16 @@
     width: 290px;
     height: 290px;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 15px auto;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    margin-bottom: 15px;
-  }
-
-  .container .row > div:last-child a {
-    margin-bottom: 0;
   }
 
   @media (min-width: 480px) {
     a {
       width: 340px;
       height: 340px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .container .row > div:nth-last-child(2) a {
-      margin-bottom: 0;
     }
   }
 
@@ -195,6 +183,26 @@
       width: 260px;
       height: 260px;
       margin-bottom: 0;
+    }
+  }
+}
+
+/* Gallery page */
+
+.gallery {
+  padding: 40px 0;
+}
+
+/* About me page */
+
+#static_pages\:about {
+  .about-me {
+    padding: 80px 0;
+    background-color: inherit;
+
+    .email {
+      font-size: 15px;
+      margin-top: 20px;
     }
   }
 }

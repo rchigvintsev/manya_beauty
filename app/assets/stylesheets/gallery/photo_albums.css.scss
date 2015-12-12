@@ -4,36 +4,63 @@
 
 @import 'colors';
 
-.photo-album-caption p {
-  margin-top: 0;
-}
+#gallery\/photo_albums\:show {
+  .gallery {
+    padding-top: 0;
 
-.breadcrumb-container .breadcrumb {
-  margin-bottom: 10px;
-  background-color: #fff;
+    .photo-album-caption {
+      background-color: #fff;
+    }
 
-  li {
-    text-transform: uppercase;
+    .breadcrumb-container {
+      margin: 0 0 40px 0;
+      background-color: #fff;
 
-    a {
-      text-decoration: none;
-      color: inherit;
+      .breadcrumb {
+        padding-top: 10px;
+        padding-bottom: 20px;
+        margin-bottom: 0;
+        background-color: #fff;
+        border-radius: initial;
 
-      &:hover, &:focus {
-        color: $primary_color_light;
+        li {
+          font-size: 15px;
+          text-transform: uppercase;
+
+          a {
+            text-decoration: none;
+            color: inherit;
+
+            &:hover, &:focus {
+              color: $primary_color_light;
+            }
+          }
+
+          &.active {
+            color: $primary_color_light;
+          }
+        }
       }
     }
 
-    &.active {
-      color: $primary_color_light;
+    .thumbnail {
+      border-radius: initial;
+      border: none;
+      margin-bottom: 30px;
     }
-  }
-}
 
-.fallback-photo {
-  a {
-    img {
-      opacity: 0.5;
+    .row:last-child {
+      .thumbnail {
+        margin-bottom: 0;
+      }
+    }
+
+    .fallback-photo {
+      a {
+        img {
+          opacity: 0.5;
+        }
+      }
     }
   }
 }

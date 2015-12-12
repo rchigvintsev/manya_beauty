@@ -13,7 +13,7 @@
     <div class="container-fluid no-padding">
       <%= render 'layouts/header' %>
 
-      <div class="row">
+      <div class="row no-margins">
         <% if flash[:notice] %>
           <div class="col-md-12">
             <div class="alert alert-info">
@@ -39,7 +39,7 @@
         <% end %>
       </div>
 
-      <div id='<%= "#{params[:controller]}_#{params[:action]}" %>'
+      <div id='<%= "#{params[:controller]}:#{params[:action]}" %>'
            class="page-content">
         <%= yield %>
       </div>

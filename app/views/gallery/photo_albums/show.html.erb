@@ -1,101 +1,103 @@
-<div class="photo-album-caption row">
-  <div class="col-md-12">
-    <p class="text-center h3"><%= @photo_album.name %></p>
+<div class="gallery">
+  <div class="photo-album-caption row no-margins">
+    <div class="col-md-12">
+      <p class="text-center h3"><%= @photo_album.name %></p>
+    </div>
   </div>
-</div>
 
-<div class="breadcrumb-container row">
-  <div class="col-md-12">
-    <ol class="breadcrumb">
-      <li><a href="<%= root_path %>"><%= t('home_page') %></a></li>
-      <li><a href="<%= gallery_path %>"><%= t('gallery_page') %></a></li>
-      <li>
-        <a href="<%= gallery_path(category_id: (@photo_album.category ? @photo_album.category.id : nil)) %>">
-          <%= @photo_album.category ? @photo_album.category.name : t('category.all') %>
-        </a>
-      </li>
-      <li class="active"><%= @photo_album.name %></li>
-    </ol>
+  <div class="breadcrumb-container row">
+    <div class="col-md-12 no-padding">
+      <ol class="breadcrumb">
+        <li><a href="<%= root_path %>"><%= t('home_page') %></a></li>
+        <li><a href="<%= gallery_path %>"><%= t('gallery_page') %></a></li>
+        <li>
+          <a href="<%= gallery_path(category_id: (@photo_album.category ? @photo_album.category.id : nil)) %>">
+            <%= @photo_album.category ? @photo_album.category.name : t('category.all') %>
+          </a>
+        </li>
+        <li class="active"><%= @photo_album.name %></li>
+      </ol>
+    </div>
   </div>
-</div>
 
-<div id="links">
-  <% @photo_album.photos.each do |photo| %>
-    <a href="<%= photo.photo_file_url %>" title="<%= photo.title %>"
-       data-comments-href="<%= gallery_photo_comments_path(photo) %>"
-       data-photo-id="<%= photo.id %>">
-      <%= image_tag photo.photo_file_url(:thumb) %>
-    </a>
-  <% end %>
-</div>
+  <div id="links">
+    <% @photo_album.photos.each do |photo| %>
+      <a href="<%= photo.photo_file_url %>" title="<%= photo.title %>"
+         data-comments-href="<%= gallery_photo_comments_path(photo) %>"
+         data-photo-id="<%= photo.id %>">
+        <%= image_tag photo.photo_file_url(:thumb) %>
+      </a>
+    <% end %>
+  </div>
 
-<div id="blueimp-gallery" class="blueimp-gallery">
-  <div class="slides"></div>
+  <div id="blueimp-gallery" class="blueimp-gallery">
+    <div class="slides"></div>
 
-  <h3 class="title"></h3>
+    <h3 class="title"></h3>
 
-  <a class="prev">‹</a>
-  <a class="next">›</a>
-  <a class="close">×</a>
-  <a class="play-pause"></a>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
 
-  <ol class="indicator"></ol>
+    <ol class="indicator"></ol>
 
-  <div class="modal fade" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close close-slideshow" aria-hidden="true">&times;</button>
-          <h4 class="modal-title"></h4>
-        </div>
+    <div class="modal fade" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close close-slideshow" aria-hidden="true">&times;</button>
+            <h4 class="modal-title"></h4>
+          </div>
 
-        <div class="modal-body next"></div>
+          <div class="modal-body next"></div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left prev">
-            <i class="glyphicon glyphicon-chevron-left"></i>
-            <%= t 'actions.previous' %>
-          </button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left prev">
+              <i class="glyphicon glyphicon-chevron-left"></i>
+              <%= t 'actions.previous' %>
+            </button>
 
-          <button type="button" class="btn btn-default next">
-            <%= t 'actions.next' %>
-            <i class="glyphicon glyphicon-chevron-right"></i>
-          </button>
-        </div>
+            <button type="button" class="btn btn-default next">
+              <%= t 'actions.next' %>
+              <i class="glyphicon glyphicon-chevron-right"></i>
+            </button>
+          </div>
 
-        <div class="comment-form-container">
-          <h4><%= t('photo.comment_form.title') %></h4>
+          <div class="comment-form-container">
+            <h4><%= t('photo.comment_form.title') %></h4>
 
-          <%= form_tag(gallery_comments_path, remote: true,
-                                              id: 'comment_form') do |f| %>
-            <div id="author" class="form-group">
-              <%= text_field_tag 'comment[author]', nil, placeholder: t('photo.comment_form.author'),
-                                                         class: 'form-control' %>
-            </div>
-
-            <div id="text" class="form-group">
-              <%= text_area_tag 'comment[text]', nil, placeholder: t('photo.comment_form.text'),
-                                                      rows: 5,
-                                                      class: 'form-control' %>
-            </div>
-
-            <div class="text-right">
-              <div class="pull-left">
-                <p class="text-warning">
-                  <%= raw t('photo.comment_form.approval_warning') %>
-                </p>
+            <%= form_tag(gallery_comments_path, remote: true,
+                                                id: 'comment_form') do |f| %>
+              <div id="author" class="form-group">
+                <%= text_field_tag 'comment[author]', nil, placeholder: t('photo.comment_form.author'),
+                                                           class: 'form-control' %>
               </div>
 
-              <%= submit_tag(t('photo.comment_form.submit'), class: 'btn btn-default',
-                                                              autocomplete: 'off',
-                                                              disabled: 'disabled',
-                                                              data: { loading_text: t('photo.comment_form.submitting') }) %>
-            </div>
-          <% end %>
+              <div id="text" class="form-group">
+                <%= text_area_tag 'comment[text]', nil, placeholder: t('photo.comment_form.text'),
+                                                        rows: 5,
+                                                        class: 'form-control' %>
+              </div>
+
+              <div class="text-right">
+                <div class="pull-left">
+                  <p class="text-warning">
+                    <%= raw t('photo.comment_form.approval_warning') %>
+                  </p>
+                </div>
+
+                <%= submit_tag(t('photo.comment_form.submit'), class: 'btn btn-default',
+                                                                autocomplete: 'off',
+                                                                disabled: 'disabled',
+                                                                data: { loading_text: t('photo.comment_form.submitting') }) %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<%= javascript_include_tag 'photo_albums/show' %>
+  <%= javascript_include_tag 'photo_albums/show' %>
+</div>

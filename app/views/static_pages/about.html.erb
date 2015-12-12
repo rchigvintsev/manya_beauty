@@ -1,22 +1,40 @@
-<div class="row tiled-row about-row">
-  <div class="col-md-12 tiled-column">
-    <div class="tiled-container avatar-container pull-left">
-      <%= image_tag 'avatar.png', width: 256, height: 256 %>
-    </div>
-
-    <div class="tiled-container about-container">
-      <p class="text-justify">
-        <%= t 'about.content' %>
-      </p>
+<div class="row about-me no-margins">
+  <div class="col-md-3">
+    <div class="avatar-container">
+      <%= image_tag 'avatar.png' %>
     </div>
   </div>
-</div>
 
-<div class="row tiled-row about-row">
-  <div class="col-md-12 tiled-column">
-    <div class="tiled-container pull-right">
-      <%= image_tag 'mail.png' %>
-      <a href="mailto:<%= EMAIL %>"><%= EMAIL %></a>
+  <div class="col-md-9">
+    <div class="about-container">
+      <div class="row no-margins">
+        <div class="col-md-12">
+          <h4><%= t 'about.greeting' %></h4>
+        </div>
+      </div>
+
+      <div class="row no-margins">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <p id="about_content" class="text-justify">
+            <%= "#{t('about.content.paragraph1')} #{t('about.content.paragraph2')} #{t('about.content.paragraph3')}" %>
+          </p>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <p id="about_content" class="text-justify">
+            <%= "#{t('about.content.paragraph4')} #{t('about.content.paragraph5')}" %>
+          </p>
+        </div>
+      </div>
+
+      <div class="row email no-margins">
+        <div class="col-md-12">
+          <div class="pull-right">
+            <%= image_tag 'mail.png' %>
+            <a href="mailto:<%= EMAIL %>"><%= EMAIL %></a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
