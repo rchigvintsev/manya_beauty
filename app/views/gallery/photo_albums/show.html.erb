@@ -22,7 +22,9 @@
 
   <div id="links">
     <% @photo_album.photos.each do |photo| %>
-      <a href="<%= photo.photo_file_url %>" title="<%= photo.title %>"
+      <a href="<%= photo.photo_file_url %>"
+         title="<%= photo.title %>"
+         data-description="<%= photo.description %>"
          data-comments-href="<%= gallery_photo_comments_path(photo) %>"
          data-photo-id="<%= photo.id %>">
         <%= image_tag photo.photo_file_url(:thumb) %>
@@ -51,6 +53,10 @@
           </div>
 
           <div class="modal-body next"></div>
+
+          <div class="description-container">
+            <p class="description text-left"></p>
+          </div>
 
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left prev">
@@ -88,9 +94,9 @@
                 </div>
 
                 <%= submit_tag(t('photo.comment_form.submit'), class: 'btn btn-default',
-                                                                autocomplete: 'off',
-                                                                disabled: 'disabled',
-                                                                data: { loading_text: t('photo.comment_form.submitting') }) %>
+                                                               autocomplete: 'off',
+                                                               disabled: 'disabled',
+                                                               data: { loading_text: t('photo.comment_form.submitting') }) %>
               </div>
             <% end %>
           </div>

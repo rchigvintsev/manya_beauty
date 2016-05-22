@@ -19,6 +19,13 @@ $ ->
         # immediately by mouse wheel.
         $(this.slides[this.index]).find('.modal').mousewheel ->
 
+      onslide: (index, slide) ->
+        descriptionText = $(this.list[index]).attr('data-description')
+        $description = $(slide).find('.description')
+        $description.empty()
+        if descriptionText
+          $description.text(descriptionText)
+
       onslidecomplete: (index, slide) ->
         UrlUtils = ManyaBeauty.UrlUtils
 
