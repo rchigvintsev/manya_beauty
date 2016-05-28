@@ -47,27 +47,6 @@ ru:
         боится экспериментов, то Вам ко мне.
     read_more: "Читать дальше"
 
-  categories: "Категории"
-
-  category:
-    all: "Все"
-    creating: "Создание категории"
-    editing: "Редактирование категории"
-    failed_to:
-      create: "новую категорию"
-      update: "категорию"
-    flash:
-      actions:
-        update:
-          notice: "Категория была успешно обновлена"
-        create:
-          notice: "Новая категория была успешно сохранена"
-        destroy:
-          notice: "Категория была успешно удалена"
-    confirm:
-      actions:
-        destroy: "Вы действительно хотите удалить выбранную категорию?"
-
   photo_albums: "Фотоальбомы"
 
   photo_album:
@@ -171,15 +150,10 @@ ru:
 
   activerecord:
     attributes:
-      category:
-        id: "Идентификатор"
-        name: "Имя"
       photo_album:
         id: "Идентификатор"
         name: "Имя"
         description: "Описание"
-        category: "Категория"
-        category_id: "Категория"
       photo:
         id: "Идентификатор"
         title: "Заголовок"

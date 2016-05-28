@@ -18,7 +18,7 @@
             method: :delete, disabled: 'disabled',
             data: { confirm: t('photo_album.confirm.actions.destroy') } %>
       </li>
-    <ul>
+    </ul>
   </div>
 </div>
 
@@ -27,7 +27,6 @@
     <tr>
       <th><%= t 'activerecord.attributes.photo_album.id' %></th>
       <th><%= t 'activerecord.attributes.photo_album.name' %></th>
-      <th><%= t 'activerecord.attributes.photo_album.category' %></th>
     </tr>
   </thead>
   <tbody>
@@ -35,7 +34,6 @@
       <tr>
         <td class="id"><%= photo_album.id %></td>
         <td><%= photo_album.name %></td>
-        <td><%= photo_album.category.nil? ? '' : photo_album.category.name %></td>
       </tr>
     <% end %>
   </tbody>

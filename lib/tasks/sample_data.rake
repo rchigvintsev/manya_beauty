@@ -4,24 +4,14 @@ namespace :db do
   desc "Fill database with sample data"
 
   task populate: :environment do
-    make_categories
     make_photo_albums
     make_photos
     make_comments
   end
 
-  def make_categories
-    10.times do |n|
-      Category.create!(name: fake_name_or_title)
-    end
-  end
-
   def make_photo_albums
-    Category.all.each do |category|
-      Random.rand(21).times do |n|
-        category.photo_albums.create!(name: fake_name_or_title,
-            description: fake_text)
-      end
+    50.times do |n|
+      PhotoAlbum.create!(name: fake_name_or_title, description: fake_text)
     end
   end
 

@@ -1,18 +1,4 @@
 <div class="row no-margins gallery">
-  <div class="sidebar col-md-4 no-padding">
-    <div class="sidebar-module categories">
-      <h3><%= t 'categories' %></h3>
-
-      <ul>
-        <li><%= link_to t('category.all'), gallery_path,
-                class: "category#{params[:category_id] ? '' : ' active-category'}" %></li>
-
-        <%= render partial: 'gallery/categories/category',
-            collection: @categories %>
-      </ul>
-    </div>
-  </div>
-
   <div class="col-md-8">
     <%= render 'gallery/photo_albums/covers' %>
   </div>

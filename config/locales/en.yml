@@ -38,9 +38,10 @@ en:
     content:
       paragraph1: >
         My name is Marina Chigvintseva. Since I can remember (about five years),
-        I have always sewn. First I invented the attires for dolls, then for
-        myself. I have never considered sewing as a profession, but rather as a
-        given (every woman can sew, so what), as a pleasant pastime, a hobby.
+        I have always sewn. First I was inventing the attires for dolls, then
+        for myself. I have never considered sewing as a profession, but rather
+        as a given (every woman can sew, so what), as a pleasant pastime, a
+        hobby.
       paragraph2: >
         Therefore I have a chemistry degree and I was honestly taking chemistry
         for a few years, but I never left my passion. Eventually I realized that
@@ -68,27 +69,6 @@ en:
         coats. So if your soul craves an originality and is not afraid of
         experiments you are welcome.
     read_more: "Read more"
-
-  categories: "Categories"
-
-  category:
-    all: "All"
-    creating: "Сategory creating"
-    editing: "Category editing"
-    failed_to:
-      create: "category"
-      update: "category"
-    flash:
-      actions:
-        update:
-          notice: "Category was successfully updated"
-        create:
-          notice: "Category was successfully created"
-        destroy:
-          notice: "Category was successfully destroyed"
-    confirm:
-      actions:
-        destroy: "Do you really want to destroy selected category?"
 
   photo_albums: "Photo albums"
 
@@ -193,15 +173,10 @@ en:
 
   activerecord:
     attributes:
-      category:
-        id: "Identifier"
-        name: "Name"
       photo_album:
         id: "Identifier"
         name: "Name"
         description: "Description"
-        category: "Category"
-        category_id: "Category"
       photo:
         id: "Identifier"
         title: "Title"

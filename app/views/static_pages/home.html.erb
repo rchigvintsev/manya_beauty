@@ -72,11 +72,12 @@
         <% else %>
           <div class="col-xs-12 col-sm-6 col-md-<%= "#{12 / @favorite_photos.length}" %>">
         <% end %>
-          <a href="<%= gallery_favorite_photo_album_path %>"
-             style="background-image: url(<%= favorite_photo.photo_file_url(:thumb) %>)">
-          </a>
-        </div>
-      <% end %>
+            <a href="<%= gallery_favorite_photo_album_path %>"
+               style="background-image: url(<%= favorite_photo.photo_file_url(:thumb) %>)">
+            </a>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

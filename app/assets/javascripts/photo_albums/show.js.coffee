@@ -61,8 +61,7 @@ $ ->
           $this.clearFormErrors()
           $this.find('.alert-success').removeClass 'hidden'
 
-        $form.find(':input')
-            .not(':button, :submit, :reset, :hidden').keydown (e) ->
+        $form.find(':input').not(':button, :submit, :reset, :hidden').keydown (e) ->
           if e.which == 37 or e.which == 39
             e.stopPropagation()
           return true

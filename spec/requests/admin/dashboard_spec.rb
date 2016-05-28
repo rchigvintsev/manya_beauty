@@ -4,15 +4,12 @@ RSpec.describe "Dashboard", :type => :request do
   subject { page }
 
   before(:all) do
-    3.times do
-      category = FactoryGirl.create(:category)
+    9.times do
+      photo_album = FactoryGirl.create(:photo_album)
       3.times do
-        photo_album = FactoryGirl.create(:photo_album, category: category)
-        3.times do
-          photo = FactoryGirl.create(:photo, photo_album: photo_album)
-          2.times { FactoryGirl.create(:published_comment, photo: photo) }
-          FactoryGirl.create(:draft_comment, photo: photo)
-        end
+        photo = FactoryGirl.create(:photo, photo_album: photo_album)
+        2.times { FactoryGirl.create(:published_comment, photo: photo) }
+        FactoryGirl.create(:draft_comment, photo: photo)
       end
     end
   end
@@ -59,10 +56,6 @@ RSpec.describe "Dashboard", :type => :request do
           href: destroy_user_session_path(locale: I18n.locale) }
       it { should_not have_selector sign_in_button_selector }
 
-      # Sidebar
-      it { should have_link(I18n.translate('categories'),
-          href: categories_path(locale: I18n.locale)) }
-
       describe "followed by sign out" do
         before { click_link I18n.translate('sign_out') }
 
@@ -87,8 +80,6 @@ RSpec.describe "Dashboard", :type => :request do
       let(:sidebar_item_selector) { '.dashboard-sidebar > ul > li > a' }
 
       it { should have_selector sidebar_item_selector,
-          text: /#{I18n.translate('categories')}/i }
-      it { should have_selector sidebar_item_selector,
           text: /#{I18n.translate('photo_albums')}/i }
       it { should have_selector sidebar_item_selector,
           text: /#{I18n.translate('photos')}/i }
@@ -96,71 +87,6 @@ RSpec.describe "Dashboard", :type => :request do
           text: /#{I18n.translate('comments')}/i }
       it { should have_selector ".draft-comment-counter",
           text: /#{draft_comment_count}/i }
-    end
-
-    describe "categories" do
-      let(:all_categories) { Category.all }
-
-      before { click_link I18n.translate('categories') }
-
-      it { should have_selector '.dashboard-table.categories' }
-
-      it "should render all categories" do
-        all_categories.each do |category|
-          expect(page).to have_content category.id
-          expect(page).to have_content category.name
-        end
-      end
-
-      describe "controls" do
-        it { should have_link I18n.translate('actions.create'),
-            href: new_category_path(locale: I18n.locale) }
-        it { should have_link I18n.translate('actions.edit'), href: '#' }
-        it { should have_link I18n.translate('actions.delete'), href: '#' }
-
-        it { should have_selector "a.btn-edit[disabled='disabled']" }
-        it { should have_selector "a.btn-delete[disabled='disabled']" }
-      end
-
-      describe "creating new category" do
-        before { click_link I18n.translate('actions.create') }
-
-        let(:submit) { I18n.translate('actions.create') }
-
-        it { should have_content I18n.translate('category.creating') }
-        it { should have_selector "form[action='#{categories_path(locale: I18n.locale)}']" }
-
-        describe "with invalid information" do
-          it "should not create a category" do
-            expect { click_button submit }.not_to change(Category, :count)
-          end
-
-          describe "after submission" do
-            before { click_button submit }
-
-            it { should have_content I18n.translate('category.creating') }
-            it { should have_selector 'form .alert.alert-danger' }
-          end
-        end
-
-        describe "with valid information" do
-          before do
-            fill_in I18n.translate('activerecord.attributes.category.name'),
-                with: 'Test Category'
-          end
-
-          it "should create a category" do
-            expect { click_button submit }.to change(Category, :count).by(1)
-          end
-
-          describe "after saving the category" do
-            before { click_button submit }
-
-            it { should have_content I18n.translate('category.flash.actions.create.notice') }
-            it { should have_selector '.dashboard-table.categories' }
-          end
-        end
-      end
     end
 
     describe "photo albums" do

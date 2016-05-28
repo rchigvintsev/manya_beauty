@@ -1,9 +1,0 @@
-<h2><%= @category.name %></h2>
-
-<div class="form-group">
-  <strong><%= t 'activerecord.attributes.category.name' %>:</strong>
-  <%= @category.name %>
-</div>
-
-<%= link_to t('actions.edit'), edit_category_path(@category), class: 'btn btn-primary' %>
-<%= link_to t('actions.cancel'), categories_path, class: 'btn btn-default' %>

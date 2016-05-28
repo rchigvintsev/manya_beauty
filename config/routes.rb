@@ -73,7 +73,6 @@ Rails.application.routes.draw do
   end
 
   scope '/admin/dashboard' do
-    resources :categories
     resources :photo_albums
     resources :photos
     resources :comments do

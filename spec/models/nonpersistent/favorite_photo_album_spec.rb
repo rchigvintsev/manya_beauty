@@ -5,13 +5,11 @@ RSpec.describe FavoritePhotoAlbum, :type => :model do
 
   subject { @favorite_photo_album }
 
-  it { should respond_to(:category) }
   it { should respond_to(:name) }
   it { should respond_to(:description) }
   it { should respond_to(:cover_photo) }
   it { should respond_to(:photos) }
 
-  its(:category) { should be_nil }
   its(:name) { should eq I18n.translate('photo_album.favorite.name') }
   its(:description) { should eq I18n.translate('photo_album.favorite.description') }
 

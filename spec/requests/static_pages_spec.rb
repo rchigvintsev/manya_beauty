@@ -98,14 +98,11 @@ RSpec.describe "StaticPages", :type => :request do
 
   describe "Gallery page" do
     before(:all) do
-      3.times do
-        category = FactoryGirl.create(:category)
-        5.times do
-          photo_album = FactoryGirl.create(:photo_album, category: category)
-          7.times do |i|
-            photo = FactoryGirl.create(:photo, photo_album: photo_album,
-                favorite: (i % 2 == 0))
-          end
+      15.times do
+        photo_album = FactoryGirl.create(:photo_album)
+        7.times do |i|
+          photo = FactoryGirl.create(:photo, photo_album: photo_album,
+              favorite: (i % 2 == 0))
         end
       end
     end
@@ -122,24 +119,6 @@ RSpec.describe "StaticPages", :type => :request do
       describe "Gallery page menu item should be activated" do
         it { should have_selector('li.active', text: I18n.translate('gallery_page')) }
         it { should_not have_selector('li.active', text: I18n.translate('home_page')) }
-      end
-    end
-
-    describe "categories" do
-      let(:all_categories) { Category.all }
-
-      it { should have_content I18n.translate('categories') }
-
-      it "should render all categories" do
-        all_categories.each do |category|
-          expect(page).to have_link(category.name,
-              href: gallery_path(category_id: category.id, locale: I18n.locale))
-        end
-      end
-
-      it "should render special category to show all photo albums" do
-        expect(page).to have_link(I18n.translate('category.all'),
-            href: gallery_path(locale: I18n.locale))
       end
     end
 
@@ -173,7 +152,7 @@ RSpec.describe "StaticPages", :type => :request do
         end
 
         it "should render breadcrumbs" do
-          expect(page).to have_selector "ol[class='breadcrumb'] > li", count: 4
+          expect(page).to have_selector "ol[class='breadcrumb'] > li", count: 3
 
           expect(page).to have_selector "ol[class='breadcrumb'] > li > " +
               "a[href='#{root_path(locale: I18n.locale)}']",
@@ -181,9 +160,6 @@ RSpec.describe "StaticPages", :type => :request do
           expect(page).to have_selector "ol[class='breadcrumb'] > li > " +
               "a[href='#{gallery_path(locale: I18n.locale)}']",
               text: I18n.translate('gallery_page')
-          expect(page).to have_selector "ol[class='breadcrumb'] > li > " +
-              "a[href='#{gallery_path(category_id: photo_album.category.id, locale: I18n.locale)}']",
-              text: photo_album.category.name
           expect(page).to have_selector "ol[class='breadcrumb'] > li.active",
               text: photo_album.name
         end

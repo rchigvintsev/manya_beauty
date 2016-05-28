@@ -1,18 +1,9 @@
 require_relative '../lib/text_utils.rb'
 
 FactoryGirl.define do
-  factory :category do
-    sequence(:name) { |n| "Category #{n}" }
-  end
-
-  factory :invalid_category, parent: :category do
-    name nil
-  end
-
   factory :photo_album do
     sequence(:name) { |n| "Photo album #{n}" }
     description TextUtils::truncate(Faker::Lorem.paragraph(1 + Random.rand(3)))
-    category
   end
 
   factory :invalid_photo_album, parent: :photo_album do
