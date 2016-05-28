@@ -46,10 +46,6 @@ Icon `app/assets/images/mail.png` is included in [Miu Flat Social]
 (http://linhpham.me/social) icon set that is free for personal and commercial
 use.
 
-Background pattern `app/assets/images/symphony.png` was taken from
-[Subtle Patterns](http://subtlepatterns.com/). It is licensed under a
-[CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/) license.
-
 Logo `app/assets/images/tailor-logo.png` is a derivative of
 [Vintage tailor symbols]
 (http://www.freepik.com/free-vector/vintage-tailor-symbols-set_714459.htm) set
