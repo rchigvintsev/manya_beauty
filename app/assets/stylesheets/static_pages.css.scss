@@ -190,7 +190,48 @@
 /* Gallery page */
 
 .gallery {
-  padding: 40px 0;
+  padding: 0 0 40px 0;
+
+  .breadcrumb-container {
+    margin: 0 0 40px 0;
+    background-color: #fff;
+
+    .breadcrumb {
+      padding-top: 10px;
+      padding-bottom: 20px;
+      margin-bottom: 0;
+      background-color: #fff;
+      border-radius: initial;
+
+      li {
+        font-size: 15px;
+        text-transform: uppercase;
+
+        a {
+          text-decoration: none;
+          color: inherit;
+
+          &:hover, &:focus {
+            color: $primary_color_light;
+          }
+        }
+
+        &.active {
+          color: $primary_color_light;
+        }
+      }
+    }
+  }
+
+  .gallery-caption {
+    background-color: #fff;
+    margin: 0 0 40px 0;
+
+    p {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+  }
 }
 
 /* About me page */

@@ -1,7 +1,7 @@
-<% @photo_albums.each_slice(2) do |slice| %>
+<% @photo_albums.each_slice(3) do |slice| %>
   <div class="row">
     <% slice.each do |photo_album| %>
-      <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="col-xs-12 col-sm-4 col-md-4">
         <div class="thumbnail <%= !photo_album.cover_photo.nil? ? 'photo-album' : 'fallback-photo' %>">
           <a href="<%= gallery_photo_album_path(photo_album) %>">
             <img alt="<%= photo_album.name %>"

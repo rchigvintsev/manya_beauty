@@ -1,17 +1,7 @@
 <div class="gallery">
-  <div class="photo-album-caption row no-margins">
+  <div class="gallery-caption row">
     <div class="col-md-12">
       <p class="text-center h3"><%= @photo_album.name %></p>
-    </div>
-  </div>
-
-  <div class="breadcrumb-container row">
-    <div class="col-md-12 no-padding">
-      <ol class="breadcrumb">
-        <li><a href="<%= root_path %>"><%= t('home_page') %></a></li>
-        <li><a href="<%= gallery_path %>"><%= t('gallery_page') %></a></li>
-        <li class="active"><%= @photo_album.name %></li>
-      </ol>
     </div>
   </div>
 
