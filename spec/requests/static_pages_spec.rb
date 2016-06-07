@@ -151,19 +151,6 @@ RSpec.describe "StaticPages", :type => :request do
           expect(page).to have_content photo_album.name
         end
 
-        it "should render breadcrumbs" do
-          expect(page).to have_selector "ol[class='breadcrumb'] > li", count: 3
-
-          expect(page).to have_selector "ol[class='breadcrumb'] > li > " +
-              "a[href='#{root_path(locale: I18n.locale)}']",
-              text: I18n.translate('home_page')
-          expect(page).to have_selector "ol[class='breadcrumb'] > li > " +
-              "a[href='#{gallery_path(locale: I18n.locale)}']",
-              text: I18n.translate('gallery_page')
-          expect(page).to have_selector "ol[class='breadcrumb'] > li.active",
-              text: photo_album.name
-        end
-
         it "should render all photos in photo album" do
           photo_album.photos.each do |photo|
             expect(page).to have_selector "a[href='#{photo.photo_file_url}'] > " +
