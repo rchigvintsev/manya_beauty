@@ -18,7 +18,7 @@
             method: :delete, disabled: 'disabled',
             data: { confirm: t('photo.confirm.actions.destroy') } %>
       </li>
-    <ul>
+    </ul>
   </div>
 </div>
 
@@ -29,7 +29,7 @@
       <th><%= t 'activerecord.attributes.photo.id' %></th>
       <th><%= t 'activerecord.attributes.photo.title' %></th>
       <th><%= t 'activerecord.attributes.photo.photo_file' %></th>
-      <th><%= t 'activerecord.attributes.photo.photo_album' %></th>
+      <th><%= t 'activerecord.attributes.photo.model' %></th>
       <th><%= t 'photo.thumbnail' %></th>
     </tr>
   </thead>
@@ -46,10 +46,10 @@
         <td class="id"><%= photo.id %></td>
         <td><%= photo.title %></td>
         <td><%= photo.photo_file %></td>
-        <td><%= photo.photo_album.name %></td>
+        <td><%= photo.model.name %></td>
         <td>
           <div class="photo-thumbnail">
-            <img src="<%= photo.photo_file_url(:thumb) %>"></img>
+            <img src="<%= photo.photo_file_url(:thumb) %>">
           </div>
         </td>
       </tr>

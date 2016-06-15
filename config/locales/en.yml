@@ -93,6 +93,13 @@ en:
       name: "Latest works"
       description: ""
 
+  models: "Models"
+
+  model:
+    confirm:
+      actions:
+        destroy: "Do you really want to destroy selected model?"
+
   photos: "Photos"
 
   photo:
@@ -177,13 +184,19 @@ en:
         id: "Identifier"
         name: "Name"
         description: "Description"
+      model:
+        id: "Identifier"
+        name: "Name"
+        description: "Description"
+        photo_album: "Photo album"
+        photo_album_id: "Photo album"
       photo:
         id: "Identifier"
         title: "Title"
         description: "Description"
         photo_file: "File"
-        photo_album: "Photo album"
-        photo_album_id: "Photo album"
+        model: "Model"
+        model_id: "Model"
         favorite: "Favorite photo"
       comment:
         id: "Identifier"

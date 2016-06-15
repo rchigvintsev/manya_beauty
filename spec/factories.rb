@@ -10,12 +10,22 @@ FactoryGirl.define do
     name nil
   end
 
+  factory :model do
+    sequence(:name) { |n| "Model #{n}" }
+    description TextUtils::truncate(Faker::Lorem.paragraph(1 + Random.rand(3)))
+    photo_album
+  end
+
+  factory :invalid_model, parent: :model do
+    name nil
+  end
+
   factory :photo do
     sequence(:title) { |n| "Title #{n}" }
     description TextUtils::truncate(Faker::Lorem.paragraph(1 + Random.rand(3)))
     photo_file File.open(Dir.glob('spec/fixtures/files/*.jpg')[0])
     favorite false
-    photo_album
+    model
   end
 
   factory :invalid_photo, parent: :photo do

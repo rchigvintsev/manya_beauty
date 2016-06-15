@@ -96,13 +96,12 @@ RSpec.describe "StaticPages", :type => :request do
     end
   end
 
-  describe "Gallery page" do
+  describe 'Gallery page' do
     before(:all) do
       15.times do
-        photo_album = FactoryGirl.create(:photo_album)
+        model = FactoryGirl.create(:model)
         7.times do |i|
-          photo = FactoryGirl.create(:photo, photo_album: photo_album,
-              favorite: (i % 2 == 0))
+          FactoryGirl.create(:photo, model: model, favorite: (i % 2 == 0))
         end
       end
     end
@@ -132,29 +131,12 @@ RSpec.describe "StaticPages", :type => :request do
         end
       end
 
-      describe "covers" do
-        it "should render first photo in photo album" do
+      describe 'covers' do
+        it 'should render first photo in photo album' do
           all_photo_albums.each do |photo_album|
             expect(page).to have_selector "a[href=" +
                 "'#{gallery_photo_album_path(photo_album, locale: I18n.locale)}'] > " +
-                "img[src='#{photo_album.photos.first.photo_file_url(:thumb)}']"
-          end
-        end
-      end
-
-      describe "photos" do
-        let(:photo_album) { PhotoAlbum.first }
-
-        before { visit gallery_photo_album_path(photo_album) }
-
-        it "should render photo album name" do
-          expect(page).to have_content photo_album.name
-        end
-
-        it "should render all photos in photo album" do
-          photo_album.photos.each do |photo|
-            expect(page).to have_selector "a[href='#{photo.photo_file_url}'] > " +
-                "img[src='#{photo.photo_file_url(:thumb)}']"
+                "img[src='#{photo_album.models.first.photos.first.photo_file_url(:thumb)}']"
           end
         end
       end

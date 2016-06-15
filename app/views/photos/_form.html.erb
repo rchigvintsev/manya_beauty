@@ -12,9 +12,9 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :photo_album_id, class: 'control-label' %>
-    <%= f.select :photo_album_id, options_from_collection_for_select(PhotoAlbum.all,
-        :id, :name, @photo.photo_album_id), {}, class: 'form-control' %>
+    <%= f.label :model_id, class: 'control-label' %>
+    <%= f.select :model_id, options_from_collection_for_select(Model.all,
+        :id, :name, @photo.model_id), {}, class: 'form-control' %>
   </div>
 
   <div class="checkbox">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160528091522) do
+ActiveRecord::Schema.define(version: 20160607081029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20160528091522) do
 
   add_index "comments", ["photo_id", "created_at"], name: "index_comments_on_photo_id_and_created_at", using: :btree
 
+  create_table "models", force: true do |t|
+    t.integer  "photo_album_id"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "photo_albums", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -37,16 +45,16 @@ ActiveRecord::Schema.define(version: 20160528091522) do
   end
 
   create_table "photos", force: true do |t|
-    t.integer  "photo_album_id"
     t.string   "title"
     t.string   "description"
     t.string   "photo_file"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "favorite"
+    t.integer  "model_id"
   end
 
-  add_index "photos", ["photo_album_id", "created_at"], name: "index_photos_on_photo_album_id_and_created_at", using: :btree
+  add_index "photos", ["model_id", "created_at"], name: "index_photos_on_model_id_and_created_at", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

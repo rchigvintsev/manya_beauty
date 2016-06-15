@@ -70,6 +70,13 @@ ru:
       name: "Новинки"
       description: ""
 
+  models: "Модели"
+
+  model:
+    confirm:
+      actions:
+        destroy: "Вы действительно хотите удалить выбранную модель?"
+
   photos: "Фотографии"
 
   photo:
@@ -154,13 +161,19 @@ ru:
         id: "Идентификатор"
         name: "Имя"
         description: "Описание"
+      model:
+        id: "Идентификатор"
+        name: "Имя"
+        description: "Описание"
+        photo_album: "Фотоальбом"
+        photo_album_id: "Фотоальбом"
       photo:
         id: "Идентификатор"
         title: "Заголовок"
         description: "Описание"
         photo_file: "Файл"
-        photo_album: "Фотоальбом"
-        photo_album_id: "Фотоальбом"
+        model: "Модель"
+        model_id: "Модель"
         favorite: "Избранная фотография"
       comment:
         id: "Идентификатор"

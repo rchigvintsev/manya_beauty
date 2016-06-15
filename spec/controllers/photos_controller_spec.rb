@@ -5,11 +5,12 @@ RSpec.describe PhotosController, :type => :controller do
 
   let(:user) { FactoryGirl.create(:admin) }
   let(:photo_album) { FactoryGirl.create(:photo_album) }
+  let(:model) { FactoryGirl.create(:model, photo_album: photo_album) }
   let(:photo_params) do
     {
       title: 'Test Photo',
       photo_file: fixture_file_upload('files/dirt-bike-690770.jpg', 'image/jpg'),
-      photo_album_id: photo_album.id
+      model_id: model.id
     }
   end
   let(:invalid_photo_params) {{ title: 'Test Photo' }}

@@ -13,30 +13,30 @@ RSpec.describe PhotoAlbum, :type => :model do
   it { should respond_to(:name) }
   it { should respond_to(:description) }
   it { should respond_to(:cover_photo) }
-  it { should respond_to(:photos) }
+  it { should respond_to(:models) }
 
   it { should be_valid }
 
-  describe "with blank name" do
+  describe 'with blank name' do
     before { @photo_album.name = '' }
 
     it { should_not be_valid }
   end
 
-  describe "photo associations" do
+  describe 'model associations' do
     before { @photo_album.save! }
 
-    let!(:photo) { FactoryGirl.create :photo, photo_album: @photo_album }
+    let!(:model) { FactoryGirl.create :model, photo_album: @photo_album }
 
-    it "should have associated photos" do
-      expect(@photo_album.photos.to_a).to eq [photo]
+    it 'should have associated models' do
+      expect(@photo_album.models.to_a).to eq [model]
     end
 
-    it "should destroy associated photos" do
-      associated_photos = @photo_album.photos.to_a
+    it 'should destroy associated models' do
+      associated_models = @photo_album.models.to_a
       @photo_album.destroy
-      expect(associated_photos).not_to be_empty
-      associated_photos.each { |p| expect(Photo.where(id: p.id)).to be_empty }
+      expect(associated_models).not_to be_empty
+      associated_models.each { |m| expect(Model.where(id: m.id)).to be_empty }
     end
   end
 end

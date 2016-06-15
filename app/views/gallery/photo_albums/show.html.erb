@@ -6,14 +6,7 @@
   </div>
 
   <div id="links">
-    <% @photo_album.photos.each do |photo| %>
-      <a href="<%= photo.photo_file_url %>"
-         title="<%= photo.title %>"
-         data-description="<%= photo.description %>"
-         data-comments-href="<%= gallery_photo_comments_path(photo) %>"
-         data-photo-id="<%= photo.id %>">
-        <%= image_tag photo.photo_file_url(:thumb) %>
-      </a>
+    <% @photo_album.models.each do |model| %>
     <% end %>
   </div>
 

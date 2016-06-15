@@ -1,12 +1,13 @@
 require 'rails_helper'
 require 'carrierwave/test/matchers'
 
-RSpec.describe "PhotoUploader", :type => :uploader do
+RSpec.describe 'PhotoUploader', :type => :uploader do
   include CarrierWave::Test::Matchers
 
   before do
     photo_album = PhotoAlbum.new(name: 'Test Photo Album')
-    photo = photo_album.photos.build(title: 'Test Photo')
+    model = photo_album.models.build(name: 'Test Model')
+    photo = model.photos.build(title: 'Test Photo')
 
     PhotoUploader.enable_processing = true
     @uploader = PhotoUploader.new(photo, :photo_file)
@@ -21,8 +22,8 @@ RSpec.describe "PhotoUploader", :type => :uploader do
     @uploader.remove!
   end
 
-  describe "the thumb version" do
-    it "should scale down an image to fit within 320 by 213 pixels" do
+  describe 'the thumb version' do
+    it 'should scale down an image to fit within 320 by 213 pixels' do
       expect(@uploader.thumb).to be_no_larger_than(320, 213)
     end
   end

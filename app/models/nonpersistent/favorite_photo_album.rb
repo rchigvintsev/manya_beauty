@@ -13,8 +13,10 @@ class FavoritePhotoAlbum
     @cover_photo ||= Photo.where(favorite: true).first
   end
 
-  def photos
-    Photo.where(favorite: true)
+  def models
+    models = []
+    Photo.where(favorite: true).each { |photo| models << photo.model }
+    models.uniq
   end
 
   def to_s

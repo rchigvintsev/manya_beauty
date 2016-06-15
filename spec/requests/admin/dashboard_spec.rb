@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe "Dashboard", :type => :request do
+RSpec.describe 'Dashboard', :type => :request do
   subject { page }
 
   before(:all) do
     9.times do
-      photo_album = FactoryGirl.create(:photo_album)
+      model = FactoryGirl.create(:model)
       3.times do
-        photo = FactoryGirl.create(:photo, photo_album: photo_album)
+        photo = FactoryGirl.create(:photo, model: model)
         2.times { FactoryGirl.create(:published_comment, photo: photo) }
         FactoryGirl.create(:draft_comment, photo: photo)
       end

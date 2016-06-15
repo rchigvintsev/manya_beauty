@@ -74,6 +74,7 @@ Rails.application.routes.draw do
 
   scope '/admin/dashboard' do
     resources :photo_albums
+    resources :models
     resources :photos
     resources :comments do
       member do

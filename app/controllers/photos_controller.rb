@@ -70,7 +70,6 @@ class PhotosController < ApplicationController
     end
 
     def photo_params
-      params.require(:photo).permit(:title, :description, :photo_file,
-          :photo_album_id, :favorite)
+      params.require(:photo).permit(:title, :description, :photo_file, :model_id, :favorite)
     end
 end
