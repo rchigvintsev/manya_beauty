@@ -73,6 +73,19 @@ ru:
   models: "Модели"
 
   model:
+    creating: "Создание модели"
+    editing: "Редактирование модели"
+    failed_to:
+      create: "новую модель"
+      update: "модель"
+    flash:
+      actions:
+        update:
+          notice: "Модель была успешно обновлена"
+        create:
+          notice: "Новая модель была успешно сохранена"
+        destroy:
+          notice: "Модель была успешно удалена"
     confirm:
       actions:
         destroy: "Вы действительно хотите удалить выбранную модель?"

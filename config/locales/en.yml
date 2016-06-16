@@ -96,6 +96,19 @@ en:
   models: "Models"
 
   model:
+    creating: "Model creating"
+    editing: "Model editing"
+    failed_to:
+      create: "model"
+      update: "model"
+    flash:
+      actions:
+        update:
+          notice: "Model was successfully updated"
+        create:
+          notice: "Model was successfully created"
+        destroy:
+          notice: "Model was successfully destroyed"
     confirm:
       actions:
         destroy: "Do you really want to destroy selected model?"

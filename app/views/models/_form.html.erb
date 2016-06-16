@@ -1,0 +1,24 @@
+<%= form_for(@model, url: { action: (new_model ? :create : :update) }, page: params[:page]) do |f| %>
+    <%= render 'shared/form_errors', model: @model, new_model: new_model %>
+
+    <div class="form-group">
+      <%= f.label :name, class: 'control-label' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, class: 'control-label' %>
+      <%= f.text_area :description, class: 'form-control', rows: 5 %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :photo_album_id, class: 'control-label' %>
+      <%= f.select :photo_album_id,
+                   options_from_collection_for_select(PhotoAlbum.all, :id, :name, @model.photo_album_id),
+                   {},
+                   class: 'form-control' %>
+    </div>
+
+    <%= f.submit t("actions.#{new_model ? 'create' : 'save'}"), class: 'btn btn-success' %>
+    <%= link_to t('actions.cancel'), models_path(page: params[:page]), class: 'btn btn-default' %>
+<% end %>

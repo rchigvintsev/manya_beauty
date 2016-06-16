@@ -1,0 +1,19 @@
+<h2><%= @model.name %></h2>
+
+<div class="form-group">
+  <strong><%= t 'activerecord.attributes.model.name' %>:</strong>
+  <%= @model.name %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'activerecord.attributes.model.description' %>:</strong>
+  <%= @model.description %>
+</div>
+
+<div class="form-group">
+  <strong><%= t 'activerecord.attributes.model.photo_album' %>:</strong>
+  <%= @model.photo_album.name %>
+</div>
+
+<%= link_to t('actions.edit'), edit_model_path(@model, page: params[:page]), class: 'btn btn-primary' %>
+<%= link_to t('actions.cancel'), models_path(page: params[:page]), class: 'btn btn-default' %>

@@ -7,7 +7,7 @@ module PaginationUtils extend ActiveSupport::Concern
     end
 
     def last_page(model)
-      if not model
+      unless model
         return nil
       end
       model_class = model.to_s.camelize.constantize
