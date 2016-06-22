@@ -6,25 +6,21 @@
   <div class="col-md-6">
     <ul class="pull-right">
       <li>
-        <%= link_to t('actions.edit'), '#', class: 'btn btn-primary btn-edit',
-            disabled: 'disabled' %>
+        <%= link_to t('actions.edit'), '#', class: 'btn btn-primary btn-edit hidden' %>
       </li>
       <li>
-        <%= link_to t('actions.publish'), '#', method: :post,
-            class: 'btn btn-success btn-publish', disabled: 'disabled',
+        <%= link_to t('actions.publish'), '#', method: :post, class: 'btn btn-success btn-publish hidden',
             data: { confirm: t('comment.confirm.actions.publish') } %>
       </li>
       <li>
-        <%= link_to t('actions.unpublish'), '#', method: :post,
-            class: 'btn btn-default btn-unpublish', disabled: 'disabled',
+        <%= link_to t('actions.unpublish'), '#', method: :post, class: 'btn btn-default btn-unpublish hidden',
             data: { confirm: t('comment.confirm.actions.unpublish') } %>
       </li>
       <li>
-        <%= link_to t('actions.delete'), '#', class: 'btn btn-danger btn-delete',
-            method: :delete, disabled: 'disabled',
+        <%= link_to t('actions.delete'), '#', class: 'btn btn-danger btn-delete hidden', method: :delete,
             data: { confirm: t('comment.confirm.actions.destroy') } %>
       </li>
-    <ul>
+    </ul>
   </div>
 </div>
 
@@ -54,7 +50,7 @@
             l(comment.published_at, format: date_time_format) %></td>
         <td>
           <div class="photo-thumbnail">
-            <img src="<%= comment.photo.photo_file_url(:thumb) %>"></img>
+            <img src="<%= comment.photo.photo_file_url(:thumb) %>">
           </div>
         </td>
       </tr>

@@ -11,11 +11,11 @@ $ ->
     $unpublishBtn = $('.dashboard-table-header .btn-unpublish')
 
     if $row.hasClass 'published'
-      $publishBtn.attr 'disabled', 'disabled'
-      $unpublishBtn.removeAttr 'disabled'
+      $publishBtn.addClass 'hidden'
+      $unpublishBtn.removeClass 'hidden'
     else
-      $publishBtn.removeAttr 'disabled'
-      $unpublishBtn.attr 'disabled', 'disabled'
+      $publishBtn.removeClass 'hidden'
+      $unpublishBtn.addClass 'hidden'
 
     id = $row.find('td.id').text()
     if id

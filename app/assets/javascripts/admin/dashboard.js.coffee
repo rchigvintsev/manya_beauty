@@ -10,7 +10,7 @@ $ ->
     $row.siblings('.active').removeClass 'active'
     $row.addClass 'active'
 
-    $('.dashboard-table-header .btn-edit, .dashboard-table-header .btn-delete').removeAttr 'disabled'
+    $('.dashboard-table-header .btn-edit, .dashboard-table-header .btn-delete').removeClass 'hidden'
 
     id = $row.find('td.id').text()
     if id

@@ -31,8 +31,8 @@ RSpec.describe 'Models', :type => :request do
       it { should have_link I18n.translate('actions.edit'), href: '#' }
       it { should have_link I18n.translate('actions.delete'), href: '#' }
 
-      it { should have_selector "a.btn-edit[disabled='disabled']" }
-      it { should have_selector "a.btn-delete[disabled='disabled']" }
+      it { should have_selector 'a.btn-edit.hidden' }
+      it { should have_selector 'a.btn-delete.hidden' }
     end
 
     describe 'creating new model' do

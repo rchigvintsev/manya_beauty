@@ -103,14 +103,13 @@ RSpec.describe 'Dashboard', :type => :request do
         end
       end
 
-      describe "controls" do
-        it { should have_link I18n.translate('actions.create'),
-            href: new_photo_album_path(locale: I18n.locale) }
+      describe 'controls' do
+        it { should have_link I18n.translate('actions.create'), href: new_photo_album_path(locale: I18n.locale) }
         it { should have_link I18n.translate('actions.edit'), href: '#' }
         it { should have_link I18n.translate('actions.delete'), href: '#' }
 
-        it { should have_selector "a.btn-edit[disabled='disabled']" }
-        it { should have_selector "a.btn-delete[disabled='disabled']" }
+        it { should have_selector 'a.btn-edit.hidden' }
+        it { should have_selector 'a.btn-delete.hidden' }
       end
 
       describe "creating new photo album" do
@@ -167,14 +166,14 @@ RSpec.describe 'Dashboard', :type => :request do
         end
       end
 
-      describe "controls" do
+      describe 'controls' do
         it { should have_link I18n.translate('actions.create'),
             href: new_photo_path(locale: I18n.locale) }
         it { should have_link I18n.translate('actions.edit'), href: '#' }
         it { should have_link I18n.translate('actions.delete'), href: '#' }
 
-        it { should have_selector "a.btn-edit[disabled='disabled']" }
-        it { should have_selector "a.btn-delete[disabled='disabled']" }
+        it { should have_selector 'a.btn-edit.hidden' }
+        it { should have_selector 'a.btn-delete.hidden' }
       end
 
       describe "creating new photo" do
@@ -242,16 +241,16 @@ RSpec.describe 'Dashboard', :type => :request do
         end
       end
 
-      describe "controls" do
+      describe 'controls' do
         it { should have_link I18n.translate('actions.edit'), href: '#' }
         it { should have_link I18n.translate('actions.publish'), href: '#' }
         it { should have_link I18n.translate('actions.unpublish'), href: '#' }
         it { should have_link I18n.translate('actions.delete'), href: '#' }
 
-        it { should have_selector "a.btn-edit[disabled='disabled']" }
-        it { should have_selector "a.btn-publish[disabled='disabled']" }
-        it { should have_selector "a.btn-unpublish[disabled='disabled']" }
-        it { should have_selector "a.btn-delete[disabled='disabled']" }
+        it { should have_selector 'a.btn-edit.hidden' }
+        it { should have_selector 'a.btn-publish.hidden' }
+        it { should have_selector 'a.btn-unpublish.hidden' }
+        it { should have_selector 'a.btn-delete.hidden' }
       end
     end
   end
