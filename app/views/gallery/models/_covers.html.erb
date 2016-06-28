@@ -1,0 +1,21 @@
+<% @photo_album.models.each_slice(3) do |slice| %>
+    <div class="row">
+      <% slice.each do |model| %>
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="thumbnail fallback-photo">
+              <a href="<%= gallery_model_path(model) %>">
+                <img alt="<%= model.name %>" src="<%= image_url('fallback/default.png') %>"/>
+              </a>
+              <div class="caption">
+                <h3>
+                  <a href="<%= gallery_model_path(model) %>" class="entity-name">
+                    <%= model.name %>
+                  </a>
+                </h3>
+                <p><%= model.description %></p>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+<% end %>

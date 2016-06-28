@@ -16,7 +16,7 @@ $ ->
 
       onopened: ->
         # Without this line of code the opened slide cannot be scrolled down
-        # immediately by mouse wheel.
+        # immediately by the mouse wheel.
         $(this.slides[this.index]).find('.modal').mousewheel ->
 
       onslide: (index, slide) ->

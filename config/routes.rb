@@ -62,8 +62,8 @@ Rails.application.routes.draw do
   namespace :gallery do
     get '/photo_albums/:id' => 'photo_albums#show', as: 'photo_album'
     get '/photo_albums/favorite' => 'photo_albums#show', as: 'favorite_photo_album'
-    get '/photos/:id/comments' => 'photos#comments',
-        constraints: -> (req) { req.xhr? }, as: 'photo_comments'
+    get '/models/:id' => 'models#show', as: 'model'
+    get '/photos/:id/comments' => 'photos#comments', constraints: -> (req) { req.xhr? }, as: 'photo_comments'
 
     resources :comments
   end

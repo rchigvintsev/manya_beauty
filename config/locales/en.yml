@@ -73,6 +73,7 @@ en:
   photo_albums: "Photo albums"
 
   photo_album:
+    photo_album: "Photo album"
     creating: "Photo album creating"
     editing: "Photo album editing"
     failed_to:
@@ -96,6 +97,7 @@ en:
   models: "Models"
 
   model:
+    model: "Model"
     creating: "Model creating"
     editing: "Model editing"
     failed_to:

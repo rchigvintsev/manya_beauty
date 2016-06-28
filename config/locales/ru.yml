@@ -50,6 +50,7 @@ ru:
   photo_albums: "Фотоальбомы"
 
   photo_album:
+    photo_album: "Фотоальбом"
     creating: "Создание фотоальбома"
     editing: "Редактирование фотоальбома"
     failed_to:
@@ -73,6 +74,7 @@ ru:
   models: "Модели"
 
   model:
+    model: "Модель"
     creating: "Создание модели"
     editing: "Редактирование модели"
     failed_to:

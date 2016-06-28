@@ -79,14 +79,11 @@ RSpec.describe 'Dashboard', :type => :request do
 
       let(:sidebar_item_selector) { '.dashboard-sidebar > ul > li > a' }
 
-      it { should have_selector sidebar_item_selector,
-          text: /#{I18n.translate('photo_albums')}/i }
-      it { should have_selector sidebar_item_selector,
-          text: /#{I18n.translate('photos')}/i }
-      it { should have_selector sidebar_item_selector,
-          text: /#{I18n.translate('comments')}/i }
-      it { should have_selector ".draft-comment-counter",
-          text: /#{draft_comment_count}/i }
+      it { should have_selector sidebar_item_selector, text: /#{I18n.translate('photo_albums')}/i }
+      it { should have_selector sidebar_item_selector, text: /#{I18n.translate('models')}/i }
+      it { should have_selector sidebar_item_selector, text: /#{I18n.translate('photos')}/i }
+      it { should have_selector sidebar_item_selector, text: /#{I18n.translate('comments')}/i }
+      it { should have_selector ".draft-comment-counter", text: /#{draft_comment_count}/i }
     end
 
     describe "photo albums" do
