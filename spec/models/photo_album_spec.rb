@@ -12,7 +12,6 @@ RSpec.describe PhotoAlbum, :type => :model do
 
   it { should respond_to(:name) }
   it { should respond_to(:description) }
-  it { should respond_to(:cover_photo) }
   it { should respond_to(:models) }
 
   it { should be_valid }

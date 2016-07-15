@@ -5,12 +5,13 @@ class PhotoAlbum < ActiveRecord::Base
 
   default_scope { order('created_at') }
 
-  def cover_photo
-    unless models.empty?
-      first_model = models.first
-      unless first_model.photos.empty?
-        @cover_photo ||= first_model.photos.first
+  def has_at_least_one_photo
+    models.each do |model|
+      unless model.photos.empty?
+        return true
       end
     end
+
+    false
   end
 end

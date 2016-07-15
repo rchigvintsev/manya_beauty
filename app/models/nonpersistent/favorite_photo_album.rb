@@ -9,8 +9,7 @@ class FavoritePhotoAlbum
   attr_reader :name
   attr_reader :description
 
-  def cover_photo
-    @cover_photo ||= Photo.where(favorite: true).first
+  def has_at_least_one_photo
   end
 
   def models

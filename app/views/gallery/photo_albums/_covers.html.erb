@@ -1,22 +1,35 @@
-<% @photo_albums.each_slice(3) do |slice| %>
-  <div class="row">
-    <% slice.each do |photo_album| %>
-      <div class="col-xs-12 col-sm-4 col-md-4">
-        <div class="thumbnail <%= !photo_album.cover_photo.nil? ? 'photo-album' : 'fallback-photo' %>">
-          <a href="<%= gallery_photo_album_path(photo_album) %>">
-            <img alt="<%= photo_album.name %>"
-                 src="<%= photo_album.cover_photo ? photo_album.cover_photo.photo_file_url(:thumb) : image_url('fallback/default.png') %>"/>
-          </a>
-          <div class="caption">
-            <h3>
-              <a href="<%= gallery_photo_album_path(photo_album) %>" class="entity-name">
-                <%= photo_album.name %>
-              </a>
-            </h3>
-            <p><%= photo_album.description %></p>
+<% @photo_albums.each_slice(4) do |slice| %>
+    <div class="row">
+      <% slice.each do |photo_album| %>
+          <div class="col-xs-12 col-sm-4 col-md-3">
+            <div class="thumbnail">
+              <% if not photo_album.has_at_least_one_photo %>
+                  <a id="fallback_photo" class="cover-slide" style="display: block" href="<%= gallery_photo_album_path(photo_album) %>"></a>
+              <% else %>
+                  <div id="owl_carousel">
+                    <% photo_album.models.each do |model| %>
+                        <% unless model.photos.empty? %>
+                            <div class="item">
+                              <a class="cover-slide"
+                                 style="background-image: url(<%= model.photos.first.photo_file_url(:thumb) %>); display: block"
+                                 href="<%= gallery_photo_album_path(photo_album) %>">
+                              </a>
+                            </div>
+                        <% end %>
+                    <% end %>
+                  </div>
+              <% end %>
+
+              <div class="caption">
+                <h3>
+                  <a href="<%= gallery_photo_album_path(photo_album) %>" class="entity-name">
+                    <%= truncate(photo_album.name, length: 40) %>
+                  </a>
+                </h3>
+                <p><%= truncate(photo_album.description, length: 110) %></p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 <% end %>

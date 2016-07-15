@@ -4,29 +4,49 @@
 
 @import 'colors';
 
+.gallery {
+  .thumbnail {
+    min-height: 337px;
+    border-radius: initial;
+    border: none;
+    padding: 0;
+
+    .cover-slide {
+      width: 100%;
+      min-height: 213px;
+      background-position: top center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    #fallback_photo {
+      opacity: 0.5;
+      background-image: image_url('fallback/default.png');
+      background-position: center center;
+      background-size: auto;
+    }
+
+    .caption {
+      a {
+        transition: color 0.3s;
+      }
+
+      a:hover {
+        color: $primary_color_light
+      }
+    }
+  }
+
+  .row:last-child {
+    .thumbnail {
+      margin-bottom: 0;
+    }
+  }
+}
+
 #gallery\/photo_albums\:show {
   .gallery {
     padding-top: 0;
-
-    .thumbnail {
-      border-radius: initial;
-      border: none;
-      margin-bottom: 30px;
-    }
-
-    .row:last-child {
-      .thumbnail {
-        margin-bottom: 0;
-      }
-    }
-
-    .fallback-photo {
-      a {
-        img {
-          opacity: 0.5;
-        }
-      }
-    }
   }
 }
 

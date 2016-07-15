@@ -7,7 +7,6 @@ RSpec.describe FavoritePhotoAlbum, :type => :model do
 
   it { should respond_to(:name) }
   it { should respond_to(:description) }
-  it { should respond_to(:cover_photo) }
   it { should respond_to(:models) }
 
   its(:name) { should eq I18n.translate('photo_album.favorite.name') }
