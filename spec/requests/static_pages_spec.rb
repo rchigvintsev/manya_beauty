@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative '../../lib/text_utils.rb'
 
 RSpec.describe "StaticPages", :type => :request do
   subject { page }
@@ -131,17 +132,31 @@ RSpec.describe "StaticPages", :type => :request do
 
       it 'should render all photo albums' do
         all_photo_albums.each do |photo_album|
-          expect(page).to have_content photo_album.name
-          expect(page).to have_content photo_album.description
+          expect(page).to have_content TextUtils::truncate(photo_album.name, 40)
+          expect(page).to have_content TextUtils::truncate(photo_album.description, 110)
         end
       end
 
       describe 'covers' do
-        it 'should render first photo in photo album' do
-          all_photo_albums.each do |photo_album|
-            expect(page).to have_selector "a[href=" +
-                "'#{gallery_photo_album_path(photo_album, locale: I18n.locale)}'] > " +
-                "img[src='#{photo_album.models.first.photos.first.photo_file_url(:thumb)}']"
+        it 'should render carousel of the first photo from each model in album' do
+          PhotoAlbum.all.each do |photo_album|
+            href = gallery_photo_album_path(photo_album, locale: I18n.locale)
+            expect(page).to have_selector "#owl_carousel .item a[href='#{href}']",
+                                          count: photo_album.models.size
+          end
+        end
+
+        describe 'for photo albums without any photo' do
+          let(:photo_album_without_photos) { FactoryGirl.create(:photo_album) }
+
+          before do
+            FactoryGirl.create(:model, photo_album: photo_album_without_photos)
+            visit gallery_path
+          end
+
+          it 'should render fallback image' do
+            href = gallery_photo_album_path(photo_album_without_photos, locale: I18n.locale)
+            expect(page).to have_selector "a#fallback_photo[href='#{href}']"
           end
         end
       end

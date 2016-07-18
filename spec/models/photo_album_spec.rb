@@ -13,8 +13,13 @@ RSpec.describe PhotoAlbum, :type => :model do
   it { should respond_to(:name) }
   it { should respond_to(:description) }
   it { should respond_to(:models) }
+  it { should respond_to(:has_at_least_one_photo) }
 
   it { should be_valid }
+
+  it 'should not have any photo' do
+    expect(@photo_album.has_at_least_one_photo).to be_falsey
+  end
 
   describe 'with blank name' do
     before { @photo_album.name = '' }
@@ -25,7 +30,15 @@ RSpec.describe PhotoAlbum, :type => :model do
   describe 'model associations' do
     before { @photo_album.save! }
 
-    let!(:model) { FactoryGirl.create :model, photo_album: @photo_album }
+    let!(:model) do
+      model = FactoryGirl.create :model, photo_album: @photo_album
+      FactoryGirl.create :photo, model: model
+      model
+    end
+
+    it 'should have at least one photo' do
+      expect(@photo_album.has_at_least_one_photo).to be_truthy
+    end
 
     it 'should have associated models' do
       expect(@photo_album.models.to_a).to eq [model]
