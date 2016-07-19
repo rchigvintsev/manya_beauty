@@ -183,8 +183,27 @@ RSpec.describe "StaticPages", :type => :request do
 
         it 'should render models' do
           photo_album.models.each do |model|
-            expect(page).to have_content model.name
-            expect(page).to have_content model.description
+            expect(page).to have_content TextUtils::truncate(model.name, 40)
+            expect(page).to have_content TextUtils::truncate(model.description, 110)
+          end
+        end
+
+        describe 'covers' do
+          it 'should render first photo in model' do
+            photo_album.models.each do |model|
+              expect(page).to have_selector "a[href='#{gallery_model_path(model, locale: I18n.locale)}']"
+            end
+          end
+
+          describe 'for models without any photo' do
+            let!(:model_without_photos) { FactoryGirl.create(:model, photo_album: photo_album) }
+
+            before { visit gallery_photo_album_path(photo_album) }
+
+            it 'should render fallback image' do
+              href = gallery_model_path(model_without_photos, locale: I18n.locale)
+              expect(page).to have_selector "a#fallback_photo[href='#{href}']"
+            end
           end
         end
 

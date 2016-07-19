@@ -1,18 +1,27 @@
-<% @photo_album.models.each_slice(3) do |slice| %>
+<% @photo_album.models.each_slice(4) do |slice| %>
     <div class="row">
       <% slice.each do |model| %>
-          <div class="col-xs-12 col-sm-4 col-md-4">
-            <div class="thumbnail fallback-photo">
-              <a href="<%= gallery_model_path(model) %>">
-                <img alt="<%= model.name %>" src="<%= image_url('fallback/default.png') %>"/>
-              </a>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="thumbnail">
+              <% if model.photos.empty? %>
+                  <a id="fallback_photo"
+                     class="cover-slide"
+                     href="<%= gallery_model_path(model) %>">
+                  </a>
+              <% else %>
+                  <a class="cover-slide"
+                     style="background-image: url(<%= model.cover_photo.photo_file_url(:thumb) %>)"
+                     href="<%= gallery_model_path(model) %>">
+                  </a>
+              <% end %>
+
               <div class="caption">
                 <h3>
                   <a href="<%= gallery_model_path(model) %>" class="entity-name">
-                    <%= model.name %>
+                    <%= truncate(model.name, length: 40) %>
                   </a>
                 </h3>
-                <p><%= model.description %></p>
+                <p><%= truncate(model.description, length: 110) %></p>
               </div>
             </div>
           </div>

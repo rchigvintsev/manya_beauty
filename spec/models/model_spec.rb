@@ -16,10 +16,15 @@ RSpec.describe Model, :type => :model do
   it { should respond_to(:name) }
   it { should respond_to(:description) }
   it { should respond_to(:photos) }
+  it { should respond_to(:cover_photo) }
 
   its(:photo_album) { should eq photo_album }
 
   it { should be_valid }
+
+  it 'should not have cover photo' do
+    expect(@model.cover_photo).to be_nil
+  end
 
   describe 'when photo_album_id is not present' do
     before { @model.photo_album_id = nil }
@@ -40,6 +45,10 @@ RSpec.describe Model, :type => :model do
 
     it 'should have associated photos' do
       expect(@model.photos.to_a).to eq [photo]
+    end
+
+    it 'should have cover photo' do
+      expect(@model.cover_photo).to_not be_nil
     end
 
     it 'should destroy associated photos' do

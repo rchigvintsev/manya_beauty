@@ -1,17 +1,20 @@
 <% @photo_albums.each_slice(4) do |slice| %>
     <div class="row">
       <% slice.each do |photo_album| %>
-          <div class="col-xs-12 col-sm-4 col-md-3">
+          <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="thumbnail">
               <% if not photo_album.has_at_least_one_photo %>
-                  <a id="fallback_photo" class="cover-slide" style="display: block" href="<%= gallery_photo_album_path(photo_album) %>"></a>
+                  <a id="fallback_photo"
+                     class="cover-slide"
+                     href="<%= gallery_photo_album_path(photo_album) %>">
+                  </a>
               <% else %>
                   <div id="owl_carousel">
                     <% photo_album.models.each do |model| %>
                         <% unless model.photos.empty? %>
                             <div class="item">
                               <a class="cover-slide"
-                                 style="background-image: url(<%= model.photos.first.photo_file_url(:thumb) %>); display: block"
+                                 style="background-image: url(<%= model.photos.first.photo_file_url(:thumb) %>)"
                                  href="<%= gallery_photo_album_path(photo_album) %>">
                               </a>
                             </div>
