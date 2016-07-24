@@ -32,7 +32,11 @@ RSpec.describe "StaticPages", :type => :request do
   end
 
   describe "Home page" do
-    let!(:favorite_photo) { FactoryGirl.create(:photo, favorite: true) }
+    let!(:favorite_model) do
+      favorite_model = FactoryGirl.create(:model, favorite: true)
+      FactoryGirl.create(:photo, model: favorite_model)
+      favorite_model
+    end
 
     before { visit root_path }
 
@@ -91,9 +95,9 @@ RSpec.describe "StaticPages", :type => :request do
       end
     end
 
-    describe 'favorite photos' do
+    describe 'favorite models' do
       it { should have_content I18n.translate('photo_album.favorite.name') }
-      it { should have_selector "a[style='background-image: url(#{favorite_photo.photo_file_url(:thumb)})']" }
+      it { should have_selector "a[style='background-image: url(#{favorite_model.cover_photo.photo_file_url(:thumb)})']" }
     end
   end
 
@@ -110,9 +114,9 @@ RSpec.describe "StaticPages", :type => :request do
     before(:all) do
       7.times do
         photo_album = FactoryGirl.create(:photo_album)
-        3.times do
-          model = FactoryGirl.create(:model, photo_album: photo_album)
-          15.times { |i| FactoryGirl.create(:photo, model: model, favorite: (i % 2 == 0)) }
+        3.times do |i|
+          model = FactoryGirl.create(:model, favorite: (i % 3 == 0), photo_album: photo_album)
+          15.times { FactoryGirl.create(:photo, model: model) }
         end
       end
     end

@@ -17,13 +17,6 @@
         :id, :name, @photo.model_id), {}, class: 'form-control' %>
   </div>
 
-  <div class="checkbox">
-    <label>
-      <%= f.check_box :favorite %>
-      <%= t 'activerecord.attributes.photo.favorite' %>
-    </label>
-  </div>
-
   <div class="form-group">
     <%= f.label :photo_file, class: 'control-label' %>
     <%= f.file_field :photo_file, class: 'photo-file-field' %>

@@ -19,6 +19,13 @@
                    class: 'form-control' %>
     </div>
 
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :favorite %>
+        <%= t 'activerecord.attributes.model.favorite' %>
+      </label>
+    </div>
+
     <%= f.submit t("actions.#{new_model ? 'create' : 'save'}"), class: 'btn btn-success' %>
     <%= link_to t('actions.cancel'), models_path(page: params[:page]), class: 'btn btn-default' %>
 <% end %>

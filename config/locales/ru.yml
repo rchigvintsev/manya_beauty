@@ -182,6 +182,7 @@ ru:
         description: "Описание"
         photo_album: "Фотоальбом"
         photo_album_id: "Фотоальбом"
+        favorite: "Избранная модель"
       photo:
         id: "Идентификатор"
         title: "Заголовок"
@@ -189,7 +190,6 @@ ru:
         photo_file: "Файл"
         model: "Модель"
         model_id: "Модель"
-        favorite: "Избранная фотография"
       comment:
         id: "Идентификатор"
         created_at: "Создан"

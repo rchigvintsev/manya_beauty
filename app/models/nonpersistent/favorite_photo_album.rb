@@ -10,12 +10,17 @@ class FavoritePhotoAlbum
   attr_reader :description
 
   def has_at_least_one_photo
+    models.each do |model|
+      unless model.photos.empty?
+        return true
+      end
+    end
+
+    false
   end
 
   def models
-    models = []
-    Photo.where(favorite: true).each { |photo| models << photo.model }
-    models.uniq
+    Model.where(favorite: true)
   end
 
   def to_s

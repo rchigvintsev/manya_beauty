@@ -205,6 +205,7 @@ en:
         description: "Description"
         photo_album: "Photo album"
         photo_album_id: "Photo album"
+        favorite: "Favorite model"
       photo:
         id: "Identifier"
         title: "Title"
@@ -212,7 +213,6 @@ en:
         photo_file: "File"
         model: "Model"
         model_id: "Model"
-        favorite: "Favorite photo"
       comment:
         id: "Identifier"
         created_at: "Created at"

@@ -66,17 +66,25 @@
 <div class="row row-lg-content no-margins favorites">
   <div class="container">
     <div class="row">
-      <% @favorite_photos.each do |favorite_photo| %>
-        <% if @favorite_photos.length == 1 %>
-          <div class="col-md-12">
-        <% else %>
-          <div class="col-xs-12 col-sm-6 col-md-<%= "#{12 / @favorite_photos.length}" %>">
-        <% end %>
-            <a href="<%= gallery_favorite_photo_album_path %>"
-               style="background-image: url(<%= favorite_photo.photo_file_url(:thumb) %>)">
-            </a>
-          </div>
-        <% end %>
+      <% @favorite_models.each do |favorite_model| %>
+          <% if @favorite_models.length == 1 %>
+              <div class="col-md-12">
+          <% else %>
+              <div class="col-xs-12 col-sm-6 col-md-<%= "#{12 / @favorite_models.length}" %>">
+          <% end %>
+          <% if favorite_model.photos.empty? %>
+              <a id="fallback_photo"
+                 class="cover-slide"
+                 href="<%= gallery_model_path(favorite_model) %>">
+              </a>
+          <% else %>
+              <a class="cover-slide"
+                 style="background-image: url(<%= favorite_model.cover_photo.photo_file_url(:thumb) %>)"
+                 href="<%= gallery_model_path(favorite_model) %>">
+              </a>
+          <% end %>
+              </div>
+      <% end %>
       </div>
     </div>
   </div>

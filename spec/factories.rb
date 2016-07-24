@@ -13,6 +13,7 @@ FactoryGirl.define do
   factory :model do
     sequence(:name) { |n| "Model #{n}" }
     description TextUtils::truncate(Faker::Lorem.paragraph(1 + Random.rand(3)))
+    favorite false
     photo_album
   end
 
@@ -24,7 +25,6 @@ FactoryGirl.define do
     sequence(:title) { |n| "Title #{n}" }
     description TextUtils::truncate(Faker::Lorem.paragraph(1 + Random.rand(3)))
     photo_file File.open(Dir.glob('spec/fixtures/files/*.jpg')[0])
-    favorite false
     model
   end
 

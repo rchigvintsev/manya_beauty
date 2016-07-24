@@ -68,6 +68,6 @@ class ModelsController < ApplicationController
   end
 
   def model_params
-    params.require(:model).permit(:name, :description, :photo_album_id)
+    params.require(:model).permit(:name, :description, :photo_album_id, :favorite)
   end
 end

@@ -10,6 +10,7 @@
 <table class="table table-hover dashboard-table models">
   <thead>
   <tr>
+    <th></th>
     <th><%= t 'activerecord.attributes.model.id' %></th>
     <th><%= t 'activerecord.attributes.model.name' %></th>
     <th><%= t 'activerecord.attributes.model.photo_album' %></th>
@@ -18,6 +19,11 @@
   <tbody>
   <% @models.each do |model| %>
       <tr>
+        <td>
+          <% if model.favorite %>
+            <span class="glyphicon glyphicon-star glyphicon-favorite" aria-hidden="true"></span>
+          <% end %>
+        </td>
         <td class="id"><%= model.id %></td>
         <td><%= model.name %></td>
         <td><%= model.photo_album.name %></td>

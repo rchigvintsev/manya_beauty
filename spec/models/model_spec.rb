@@ -17,6 +17,7 @@ RSpec.describe Model, :type => :model do
   it { should respond_to(:description) }
   it { should respond_to(:photos) }
   it { should respond_to(:cover_photo) }
+  it { should respond_to(:favorite) }
 
   its(:photo_album) { should eq photo_album }
 

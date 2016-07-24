@@ -14,14 +14,10 @@ RSpec.describe FavoritePhotoAlbum, :type => :model do
   its(:description) { should eq I18n.translate('photo_album.favorite.description') }
 
   describe 'model associations' do
-    let!(:model) { FactoryGirl.create :model }
+    let!(:favorite_model) { FactoryGirl.create :model, favorite: true }
 
-    before do
-      2.times {FactoryGirl.create :photo, favorite: true, model: model}
-    end
-
-    it "should have associated models that contain photos where 'favorite' attribute set to true" do
-      expect(@favorite_photo_album.models.to_a).to eq [model]
+    it "should have associated model with 'favorite' attribute set to true" do
+      expect(@favorite_photo_album.models.to_a).to eq [favorite_model]
     end
   end
 end
