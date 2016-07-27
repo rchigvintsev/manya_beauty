@@ -64,28 +64,17 @@
 </div>
 
 <div class="row row-lg-content no-margins favorites">
-  <div class="container">
-    <div class="row">
+  <div class="col-md-12">
+    <div id="owl_carousel_favorites" class="owl-carousel owl-theme">
       <% @favorite_models.each do |favorite_model| %>
-          <% if @favorite_models.length == 1 %>
-              <div class="col-md-12">
-          <% else %>
-              <div class="col-xs-12 col-sm-6 col-md-<%= "#{12 / @favorite_models.length}" %>">
-          <% end %>
-          <% if favorite_model.photos.empty? %>
-              <a id="fallback_photo"
-                 class="cover-slide"
-                 href="<%= gallery_model_path(favorite_model) %>">
-              </a>
-          <% else %>
-              <a class="cover-slide"
-                 style="background-image: url(<%= favorite_model.cover_photo.photo_file_url(:thumb) %>)"
-                 href="<%= gallery_model_path(favorite_model) %>">
-              </a>
-          <% end %>
+          <% unless favorite_model.photos.empty? %>
+              <div class="item">
+                <a style="background-image: url(<%= favorite_model.cover_photo.photo_file_url(:thumb) %>)"
+                   href="<%= gallery_model_path(favorite_model) %>">
+                </a>
               </div>
+          <% end %>
       <% end %>
-      </div>
     </div>
   </div>
 </div>

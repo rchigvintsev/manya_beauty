@@ -153,36 +153,23 @@
 .row.favorites {
   background-color: inherit;
 
-  a {
-    width: 290px;
-    height: 290px;
-    display: block;
-    margin: 0 auto 15px auto;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+  .owl-carousel {
+    .item {
+      margin: 3px;
 
-  @media (min-width: 480px) {
-    a {
-      width: 340px;
-      height: 340px;
-    }
-  }
+      a {
+        height: 213px;
+        display: block;
+        margin: 0 auto 15px auto;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
 
-  @media (min-width: 992px) {
-    a {
-      width: 210px;
-      height: 210px;
-      margin-bottom: 0;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    a {
-      width: 260px;
-      height: 260px;
-      margin-bottom: 0;
+      a:hover {
+        filter: opacity(75%);
+        -webkit-filter: opacity(75%);
+      }
     }
   }
 }
@@ -239,7 +226,7 @@
   }
 
   .thumbnail {
-    min-height: 337px;
+    min-height: 357px;
     border-radius: initial;
     border: none;
     padding: 0;

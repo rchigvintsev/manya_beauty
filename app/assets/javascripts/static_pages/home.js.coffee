@@ -7,3 +7,5 @@ $ ->
     autoPlay:        true,
     transitionStyle: 'fade'
   }
+
+  $('#owl_carousel_favorites').owlCarousel {}

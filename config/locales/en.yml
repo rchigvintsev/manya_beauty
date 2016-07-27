@@ -92,7 +92,7 @@ en:
         destroy: "Do you really want to destroy selected photo album?"
     favorite:
       name: "Latest works"
-      description: ""
+      description: "The most interesting models on which I worked recently are taken together."
 
   models: "Models"
 
