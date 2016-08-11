@@ -72,7 +72,7 @@ RSpec.describe 'Dashboard', :type => :request do
       sign_in user
     end
 
-    it_should_behave_like "all admin pages"
+    it_should_behave_like 'all admin pages'
 
     describe "sidebar" do
       include CommentsHelper
@@ -84,70 +84,6 @@ RSpec.describe 'Dashboard', :type => :request do
       it { should have_selector sidebar_item_selector, text: /#{I18n.translate('photos')}/i }
       it { should have_selector sidebar_item_selector, text: /#{I18n.translate('comments')}/i }
       it { should have_selector ".draft-comment-counter", text: /#{draft_comment_count}/i }
-    end
-
-    describe "photo albums" do
-      let(:all_photo_albums) { PhotoAlbum.all }
-
-      before { click_link I18n.translate('photo_albums') }
-
-      it { should have_selector '.dashboard-table.photo-albums' }
-
-      it "should render all photo albums" do
-        PhotoAlbum.paginate(page: 1).each do |photo_album|
-          expect(page).to have_content photo_album.id
-          expect(page).to have_content photo_album.name
-        end
-      end
-
-      describe 'controls' do
-        it { should have_link I18n.translate('actions.create'), href: new_photo_album_path(locale: I18n.locale) }
-        it { should have_link I18n.translate('actions.edit'), href: '#' }
-        it { should have_link I18n.translate('actions.delete'), href: '#' }
-
-        it { should have_selector 'a.btn-edit.hidden' }
-        it { should have_selector 'a.btn-delete.hidden' }
-      end
-
-      describe "creating new photo album" do
-        before { click_link I18n.translate('actions.create') }
-
-        let(:submit) { I18n.translate('actions.create') }
-
-        it { should have_content I18n.translate('photo_album.creating') }
-        it { should have_selector "form[action='#{photo_albums_path(locale: I18n.locale)}']" }
-
-        describe "with invalid information" do
-          it "should not create a photo album" do
-            expect { click_button submit }.not_to change(PhotoAlbum, :count)
-          end
-
-          describe "after submission" do
-            before { click_button submit }
-
-            it { should have_content I18n.translate('photo_album.creating') }
-            it { should have_selector 'form .alert.alert-danger' }
-          end
-        end
-
-        describe "with valid information" do
-          before do
-            fill_in I18n.translate('activerecord.attributes.photo_album.name'),
-                with: 'Test Photo Album'
-          end
-
-          it "should create a photo album" do
-            expect { click_button submit }.to change(PhotoAlbum, :count).by(1)
-          end
-
-          describe "after saving the photo album" do
-            before { click_button submit }
-
-            it { should have_content I18n.translate('photo_album.flash.actions.create.notice') }
-            it { should have_selector '.dashboard-table.photo-albums' }
-          end
-        end
-      end
     end
 
     describe "photos" do

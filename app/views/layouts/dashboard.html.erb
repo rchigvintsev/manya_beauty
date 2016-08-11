@@ -9,55 +9,55 @@
   <%= render 'layouts/html5shim' %>
 </head>
 <body class="dashboard-body">
-  <%= render 'layouts/navbar' %>
+<%= render 'layouts/navbar' %>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div id="dashboard_sidebar" class="col-sm-3 col-md-2 dashboard-sidebar">
-        <ul class="nav dashboard-nav-sidebar">
-          <li<%= params[:controller] == 'photo_albums' ? ' class=active' : '' %>>
-            <%= link_to t('photo_albums'), photo_albums_path %>
-          </li>
-          <li<%= params[:controller] == 'models' ? ' class=active' : '' %>>
-            <%= link_to t('models'), models_path %>
-          </li>
-          <li<%= params[:controller] == 'photos' ? ' class=active' : '' %>>
-            <%= link_to t('photos'), photos_path %>
-          </li>
-          <li<%= params[:controller] == 'comments' ? ' class=active' : '' %>>
-            <a href="<%= comments_path %>">
+<div class="container-fluid">
+  <div class="row">
+    <div id="dashboard_sidebar" class="col-sm-3 col-md-2 dashboard-sidebar">
+      <ul class="nav dashboard-nav-sidebar">
+        <li<%= params[:controller] == 'photo_albums' ? ' class=active' : '' %>>
+          <%= link_to t('photo_albums'), admin_photo_albums_path %>
+        </li>
+        <li<%= params[:controller] == 'models' ? ' class=active' : '' %>>
+          <%= link_to t('models'), models_path %>
+        </li>
+        <li<%= params[:controller] == 'photos' ? ' class=active' : '' %>>
+          <%= link_to t('photos'), photos_path %>
+        </li>
+        <li<%= params[:controller] == 'comments' ? ' class=active' : '' %>>
+          <a href="<%= comments_path %>">
               <span class="badge draft-comment-counter">
                 <%= draft_comment_count %>
               </span>
-              <%= t 'comments' %>
-            </a>
-          </li>
-        </ul>
-      </div>
+            <%= t 'comments' %>
+          </a>
+        </li>
+      </ul>
+    </div>
 
-      <div id="dashboard_main"
-           class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 dashboard-main">
-        <% if flash[:notice] %>
-         <div class="alert dashboard-alert alert-info">
-           <%= notice %>
-         </div>
-        <% end %>
+    <div id="dashboard_main"
+         class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 dashboard-main">
+      <% if flash[:notice] %>
+          <div class="alert dashboard-alert alert-info">
+            <%= notice %>
+          </div>
+      <% end %>
 
-        <% if flash[:warn] %>
+      <% if flash[:warn] %>
           <div class="alert dashboard-alert alert-warning">
             <%= flash[:warn] %>
           </div>
-        <% end %>
+      <% end %>
 
-        <% if flash[:alert] %>
+      <% if flash[:alert] %>
           <div class="alert dashboard-alert alert-danger">
             <%= alert %>
           </div>
-        <% end %>
+      <% end %>
 
-        <%= yield %>
-      </div>
+      <%= yield %>
     </div>
   </div>
+</div>
 </body>
 </html>

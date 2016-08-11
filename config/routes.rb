@@ -70,10 +70,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboard' => 'dashboard#index'
+
+    resources :photo_albums
   end
 
   scope '/admin/dashboard' do
-    resources :photo_albums
     resources :models
     resources :photos
     resources :comments do

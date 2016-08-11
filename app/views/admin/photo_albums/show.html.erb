@@ -10,7 +10,7 @@
   <%= @photo_album.description %>
 </div>
 
-<%= link_to t('actions.edit'), edit_photo_album_path(@photo_album, page: params[:page]),
-    class: 'btn btn-primary' %>
-<%= link_to t('actions.cancel'), photo_albums_path(page: params[:page]),
-    class: 'btn btn-default' %>
+<%= link_to t('actions.edit'), edit_admin_photo_album_path(@photo_album, page: params[:page]),
+            class: 'btn btn-primary' %>
+<%= link_to t('actions.cancel'), admin_photo_albums_path(page: params[:page]),
+            class: 'btn btn-default' %>

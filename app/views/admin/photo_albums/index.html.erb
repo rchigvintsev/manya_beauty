@@ -1,0 +1,29 @@
+<div class="row admin-table-header">
+  <div class="col-md-8">
+    <h2><%= t 'photo_albums' %></h2>
+  </div>
+
+  <%= render 'admin/shared/common_list_actions', args: {
+      new_model_path: new_admin_photo_album_path(page: params[:page]),
+      model_name: 'photo_album'
+  } %>
+</div>
+
+<table class="table table-hover admin-table photo-albums">
+  <thead>
+  <tr>
+    <th><%= t 'activerecord.attributes.photo_album.id' %></th>
+    <th><%= t 'activerecord.attributes.photo_album.name' %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @photo_albums.each do |photo_album| %>
+      <tr>
+        <td class="id"><%= photo_album.id %></td>
+        <td><%= photo_album.name %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate class: 'pagination pull-right' %>

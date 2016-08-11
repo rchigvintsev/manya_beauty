@@ -1,0 +1,16 @@
+<div class="col-md-4">
+  <ul class="pull-right">
+    <li>
+      <%= link_to t('actions.create'), args[:new_model_path], class: 'btn btn-success btn-new' %>
+    </li>
+    <li>
+      <%= link_to t('actions.edit'), '#', class: 'btn btn-primary btn-edit hidden' %>
+    </li>
+    <li>
+      <%= link_to t('actions.delete'), '#',
+                  class: 'btn btn-danger btn-delete hidden',
+                  method: :delete,
+                  data: {confirm: t("#{args[:model_name]}.confirm.actions.destroy")} %>
+    </li>
+  </ul>
+</div>
