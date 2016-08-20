@@ -1,13 +1,15 @@
-<div class="row dashboard-table-header">
+<div class="row admin-table-header">
   <div class="col-md-8">
     <h2><%= t 'models' %></h2>
   </div>
 
-  <%= render 'shared/common_list_actions', __new_model_path: new_model_path(page: params[:page]),
-             __model_name: 'model' %>
+  <%= render 'admin/shared/common_list_actions', args: {
+      new_model_path: new_admin_model_path(page: params[:page]),
+      model_name: 'model'
+  } %>
 </div>
 
-<table class="table table-hover dashboard-table models">
+<table class="table table-hover admin-table models">
   <thead>
   <tr>
     <th></th>

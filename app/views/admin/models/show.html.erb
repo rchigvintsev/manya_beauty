@@ -20,5 +20,5 @@
   <%= t "answer.#{@model.favorite ? 'positive' : 'negative'}" %>
 </div>
 
-<%= link_to t('actions.edit'), edit_model_path(@model, page: params[:page]), class: 'btn btn-primary' %>
-<%= link_to t('actions.cancel'), models_path(page: params[:page]), class: 'btn btn-default' %>
+<%= link_to t('actions.edit'), edit_admin_model_path(@model, page: params[:page]), class: 'btn btn-primary' %>
+<%= link_to t('actions.cancel'), admin_models_path(page: params[:page]), class: 'btn btn-default' %>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'PhotoAlbums', :type => :request do
+RSpec.describe 'Admin::PhotoAlbums', :type => :request do
   subject { page }
 
   let(:user) { FactoryGirl.create(:admin) }
@@ -54,8 +54,8 @@ RSpec.describe 'PhotoAlbums', :type => :request do
     it { should have_content I18n.t('photo_album.creating') }
     it { should have_selector "form[action='#{admin_photo_albums_path(locale: I18n.locale)}']" }
 
-    describe 'with invalid information' do
-      it 'should not create photo album' do
+    describe 'with invalid params' do
+      it 'should not create a photo album' do
         expect { click_button submit }.not_to change(PhotoAlbum, :count)
       end
 
@@ -67,14 +67,14 @@ RSpec.describe 'PhotoAlbums', :type => :request do
       end
     end
 
-    describe 'with valid information' do
+    describe 'with valid params' do
       before { fill_in I18n.t('activerecord.attributes.photo_album.name'), with: 'Test Photo Album' }
 
-      it 'should create photo album' do
+      it 'should create a photo album' do
         expect { click_button submit }.to change(PhotoAlbum, :count).by(1)
       end
 
-      describe 'after submission' do
+      describe 'after saving the photo album' do
         before { click_button submit }
 
         it { should have_content I18n.t('photo_album.flash.actions.create.notice') }

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ModelsController, :type => :controller do
+RSpec.describe Admin::ModelsController, :type => :controller do
   include Devise::TestHelpers
 
   let(:user) { FactoryGirl.create(:admin) }
@@ -54,7 +54,7 @@ RSpec.describe ModelsController, :type => :controller do
 
   describe 'POST create' do
     describe 'with valid params' do
-      it 'creates a new Model' do
+      it 'creates a new model' do
         expect {
           post :create, {model: valid_attributes}
         }.to change(Model, :count).by(1)
@@ -68,7 +68,7 @@ RSpec.describe ModelsController, :type => :controller do
 
       it 'redirects to the models list' do
         post :create, {model: valid_attributes}
-        expect(response).to redirect_to(models_url(locale: I18n.locale))
+        expect(response).to redirect_to(admin_models_url(locale: I18n.locale))
       end
     end
 
@@ -112,7 +112,7 @@ RSpec.describe ModelsController, :type => :controller do
 
       it 'redirects to the model' do
         put :update, {id: @model.to_param, model: valid_attributes}
-        expect(response).to redirect_to(@model)
+        expect(response).to redirect_to admin_model_url(@model)
       end
     end
 
@@ -140,7 +140,7 @@ RSpec.describe ModelsController, :type => :controller do
 
     it 'redirects to the models list' do
       delete :destroy, {id: @model.to_param}
-      expect(response).to redirect_to(models_url(locale: I18n.locale))
+      expect(response).to redirect_to(admin_models_url(locale: I18n.locale))
     end
   end
 end

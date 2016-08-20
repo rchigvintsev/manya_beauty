@@ -1,5 +1,5 @@
-<%= form_for(@model, url: { action: (new_model ? :create : :update) }, page: params[:page]) do |f| %>
-    <%= render 'shared/form_errors', model: @model, new_model: new_model %>
+<%= form_for(@model, url: {action: (args[:new_model] ? :create : :update)}, page: params[:page]) do |f| %>
+    <%= render 'admin/shared/form_errors', args: {model: @model, new_model: args[:new_model]} %>
 
     <div class="form-group">
       <%= f.label :name, class: 'control-label' %>
@@ -26,6 +26,6 @@
       </label>
     </div>
 
-    <%= f.submit t("actions.#{new_model ? 'create' : 'save'}"), class: 'btn btn-success' %>
-    <%= link_to t('actions.cancel'), models_path(page: params[:page]), class: 'btn btn-default' %>
+    <%= f.submit t("actions.#{args[:new_model] ? 'create' : 'save'}"), class: 'btn btn-success' %>
+    <%= link_to t('actions.cancel'), admin_models_path(page: params[:page]), class: 'btn btn-default' %>
 <% end %>

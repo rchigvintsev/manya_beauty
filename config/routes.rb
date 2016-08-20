@@ -72,10 +72,10 @@ Rails.application.routes.draw do
     get 'dashboard' => 'dashboard#index'
 
     resources :photo_albums
+    resources :models
   end
 
   scope '/admin/dashboard' do
-    resources :models
     resources :photos
     resources :comments do
       member do

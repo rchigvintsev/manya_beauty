@@ -1,4 +1,4 @@
-class ModelsController < ApplicationController
+class Admin::ModelsController < ApplicationController
   include PaginationUtils
 
   before_action :authenticate_user!
@@ -23,9 +23,9 @@ class ModelsController < ApplicationController
 
     respond_to do |format|
       if @model.save
-        format.html { redirect_to models_url(page: last_page(:model)),
+        format.html { redirect_to admin_models_url(page: last_page(:model)),
                                   notice: I18n.translate('model.flash.actions.create.notice') }
-        format.json { render :index, status: :created, location: models_url(page: last_page(:model)) }
+        format.json { render :index, status: :created, location: admin_models_url(page: last_page(:model)) }
       else
         format.html { render :new }
         format.json { render json: @model.errors, status: :unprocessable_entity }
@@ -36,9 +36,9 @@ class ModelsController < ApplicationController
   def update
     respond_to do |format|
       if @model.update(model_params)
-        format.html { redirect_to model_url(@model, page: current_page),
+        format.html { redirect_to admin_model_url(@model, page: current_page),
                                   notice: I18n.translate('model.flash.actions.update.notice') }
-        format.json { render :show, status: :ok, location: model_url(@model, page: current_page) }
+        format.json { render :show, status: :ok, location: admin_model_url(@model, page: current_page) }
       else
         format.html { render :edit }
         format.json { render json: @model.errors, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class ModelsController < ApplicationController
         page = current_page
       end
 
-      format.html { redirect_to models_url(page: page),
+      format.html { redirect_to admin_models_url(page: page),
                                 notice: I18n.translate('model.flash.actions.destroy.notice') }
       format.json { head :no_content }
     end
