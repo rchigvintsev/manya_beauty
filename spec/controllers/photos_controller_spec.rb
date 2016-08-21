@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PhotosController, :type => :controller do
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   let(:user) { FactoryGirl.create(:admin) }
   let(:photo_album) { FactoryGirl.create(:photo_album) }

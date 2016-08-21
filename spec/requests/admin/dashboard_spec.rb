@@ -40,8 +40,7 @@ RSpec.describe 'Dashboard', :type => :request do
     describe "with invalid credentials" do
       before { click_button I18n.translate('sign_in.form.sign_in') }
 
-      it { should have_content I18n.translate('devise.failure.invalid',
-          authentication_keys: 'email') }
+      it { should have_content I18n.translate('devise.failure.invalid', authentication_keys: 'Email') }
       it { should_not have_link I18n.translate('sign_out'),
           href: destroy_user_session_path(locale: I18n.locale) }
       it { should have_selector sign_in_button_selector }

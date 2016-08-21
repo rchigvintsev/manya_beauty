@@ -26,7 +26,7 @@ RSpec.describe "StaticPages", :type => :request do
   end
 
   shared_examples_for "page with about info" do
-    it { should have_selector "img[src*='avatar.png']" }
+    it { should have_selector "img[src*='avatar']" }
     it { should have_content I18n.translate('about.header') }
     it { should have_content I18n.translate('about.content')[0..150] }
   end
