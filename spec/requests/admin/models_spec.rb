@@ -6,7 +6,7 @@ RSpec.describe 'Admin::Models', :type => :request do
   let(:user) { FactoryGirl.create(:admin) }
 
   before do
-    9.times { FactoryGirl.create(:model) }
+    3.times { FactoryGirl.create(:model) }
 
     visit user_session_path
     sign_in user
@@ -41,6 +41,7 @@ RSpec.describe 'Admin::Models', :type => :request do
 
     it { should have_content first_model.name }
     it { should have_content first_model.description }
+    it { should have_content first_model.photo_album.name }
     it { should have_link I18n.t('actions.edit'), href: edit_admin_model_path(first_model, locale: I18n.locale) }
     it { should have_link I18n.t('actions.cancel'), href: admin_models_path(locale: I18n.locale) }
   end

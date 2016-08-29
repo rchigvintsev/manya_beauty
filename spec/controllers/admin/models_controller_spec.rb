@@ -6,15 +6,8 @@ RSpec.describe Admin::ModelsController, :type => :controller do
   let(:user) { FactoryGirl.create(:admin) }
   let(:photo_album) { FactoryGirl.create(:photo_album) }
 
-  let(:valid_attributes) { {
-      name: 'Test Model',
-      photo_album_id: photo_album.id
-  } }
-
-  let(:invalid_attributes) { {
-      name: nil,
-      photo_album_id: nil
-  } }
+  let(:valid_attributes) { {name: 'Test Model', photo_album_id: photo_album.id} }
+  let(:invalid_attributes) { {name: nil, photo_album_id: nil} }
 
   before { sign_in user }
 
@@ -91,11 +84,13 @@ RSpec.describe Admin::ModelsController, :type => :controller do
     describe 'with valid params' do
       let(:new_photo_album) { FactoryGirl.create(:photo_album) }
 
-      let(:new_attributes) { {
-          name: 'New Name',
-          description: 'New description',
-          photo_album_id: new_photo_album.id
-      } }
+      let(:new_attributes) do
+        {
+            name: 'New Name',
+            description: 'New description',
+            photo_album_id: new_photo_album.id
+        }
+      end
 
       it 'updates the requested model' do
         put :update, {id: @model.to_param, model: new_attributes}
@@ -112,7 +107,7 @@ RSpec.describe Admin::ModelsController, :type => :controller do
 
       it 'redirects to the model' do
         put :update, {id: @model.to_param, model: valid_attributes}
-        expect(response).to redirect_to admin_model_url(@model)
+        expect(response).to redirect_to(admin_model_url(@model))
       end
     end
 

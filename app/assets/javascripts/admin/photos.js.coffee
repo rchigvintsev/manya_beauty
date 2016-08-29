@@ -1,7 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 setupPreviewListener = ->
   clearThumbnail = ->
     $('.photo-preview .thumbnail').find('img, canvas').remove()
@@ -17,7 +13,7 @@ setupPreviewListener = ->
   loadPreview = (e) ->
     target = e.dataTransfer or e.target
     file = target && target.files && target.files[0]
-    options = { maxWidth: 240 }
+    options = {maxWidth: 240}
     if file
       loadImage.parseMetaData file, (data) ->
         if data.exif

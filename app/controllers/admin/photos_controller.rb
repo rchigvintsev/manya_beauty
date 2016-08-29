@@ -1,4 +1,4 @@
-class PhotosController < ApplicationController
+class Admin::PhotosController < ApplicationController
   include PaginationUtils
 
   before_action :authenticate_user!
@@ -23,10 +23,9 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to photos_url(page: last_page(:photo)),
-            notice: I18n.translate('photo.flash.actions.create.notice') }
-        format.json { render :index, status: :created,
-            location: photos_url(page: last_page(:photo)) }
+        format.html { redirect_to admin_photos_url(page: last_page(:photo)),
+                                  notice: I18n.translate('photo.flash.actions.create.notice') }
+        format.json { render :index, status: :created, location: admin_photos_url(page: last_page(:photo)) }
       else
         format.html { render :new }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
@@ -37,11 +36,9 @@ class PhotosController < ApplicationController
   def update
     respond_to do |format|
       if @photo.update(photo_params)
-
-        format.html { redirect_to photo_url(@photo, page: current_page),
-            notice: I18n.translate('photo.flash.actions.update.notice') }
-        format.json { render :show, status: :ok,
-            location: photo_url(@photo, page: current_page) }
+        format.html { redirect_to admin_photo_url(@photo, page: current_page),
+                                  notice: I18n.translate('photo.flash.actions.update.notice') }
+        format.json { render :show, status: :ok, location: admin_photo_url(@photo, page: current_page) }
       else
         format.html { render :edit }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
@@ -57,19 +54,19 @@ class PhotosController < ApplicationController
         page = current_page
       end
 
-      format.html { redirect_to photos_url(page: page),
-          notice: I18n.translate('photo.flash.actions.destroy.notice') }
+      format.html { redirect_to admin_photos_url(page: page),
+                                notice: I18n.translate('photo.flash.actions.destroy.notice') }
       format.json { head :no_content }
     end
   end
 
   private
 
-    def set_photo
-      @photo = Photo.find(params[:id])
-    end
+  def set_photo
+    @photo = Photo.find(params[:id])
+  end
 
-    def photo_params
-      params.require(:photo).permit(:title, :description, :photo_file, :model_id)
-    end
+  def photo_params
+    params.require(:photo).permit(:title, :description, :photo_file, :model_id)
+  end
 end

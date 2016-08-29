@@ -73,10 +73,10 @@ Rails.application.routes.draw do
 
     resources :photo_albums
     resources :models
+    resources :photos
   end
 
   scope '/admin/dashboard' do
-    resources :photos
     resources :comments do
       member do
         post 'publish'

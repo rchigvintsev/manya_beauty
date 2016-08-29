@@ -30,9 +30,7 @@
   </div>
 </div>
 
-<%= link_to t('actions.edit'), edit_photo_path(@photo, page: params[:page]),
-    class: 'btn btn-primary' %>
-<%= link_to t('actions.cancel'), photos_path(page: params[:page]),
-    class: 'btn btn-default' %>
+<%= link_to t('actions.edit'), edit_admin_photo_path(@photo, page: params[:page]), class: 'btn btn-primary' %>
+<%= link_to t('actions.cancel'), admin_photos_path(page: params[:page]), class: 'btn btn-default' %>
 
-<%= render 'shared/photo_lightbox', photo: @photo %>
+<%= render 'admin/shared/photo_lightbox', args: {photo: @photo} %>

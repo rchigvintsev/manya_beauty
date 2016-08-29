@@ -1,0 +1,45 @@
+<%= form_for(@photo, url: {action: (args[:new_photo] ? :create : :update), page: params[:page]}) do |f| %>
+    <%= render 'admin/shared/form_errors', args: {model: @photo, new_model: args[:new_photo]} %>
+
+    <div class="form-group">
+      <%= f.label :title, class: 'control-label' %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, class: 'control-label' %>
+      <%= f.text_area :description, class: 'form-control', rows: 5 %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :model_id, class: 'control-label' %>
+      <%= f.select :model_id, options_from_collection_for_select(Model.all, :id, :name, @photo.model_id),
+                   {}, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :photo_file, class: 'control-label' %>
+      <%= f.file_field :photo_file, class: 'photo-file-field' %>
+    </div>
+
+    <div class="form-group">
+      <div class="photo-preview<%= @photo.photo_file_url ? '' : ' hidden' %>">
+        <div class="row">
+          <div class="col-xs-6 col-md-3">
+            <div class="thumbnail">
+              <p class="text-danger text-center uploading-failure hidden">
+                <%= t 'upload.error.uploading_failure' %>
+              </p>
+              <p class="text-danger text-center api-not-supported hidden">
+                <%= t 'upload.error.api_not_supported' %>
+              </p>
+              <%= image_tag @photo.photo_file_url(:thumb) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= f.submit t("actions.#{args[:new_photo] ? 'create' : 'save'}"), class: 'btn btn-success' %>
+    <%= link_to t('actions.cancel'), admin_photos_path(page: params[:page]), class: 'btn btn-default' %>
+<% end %>

@@ -1,13 +1,15 @@
-<div class="row dashboard-table-header">
+<div class="row admin-table-header">
   <div class="col-md-8">
     <h2><%= t 'photos' %></h2>
   </div>
 
-  <%= render 'shared/common_list_actions', __new_model_path: new_photo_path(page: params[:page]),
-             __model_name: 'photo' %>
+  <%= render 'admin/shared/common_list_actions', args: {
+      new_model_path: new_admin_photo_path(page: params[:page]),
+      model_name: 'photo'
+  } %>
 </div>
 
-<table class="table table-hover dashboard-table photos">
+<table class="table table-hover admin-table photos">
   <thead>
     <tr>
       <th><%= t 'activerecord.attributes.photo.id' %></th>
