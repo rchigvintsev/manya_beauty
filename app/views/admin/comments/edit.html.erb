@@ -1,0 +1,28 @@
+<h2><%= t 'comment.editing' %></h2>
+
+<%= form_for(@comment, url: {action: :update}, page: params[:page]) do |f| %>
+    <%= render 'admin/shared/form_errors', args: {model: @comment, new_model: false} %>
+
+    <div class="form-group">
+      <%= f.label :author, class: 'control-label' %>
+      <%= f.text_field :author, class: 'form-control', readonly: 'readonly' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :text, class: 'control-label' %>
+      <%= f.text_area :text, class: 'form-control', rows: 5 %>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-6 col-md-3">
+          <div class="thumbnail">
+            <%= image_tag @comment.photo.photo_file_url(:thumb) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= f.submit t('actions.save'), class: 'btn btn-success' %>
+    <%= link_to t('actions.cancel'), admin_comments_path(page: params[:page]), class: 'btn btn-default' %>
+<% end %>

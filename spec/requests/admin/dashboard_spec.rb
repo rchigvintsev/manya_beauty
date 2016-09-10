@@ -74,7 +74,7 @@ RSpec.describe 'Dashboard', :type => :request do
     it_should_behave_like 'all admin pages'
 
     describe "sidebar" do
-      include CommentsHelper
+      include Admin::CommentsHelper
 
       let(:sidebar_item_selector) { '.dashboard-sidebar > ul > li > a' }
 
@@ -83,41 +83,6 @@ RSpec.describe 'Dashboard', :type => :request do
       it { should have_selector sidebar_item_selector, text: /#{I18n.translate('photos')}/i }
       it { should have_selector sidebar_item_selector, text: /#{I18n.translate('comments')}/i }
       it { should have_selector ".draft-comment-counter", text: /#{draft_comment_count}/i }
-    end
-
-    describe "comments" do
-      include CommentsHelper
-
-      before { click_link I18n.translate('comments') }
-
-      it { should have_selector '.dashboard-table.comments' }
-
-      it "should render all comments" do
-        Comment.order('created_at DESC').paginate(page: 1).each do |comment|
-          expect(page).to have_content comment.id
-          expect(page).to have_content comment.author
-          expect(page).to have_content truncate_text(comment)
-          expect(page).to have_content I18n.localize(comment.created_at,
-              format: date_time_format)
-          if not comment.published_at.nil?
-            expect(page).to have_content I18n.localize(comment.published_at,
-                format: date_time_format)
-          end
-          expect(page).to have_selector "img[src='#{comment.photo.photo_file_url(:thumb)}']"
-        end
-      end
-
-      describe 'controls' do
-        it { should have_link I18n.translate('actions.edit'), href: '#' }
-        it { should have_link I18n.translate('actions.publish'), href: '#' }
-        it { should have_link I18n.translate('actions.unpublish'), href: '#' }
-        it { should have_link I18n.translate('actions.delete'), href: '#' }
-
-        it { should have_selector 'a.btn-edit.hidden' }
-        it { should have_selector 'a.btn-publish.hidden' }
-        it { should have_selector 'a.btn-unpublish.hidden' }
-        it { should have_selector 'a.btn-delete.hidden' }
-      end
     end
   end
 end

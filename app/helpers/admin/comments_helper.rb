@@ -1,4 +1,4 @@
-module CommentsHelper
+module Admin::CommentsHelper
   @@date_time_format = '%d %B %Y %H:%M:%S'
 
   def truncate_text(comment)

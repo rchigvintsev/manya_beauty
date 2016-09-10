@@ -17,8 +17,7 @@
 
 <div class="form-group">
   <strong><%= t 'activerecord.attributes.comment.published_at' %>:</strong>
-  <%= @comment.published_at.nil? ? '' :
-      l(@comment.published_at, format: date_time_format) %>
+  <%= @comment.published_at.nil? ? '' : l(@comment.published_at, format: date_time_format) %>
 </div>
 
 <div class="form-group">
@@ -31,9 +30,7 @@
   </div>
 </div>
 
-<%= link_to t('actions.edit'), edit_comment_path(@comment, page: params[:page]),
-    class: 'btn btn-primary' %>
-<%= link_to t('actions.cancel'), comments_path(page: params[:page]),
-    class: 'btn btn-default' %>
+<%= link_to t('actions.edit'), edit_admin_comment_path(@comment, page: params[:page]), class: 'btn btn-primary' %>
+<%= link_to t('actions.cancel'), admin_comments_path(page: params[:page]), class: 'btn btn-default' %>
 
-<%= render 'shared/photo_lightbox', photo: @comment.photo %>
+<%= render 'admin/shared/photo_lightbox', args: {photo: @comment.photo} %>
