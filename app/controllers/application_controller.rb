@@ -30,24 +30,24 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    admin_dashboard_path
+    admin_root_path
   end
 
   def after_sign_out_path_for(resource_or_scope)
-    admin_dashboard_path
+    admin_root_path
   end
 
   private
 
-    def layout_by_resource
-      if devise_controller? or admin_page?
-        if !user_signed_in?
-          'sign_in'
-        else
-          'dashboard'
-        end
+  def layout_by_resource
+    if devise_controller? or admin_page?
+      if !user_signed_in?
+        'sign_in'
       else
-        'application'
+        'admin'
       end
+    else
+      'application'
     end
+  end
 end

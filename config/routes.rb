@@ -69,7 +69,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get 'dashboard' => 'dashboard#index'
+    root 'admin#index'
 
     resources :photo_albums
     resources :models

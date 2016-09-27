@@ -8,13 +8,13 @@
   <%= render 'layouts/turbolinks' %>
   <%= render 'layouts/html5shim' %>
 </head>
-<body class="dashboard-body">
+<body class="admin-body">
 <%= render 'layouts/navbar' %>
 
 <div class="container-fluid">
   <div class="row">
-    <div id="dashboard_sidebar" class="col-sm-3 col-md-2 dashboard-sidebar">
-      <ul class="nav dashboard-nav-sidebar">
+    <div id="admin_sidebar" class="col-sm-3 col-md-2 admin-sidebar">
+      <ul class="nav admin-nav-sidebar">
         <li<%= params[:controller] == 'photo_albums' ? ' class=active' : '' %>>
           <%= link_to t('photo_albums'), admin_photo_albums_path %>
         </li>
@@ -35,22 +35,22 @@
       </ul>
     </div>
 
-    <div id="dashboard_main"
-         class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 dashboard-main">
+    <div id="admin_main"
+         class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 admin-main">
       <% if flash[:notice] %>
-          <div class="alert dashboard-alert alert-info">
+          <div class="alert admin-alert alert-info">
             <%= notice %>
           </div>
       <% end %>
 
       <% if flash[:warn] %>
-          <div class="alert dashboard-alert alert-warning">
+          <div class="alert admin-alert alert-warning">
             <%= flash[:warn] %>
           </div>
       <% end %>
 
       <% if flash[:alert] %>
-          <div class="alert dashboard-alert alert-danger">
+          <div class="alert admin-alert alert-danger">
             <%= alert %>
           </div>
       <% end %>

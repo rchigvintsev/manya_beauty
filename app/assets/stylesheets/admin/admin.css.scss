@@ -1,8 +1,4 @@
-// Place all the styles related to the admin/dashboard controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-.dashboard-body {
+.admin-body {
   padding-top: 50px;
 }
 
@@ -10,7 +6,7 @@
   border: 0;
 }
 
-#dashboard_sidebar {
+#admin_sidebar {
   position: fixed;
   top: 51px;
   bottom: 0;
@@ -24,17 +20,17 @@
   border-right: 1px solid #eee;
 }
 
-#dashboard_main {
+#admin_main {
   padding-bottom: 20px;
 }
 
-.dashboard-nav-sidebar {
+.admin-nav-sidebar {
   margin-right: -21px;
   margin-bottom: 20px;
   margin-left: -20px;
 }
 
-.dashboard-nav-sidebar > li > a {
+.admin-nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
 
@@ -43,9 +39,9 @@
   }
 }
 
-.dashboard-nav-sidebar > .active > a,
-.dashboard-nav-sidebar > .active > a:hover,
-.dashboard-nav-sidebar > .active > a:focus {
+.admin-nav-sidebar > .active > a,
+.admin-nav-sidebar > .active > a:hover,
+.admin-nav-sidebar > .active > a:focus {
   color: #fff;
   background-color: #428bca;
 
@@ -55,12 +51,12 @@
   }
 }
 
-.alert.dashboard-alert {
+.alert.admin-alert {
   margin-top: 20px;
   margin-bottom: 0;
 }
 
-.dashboard-table-header, .admin-table-header {
+.admin-table-header {
   padding-top: 20px;
   padding-bottom: 10px;
 
@@ -90,7 +86,7 @@
   }
 }
 
-.table.dashboard-table, .table.admin-table {
+.table.admin-table {
   margin-bottom: 10px;
 
   td {
